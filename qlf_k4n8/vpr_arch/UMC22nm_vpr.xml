@@ -228,8 +228,6 @@ Authors: Xifan Tang
       <output name="cout" num_pins="1"/>
       <clock name="clk" num_pins="4"/>
       <fc in_type="frac" in_val="0.15" out_type="frac" out_val="0.10">
-        <fc_override port_name="reg_in" fc_type="frac" fc_val="0"/>
-        <fc_override port_name="reg_out" fc_type="frac" fc_val="0"/>
         <fc_override port_name="sc_in" fc_type="frac" fc_val="0"/>
         <fc_override port_name="sc_out" fc_type="frac" fc_val="0"/>
         <fc_override port_name="cin" fc_type="frac" fc_val="0"/>
