@@ -84,6 +84,18 @@ Authors: Xifan Tang
         <port name="Q" clock="clk"/>
       </output_ports>
     </model>
+    <model name="scff_1">
+      <input_ports>
+        <port name="D" clock="clk"/>
+        <port name="DI" clock="clk"/>
+        <port name="reset" clock="clk"/>
+        <port name="preset" clock="clk"/>
+        <port name="clk" is_clock="1"/>
+      </input_ports>
+      <output_ports>
+        <port name="Q" clock="clk"/>
+      </output_ports>
+    </model>
     <model name="dff">
       <input_ports>
         <port name="D" clock="C"/>
@@ -98,6 +110,16 @@ Authors: Xifan Tang
         <port name="D" clock="C"/>
         <port name="C" is_clock="1"/>
         <port name="R" clock="C"/>
+      </input_ports>
+      <output_ports>
+        <port name="Q" clock="C"/>
+      </output_ports>
+    </model>
+    <model name="dffs">
+      <input_ports>
+        <port name="D" clock="C"/>
+        <port name="C" is_clock="1"/>
+        <port name="S" clock="C"/>
       </input_ports>
       <output_ports>
         <port name="Q" clock="C"/>
@@ -221,6 +243,7 @@ Authors: Xifan Tang
       <input name="cin" num_pins="1"/>
       <input name="lreset" num_pins="1"/>
       <input name="reset" num_pins="1" is_non_clock_global="true"/>
+      <input name="preset" num_pins="1"/>
       <input name="scan_mode" num_pins="1" is_non_clock_global="true"/>
       <output name="O" num_pins="8" equivalent="none"/>
       <output name="reg_out" num_pins="1"/>
@@ -238,7 +261,7 @@ Authors: Xifan Tang
       </fc>
       <!--pinlocations pattern="spread"/-->
       <pinlocations pattern="custom">
-        <loc side="left">clb.clk clb.reset clb.lreset clb.scan_mode</loc>
+        <loc side="left">clb.clk clb.reset clb.lreset clb.preset clb.scan_mode</loc>
         <loc side="top">clb.reg_in clb.sc_in clb.cin clb.O[7:0] clb.I[11:0]</loc>
         <loc side="right">clb.I[23:12]</loc>
         <loc side="bottom">clb.reg_out clb.sc_out clb.cout</loc>
@@ -595,6 +618,7 @@ Authors: Xifan Tang
       <input name="cin" num_pins="1"/>
       <input name="lreset" num_pins="1"/>
       <input name="reset" num_pins="1" is_non_clock_global="true"/>
+      <input name="preset" num_pins="1"/>
       <input name="scan_mode" num_pins="1" is_non_clock_global="true"/>
       <output name="O" num_pins="8" equivalent="none"/>
       <output name="reg_out" num_pins="1"/>
@@ -611,6 +635,7 @@ Authors: Xifan Tang
         <input name="sc_in" num_pins="1"/>
         <input name="cin" num_pins="1"/>
         <input name="reset" num_pins="1"/>
+        <input name="preset" num_pins="1"/>
         <input name="scan_mode" num_pins="1"/>
         <output name="out" num_pins="1"/>
         <output name="reg_out" num_pins="1"/>
@@ -625,6 +650,7 @@ Authors: Xifan Tang
             <input name="sc_in" num_pins="1"/>
             <input name="cin" num_pins="1"/>
             <input name="reset" num_pins="1"/>
+            <input name="preset" num_pins="1"/>
             <output name="out" num_pins="1"/>
             <output name="reg_out" num_pins="1"/>
             <output name="sc_out" num_pins="1"/>
@@ -654,15 +680,17 @@ Authors: Xifan Tang
               </interconnect>
             </pb_type>
             <!-- Define flip-flop with scan-chain capability, DI is the scan-chain data input -->
-            <pb_type name="ff" blif_model=".subckt scff" num_pb="1">
+            <pb_type name="ff" blif_model=".subckt scff_1" num_pb="1">
               <input name="D" num_pins="1"/>
               <input name="DI" num_pins="1"/>
               <input name="reset" num_pins="1"/>
+              <input name="preset" num_pins="1"/>
               <output name="Q" num_pins="1"/>
               <clock name="clk" num_pins="1"/>
               <T_setup value="66e-12" port="ff.D" clock="clk"/>
               <T_setup value="66e-12" port="ff.DI" clock="clk"/>
               <T_setup value="66e-12" port="ff.reset" clock="clk"/>
+              <T_setup value="66e-12" port="ff.preset" clock="clk"/>
               <T_clock_to_Q max="124e-12" port="ff.Q" clock="clk"/>
             </pb_type>         
             <interconnect>
@@ -674,6 +702,7 @@ Authors: Xifan Tang
               <direct name="direct6" input="frac_logic.cout" output="fabric.cout"/>
               <complete name="complete1" input="fabric.clk" output="ff.clk"/>
               <complete name="complete2" input="fabric.reset" output="ff.reset"/>
+              <complete name="complete3" input="fabric.preset" output="ff.preset"/>
               <mux name="mux1" input="frac_logic.out fabric.reg_in" output="ff.D">
                 <delay_constant max="25e-12" in_port="frac_logic.out" out_port="ff.D"/>
                 <delay_constant max="45e-12" in_port="fabric.reg_in" out_port="ff.D"/>
@@ -696,6 +725,7 @@ Authors: Xifan Tang
             <direct name="direct8" input="fabric.cout" output="fle.cout"/>
             <direct name="direct9" input="fle.clk" output="fabric.clk"/>
             <direct name="direct10" input="fle.reset" output="fabric.reset"/>
+            <direct name="direct11" input="fle.preset" output="fabric.preset"/>
           </interconnect>
         </mode>
         <!-- Physical mode definition end (physical implementation of the fle) -->
@@ -704,6 +734,7 @@ Authors: Xifan Tang
           <pb_type name="ble4" num_pb="1">
             <input name="in" num_pins="4"/>
             <input name="reset" num_pins="1"/>
+            <input name="preset" num_pins="1"/>
             <output name="out" num_pins="1"/>
             <clock name="clk" num_pins="1"/>
               <!-- Define LUT -->
@@ -737,6 +768,7 @@ Authors: Xifan Tang
             <pb_type name="ff"  num_pb="1">
               <input name="D" num_pins="1"/>
               <input name="R" num_pins="1"/>
+              <input name="S" num_pins="1"/>
               <output name="Q" num_pins="1"/>
               <clock name="clk" num_pins="1"/>
               <mode name="LATCH">
@@ -787,6 +819,24 @@ Authors: Xifan Tang
                   <direct input="ff.R" name="DFFR-reset" output="DFFR.R"/>
                 </interconnect>
               </mode>
+              <mode name="DFFS">
+                <pb_type name="DFFS" blif_model=".subckt dffs" num_pb="1">
+                  <input name="D" num_pins="1"/>
+                  <input name="S" num_pins="1"/>
+                  <output name="Q" num_pins="1"/>
+                  <clock name="C" num_pins="1"/>
+                  <T_setup value="66e-12" port="DFFS.D" clock="C"/>
+                  <T_setup value="66e-12" port="DFFS.S" clock="C"/>
+                  <T_clock_to_Q max="124e-12" port="DFFS.Q" clock="C"/>
+                </pb_type>
+                <interconnect>
+                  <direct input="DFFS.Q" name="FF-Q" output="ff.Q"/>
+                  <direct input="ff.D" name="DFFS-D" output="DFFS.D">
+                  </direct>
+                  <direct input="ff.clk" name="DFFS-clk" output="DFFS.C"/>
+                  <direct input="ff.S" name="DFFS-preset" output="DFFS.S"/>
+                </interconnect>
+              </mode>
             </pb_type>
             <interconnect>
               <direct name="direct1" input="ble4.in" output="lut4[0:0].in"/>
@@ -796,6 +846,7 @@ Authors: Xifan Tang
               </direct>
               <direct name="direct3" input="ble4.clk" output="ff.clk"/>
               <direct name="direct4" input="ble4.reset" output="ff.R"/>
+              <direct name="direct5" input="ble4.preset" output="ff.S"/>
               <mux name="mux1" input="ff.Q lut4.out" output="ble4.out">
                 <!-- LUT to output is faster than FF to output on a Stratix IV -->
                 <delay_constant max="90e-12" min="50e-12" in_port="lut4.out" out_port="ble4.out"/>
@@ -808,6 +859,7 @@ Authors: Xifan Tang
             <direct name="direct2" input="ble4.out" output="fle.out"/>
             <direct name="direct3" input="fle.clk" output="ble4.clk"/>
             <direct name="direct4" input="fle.reset" output="ble4.reset"/>
+            <direct name="direct5" input="fle.preset" output="ble4.preset"/>
           </interconnect>
         </mode>
         <!-- 4-LUT mode definition end -->
@@ -927,6 +979,7 @@ Authors: Xifan Tang
         </complete>
         <complete name="resets" input="clb.lreset" output="fle[7:0].reset">
         </complete>
+        <complete name="presets" input="clb.preset" output="fle[7:0].preset"/>
         <complete name="scan_modes" input="clb.scan_mode" output="fle[7:0].scan_mode"/>
         <!-- This way of specifying direct connection to clb outputs is important because this architecture uses automatic spreading of opins.  
           By grouping to output pins in this fashion, if a logic block is completely filled by 6-LUTs, 
