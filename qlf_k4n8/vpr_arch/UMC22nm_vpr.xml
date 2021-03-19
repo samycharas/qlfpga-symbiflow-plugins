@@ -1,4 +1,4 @@
-<!-- 
+<!--`
 Low-cost homogeneous FPGA Architecture.
 
 - UMC22nm technology
@@ -105,6 +105,15 @@ Authors: Xifan Tang
         <port name="Q" clock="C"/>
       </output_ports>
     </model>
+    <model name="dffn">
+      <input_ports>
+        <port name="D" clock="C"/>
+        <port name="C" is_clock="1"/>
+      </input_ports>
+      <output_ports>
+        <port name="Q" clock="C"/>
+      </output_ports>
+    </model>
     <model name="dffr">
       <input_ports>
         <port name="D" clock="C"/>
@@ -115,7 +124,27 @@ Authors: Xifan Tang
         <port name="Q" clock="C"/>
       </output_ports>
     </model>
+    <model name="dffnr">
+      <input_ports>
+        <port name="D" clock="C"/>
+        <port name="C" is_clock="1"/>
+        <port name="R" clock="C"/>
+      </input_ports>
+      <output_ports>
+        <port name="Q" clock="C"/>
+      </output_ports>
+    </model>
     <model name="dffs">
+      <input_ports>
+        <port name="D" clock="C"/>
+        <port name="C" is_clock="1"/>
+        <port name="S" clock="C"/>
+      </input_ports>
+      <output_ports>
+        <port name="Q" clock="C"/>
+      </output_ports>
+    </model>
+    <model name="dffns">
       <input_ports>
         <port name="D" clock="C"/>
         <port name="C" is_clock="1"/>
@@ -513,6 +542,23 @@ Authors: Xifan Tang
                 <direct input="ff.clk" name="DFF-clk" output="DFF.C"/>
               </interconnect>
             </mode>
+            <mode name="DFFN">
+              <pb_type name="DFFN" blif_model=".subckt dffn" num_pb="1">
+                <input name="D" num_pins="1"/>
+                <output name="Q" num_pins="1"/>
+                <clock name="C" num_pins="1"/>
+                <T_setup value="66e-12" port="DFFN.D" clock="C"/>
+                <T_clock_to_Q max="124e-12" port="DFFN.Q" clock="C"/>
+              </pb_type>
+              <interconnect>
+                <direct input="DFFN.Q" name="FF-Q" output="ff.Q">
+                  <pack_pattern name="pack-OREGN" in_port="DFFN.Q" out_port="ff.Q"/>
+                </direct>
+                <direct input="ff.D" name="DFFN-D" output="DFFN.D">
+                </direct>
+                <direct input="ff.clk" name="DFFN-clk" output="DFFN.C"/>
+              </interconnect>
+            </mode>
           </pb_type>
           <pb_type name="outpad" blif_model=".output" num_pb="1">
             <input name="outpad" num_pins="1"/>
@@ -579,6 +625,22 @@ Authors: Xifan Tang
                   <!--pack_pattern name="pack-IREG" in_port="ff.D" out_port="DFF.D"/-->
                 </direct>
                 <direct input="ff.clk" name="DFF-clk" output="DFF.C"/>
+              </interconnect>
+            </mode>
+            <mode name="DFFN">
+              <pb_type name="DFFN" blif_model=".subckt dffn" num_pb="1">
+                <input name="D" num_pins="1"/>
+                <output name="Q" num_pins="1"/>
+                <clock name="C" num_pins="1"/>
+                <T_setup value="66e-12" port="DFFN.D" clock="C"/>
+                <T_clock_to_Q max="124e-12" port="DFFN.Q" clock="C"/>
+              </pb_type>
+              <interconnect>
+                <direct input="DFFN.Q" name="FF-Q" output="ff.Q"/>
+                <direct input="ff.D" name="DFFN-D" output="DFFN.D">
+                  <!--pack_pattern name="pack-IREG" in_port="ff.D" out_port="DFF.D"/-->
+                </direct>
+                <direct input="ff.clk" name="DFFN-clk" output="DFFN.C"/>
               </interconnect>
             </mode>
           </pb_type>
@@ -801,6 +863,21 @@ Authors: Xifan Tang
                   <direct input="ff.clk" name="DFF-clk" output="DFF.C"/>
                 </interconnect>
               </mode>
+              <mode name="DFFN">
+                <pb_type name="DFFN" blif_model=".subckt dffn" num_pb="1">
+                  <input name="D" num_pins="1"/>
+                  <output name="Q" num_pins="1"/>
+                  <clock name="C" num_pins="1"/>
+                  <T_setup value="66e-12" port="DFFN.D" clock="C"/>
+                  <T_clock_to_Q max="124e-12" port="DFFN.Q" clock="C"/>
+                </pb_type>
+                <interconnect>
+                  <direct input="DFFN.Q" name="FF-Q" output="ff.Q"/>
+                  <direct input="ff.D" name="DFFN-D" output="DFFN.D">
+                  </direct>
+                  <direct input="ff.clk" name="DFFN-clk" output="DFFN.C"/>
+                </interconnect>
+              </mode>
               <mode name="DFFR">
                 <pb_type name="DFFR" blif_model=".subckt dffr" num_pb="1">
                   <input name="D" num_pins="1"/>
@@ -819,6 +896,24 @@ Authors: Xifan Tang
                   <direct input="ff.R" name="DFFR-reset" output="DFFR.R"/>
                 </interconnect>
               </mode>
+              <mode name="DFFNR">
+                <pb_type name="DFFNR" blif_model=".subckt dffnr" num_pb="1">
+                  <input name="D" num_pins="1"/>
+                  <input name="R" num_pins="1"/>
+                  <output name="Q" num_pins="1"/>
+                  <clock name="C" num_pins="1"/>
+                  <T_setup value="66e-12" port="DFFNR.D" clock="C"/>
+                  <T_setup value="66e-12" port="DFFNR.R" clock="C"/>
+                  <T_clock_to_Q max="124e-12" port="DFFNR.Q" clock="C"/>
+                </pb_type>
+                <interconnect>
+                  <direct input="DFFNR.Q" name="FF-Q" output="ff.Q"/>
+                  <direct input="ff.D" name="DFFNR-D" output="DFFNR.D">
+                  </direct>
+                  <direct input="ff.clk" name="DFFNR-clk" output="DFFNR.C"/>
+                  <direct input="ff.R" name="DFFNR-reset" output="DFFNR.R"/>
+                </interconnect>
+              </mode>
               <mode name="DFFS">
                 <pb_type name="DFFS" blif_model=".subckt dffs" num_pb="1">
                   <input name="D" num_pins="1"/>
@@ -835,6 +930,24 @@ Authors: Xifan Tang
                   </direct>
                   <direct input="ff.clk" name="DFFS-clk" output="DFFS.C"/>
                   <direct input="ff.S" name="DFFS-preset" output="DFFS.S"/>
+                </interconnect>
+              </mode>
+              <mode name="DFFNS">
+                <pb_type name="DFFNS" blif_model=".subckt dffns" num_pb="1">
+                  <input name="D" num_pins="1"/>
+                  <input name="S" num_pins="1"/>
+                  <output name="Q" num_pins="1"/>
+                  <clock name="C" num_pins="1"/>
+                  <T_setup value="66e-12" port="DFFNS.D" clock="C"/>
+                  <T_setup value="66e-12" port="DFFNS.S" clock="C"/>
+                  <T_clock_to_Q max="124e-12" port="DFFNS.Q" clock="C"/>
+                </pb_type>
+                <interconnect>
+                  <direct input="DFFNS.Q" name="FF-Q" output="ff.Q"/>
+                  <direct input="ff.D" name="DFFNS-D" output="DFFNS.D">
+                  </direct>
+                  <direct input="ff.clk" name="DFFNS-clk" output="DFFNS.C"/>
+                  <direct input="ff.S" name="DFFNS-preset" output="DFFNS.S"/>
                 </interconnect>
               </mode>
             </pb_type>
