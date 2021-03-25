@@ -470,19 +470,19 @@
               <input name="R" num_pins="1"/>
               <output name="Q" num_pins="1"/>
               <clock name="clk" num_pins="1"/>
-              <mode name="LATCH">
-                <pb_type name="LATCH" blif_model=".latch" num_pb="1" class="flipflop">
+              <mode name="dff">
+                <pb_type name="dff" blif_model=".latch" num_pb="1" class="flipflop">
                   <input name="D" num_pins="1" port_class="D"/>
                   <output name="Q" num_pins="1" port_class="Q"/>
                   <clock name="clk" num_pins="1" port_class="clock"/>
-                  <T_setup value="21e-12" port="LATCH.D" clock="clk"/>
-                  <T_clock_to_Q max="46e-12" port="LATCH.Q" clock="clk"/>
+                  <T_setup value="21e-12" port="dff.D" clock="clk"/>
+                  <T_clock_to_Q max="46e-12" port="dff.Q" clock="clk"/>
                 </pb_type>
                 <interconnect>
-                  <direct input="LATCH.Q" name="LATCH-Q" output="ff.Q"/>
-                  <direct input="ff.D" name="LATCH-D" output="LATCH.D">
+                  <direct input="dff.Q" name="dff-Q" output="ff.Q"/>
+                  <direct input="ff.D" name="dff-D" output="dff.D">
                   </direct>
-                  <direct input="ff.clk" name="LATCH-clk" output="LATCH.clk"/>
+                  <direct input="ff.clk" name="dff-clk" output="dff.clk"/>
                 </interconnect>
               </mode>
               <mode name="DFF">
@@ -670,19 +670,19 @@
               <input name="R" num_pins="1"/>
               <output name="Q" num_pins="1"/>
               <clock name="clk" num_pins="1"/>
-              <mode name="LATCH">
-                <pb_type name="LATCH" blif_model=".latch" num_pb="1" class="flipflop">
+              <mode name="dff">
+                <pb_type name="dff" blif_model=".latch" num_pb="1" class="flipflop">
                   <input name="D" num_pins="1" port_class="D"/>
                   <output name="Q" num_pins="1" port_class="Q"/>
                   <clock name="clk" num_pins="1" port_class="clock"/>
-                  <T_setup value="26e-12" port="LATCH.D" clock="clk"/>
-                  <T_clock_to_Q max="46e-12" port="LATCH.Q" clock="clk"/>
+                  <T_setup value="26e-12" port="dff.D" clock="clk"/>
+                  <T_clock_to_Q max="46e-12" port="dff.Q" clock="clk"/>
                 </pb_type>
                 <interconnect>
-                  <direct input="LATCH.Q" name="LATCH-Q" output="ff.Q"/>
-                  <direct input="ff.D" name="LATCH-D" output="LATCH.D">
+                  <direct input="dff.Q" name="dff-Q" output="ff.Q"/>
+                  <direct input="ff.D" name="dff-D" output="dff.D">
                   </direct>
-                  <direct input="ff.clk" name="LATCH-clk" output="LATCH.clk"/>
+                  <direct input="ff.clk" name="dff-clk" output="dff.clk"/>
                 </interconnect>
               </mode>
               <mode name="DFF">
@@ -947,8 +947,8 @@
       <fill type="clb" priority="10"/>
       <!--Region of 'memory' with 'EMPTY' blocks wherever a 'memory' does not fit. Vertical offset by 1 for perimeter.-->
       <!--CLB / Memory block ratio is 30. The region width/heigth has to be adapted to FPGA size-->
-      <region type="memory" startx="2" endx="40" starty="1" endy="21" priority="20"/>
-      <region type="EMPTY" startx="2" endx="22" starty="1" endy="21" priority="19"/>
+      <col type="memory" startx="2" starty="1" repeatx="14" priority="20"/>
+      <col type="EMPTY" startx="2"  starty="1" repeatx="14" priority="19"/>
     </fixed_layout>
   </layout>
 </architecture>
