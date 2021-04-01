@@ -302,8 +302,8 @@
                 <input name="D" num_pins="1" port_class="D"/>
                 <output name="Q" num_pins="1" port_class="Q"/>
                 <clock name="clk" num_pins="1" port_class="clock"/>
-                <T_setup value="66e-12" port="LATCH.D" clock="clk"/>
-                <T_clock_to_Q max="124e-12" port="LATCH.Q" clock="clk"/>
+                <T_setup value="70e-12" port="LATCH.D" clock="clk"/>
+                <T_clock_to_Q max="80e-12" port="LATCH.Q" clock="clk"/>
               </pb_type>
               <interconnect>
                 <direct input="LATCH.Q" name="LATCH-Q" output="ff.Q">
@@ -318,8 +318,8 @@
                 <input name="D" num_pins="1"/>
                 <output name="Q" num_pins="1"/>
                 <clock name="C" num_pins="1"/>
-                <T_setup value="66e-12" port="DFF.D" clock="C"/>
-                <T_clock_to_Q max="124e-12" port="DFF.Q" clock="C"/>
+                <T_setup value="70e-12" port="DFF.D" clock="C"/>
+                <T_clock_to_Q max="80e-12" port="DFF.Q" clock="C"/>
               </pb_type>
               <interconnect>
                 <direct input="DFF.Q" name="FF-Q" output="ff.Q">
@@ -335,8 +335,8 @@
                 <input name="D" num_pins="1"/>
                 <output name="Q" num_pins="1"/>
                 <clock name="C" num_pins="1"/>
-                <T_setup value="66e-12" port="DFFN.D" clock="C"/>
-                <T_clock_to_Q max="124e-12" port="DFFN.Q" clock="C"/>
+                <T_setup value="70e-12" port="DFFN.D" clock="C"/>
+                <T_clock_to_Q max="80e-12" port="DFFN.Q" clock="C"/>
               </pb_type>
               <interconnect>
                 <direct input="DFFN.Q" name="FF-Q" output="ff.Q">
@@ -357,15 +357,15 @@
             <direct name="ff-D" input="io_output.f2a_i" output="ff.D"/>
             <mux name="mux1" input="ff.Q io_output.f2a_i" output="outpad.outpad">
               <pack_pattern name="pack-OREG" in_port="ff.Q" out_port="outpad.outpad"/>
-              <delay_constant max="60e-12" min="50e-12" in_port="io_output.f2a_i" out_port="outpad.outpad"/>
-              <delay_constant max="60e-12" min="50e-12" in_port="ff.Q" out_port="outpad.outpad"/>
+              <delay_constant max="220e-12" min="110e-12" in_port="io_output.f2a_i" out_port="outpad.outpad"/>
+              <delay_constant max="220e-12" min="120e-12" in_port="ff.Q" out_port="outpad.outpad"/>
             </mux>
           </interconnect>
         </pb_type>
         <interconnect>
           <complete name="io_output-reset" input="io.reset" output="io_output.reset"/>
           <complete name="io_output-clk" input="io.clk" output="io_output.clk">
-            <delay_constant max="5.36e-9" min="5.30e-9" in_port="io.clk" out_port="io_output.clk"/>
+            <delay_constant max="2.17e-9" min="2.14e-9" in_port="io.clk" out_port="io_output.clk"/>
           </complete>
           <direct name="io_output-f2a_i" input="io.f2a_i" output="io_output.f2a_i"/>
         </interconnect>
@@ -388,8 +388,8 @@
                 <input name="D" num_pins="1" port_class="D"/>
                 <output name="Q" num_pins="1" port_class="Q"/>
                 <clock name="clk" num_pins="1" port_class="clock"/>
-                <T_setup value="66e-12" port="LATCH.D" clock="clk"/>
-                <T_clock_to_Q max="124e-12" port="LATCH.Q" clock="clk"/>
+                <T_setup value="160e-12" port="LATCH.D" clock="clk"/>
+                <T_clock_to_Q max="77e-12" port="LATCH.Q" clock="clk"/>
               </pb_type>
               <interconnect>
                 <direct input="LATCH.Q" name="LATCH-Q" output="ff.Q"/>
@@ -403,8 +403,8 @@
                 <input name="D" num_pins="1"/>
                 <output name="Q" num_pins="1"/>
                 <clock name="C" num_pins="1"/>
-                <T_setup value="66e-12" port="DFF.D" clock="C"/>
-                <T_clock_to_Q max="124e-12" port="DFF.Q" clock="C"/>
+                <T_setup value="160e-12" port="DFF.D" clock="C"/>
+                <T_clock_to_Q max="77e-12" port="DFF.Q" clock="C"/>
               </pb_type>
               <interconnect>
                 <direct input="DFF.Q" name="FF-Q" output="ff.Q"/>
@@ -418,8 +418,8 @@
                 <input name="D" num_pins="1"/>
                 <output name="Q" num_pins="1"/>
                 <clock name="C" num_pins="1"/>
-                <T_setup value="66e-12" port="DFFN.D" clock="C"/>
-                <T_clock_to_Q max="124e-12" port="DFFN.Q" clock="C"/>
+                <T_setup value="160e-12" port="DFFN.D" clock="C"/>
+                <T_clock_to_Q max="77e-12" port="DFFN.Q" clock="C"/>
               </pb_type>
               <interconnect>
                 <direct input="DFFN.Q" name="FF-Q" output="ff.Q"/>
@@ -437,8 +437,8 @@
               <pack_pattern name="pack-IREG" in_port="inpad.inpad" out_port="ff.D"/>
             </direct>
             <mux name="mux2" input="inpad.inpad ff.Q" output="io_input.a2f_o">
-              <delay_constant max="110e-12" min="50e-12" in_port="inpad.inpad" out_port="io_input.a2f_o"/>
-              <delay_constant max="130e-12" min="100e-12" in_port="ff.Q" out_port="io_input.a2f_o"/>
+              <delay_constant max="120e-12" min="90e-12" in_port="inpad.inpad" out_port="io_input.a2f_o"/>
+              <delay_constant max="42e-12" min="37e-12" in_port="ff.Q" out_port="io_input.a2f_o"/>
             </mux>
           </interconnect>
         </pb_type>
@@ -446,7 +446,7 @@
           <direct name="io-a2f_o" input="io_input.a2f_o" output="io.a2f_o"/>
           <complete name="io_input-reset" input="io.reset" output="io_input.reset"/>
           <complete name="io_input-clk" input="io.clk" output="io_input.clk">
-            <delay_constant max="5.36e-9" min="5.30e-9" in_port="io.clk" out_port="io_input.clk"/>
+            <delay_constant max="2.17e-9" min="2.14e-9" in_port="io.clk" out_port="io_input.clk"/>
           </complete>
         </interconnect>
       </mode>
@@ -464,10 +464,10 @@
             <input name="reset" num_pins="1"/>
             <output name="Q" num_pins="1" port_class="Q"/>
             <clock name="clk" num_pins="1" port_class="clock"/>
-            <T_setup value="66e-12" port="ff.D" clock="clk"/>
-            <T_setup value="66e-12" port="ff.DI" clock="clk"/>
+            <T_setup value="70e-12" port="ff.D" clock="clk"/>
+            <T_setup value="70e-12" port="ff.DI" clock="clk"/>
             <T_setup value="66e-12" port="ff.reset" clock="clk"/>
-            <T_clock_to_Q max="124e-12" port="ff.Q" clock="clk"/>
+            <T_clock_to_Q max="80e-12" port="ff.Q" clock="clk"/>
             <metadata>
               <meta name="fasm_prefix">logical_tile_io_mode_physical__iopad_mode_default__ff_0 logical_tile_io_mode_physical__iopad_mode_default__ff_1</meta>
               <meta name="fasm_params">QL_IOFF_QL_CCFF_mem.mem_out = MODE</meta>
@@ -560,16 +560,16 @@ ff[1].Q : mem_iopad_a2f_o_0.mem_out[0]</meta>
               <input name="in" num_pins="4" port_class="lut_in"/>
               <output name="out" num_pins="1" port_class="lut_out"/>
               <delay_matrix type="max" in_port="lut4.in" out_port="lut4.out">
+                120e-12
                 170e-12
-                170e-12
-                170e-12
-                170e-12
+                220e-12
+                260e-12
               </delay_matrix>
               <delay_matrix type="min" in_port="lut4.in" out_port="lut4.out">
-                30e-12
-                30e-12
-                30e-12
-                30e-12
+                80e-12
+                110e-12
+                140e-12
+                170e-12
               </delay_matrix>
             </pb_type>
             <pb_type name="ff" num_pb="1">
@@ -583,8 +583,8 @@ ff[1].Q : mem_iopad_a2f_o_0.mem_out[0]</meta>
                   <input name="D" num_pins="1" port_class="D"/>
                   <output name="Q" num_pins="1" port_class="Q"/>
                   <clock name="clk" num_pins="1" port_class="clock"/>
-                  <T_setup value="66e-12" port="LATCH.D" clock="clk"/>
-                  <T_clock_to_Q max="124e-12" port="LATCH.Q" clock="clk"/>
+                  <T_setup value="52e-12" port="LATCH.D" clock="clk"/>
+                  <T_clock_to_Q max="84e-12" port="LATCH.Q" clock="clk"/>
                 </pb_type>
                 <interconnect>
                   <direct input="LATCH.Q" name="LATCH-Q" output="ff.Q"/>
@@ -598,8 +598,8 @@ ff[1].Q : mem_iopad_a2f_o_0.mem_out[0]</meta>
                   <input name="D" num_pins="1"/>
                   <output name="Q" num_pins="1"/>
                   <clock name="C" num_pins="1"/>
-                  <T_setup value="66e-12" port="DFF.D" clock="C"/>
-                  <T_clock_to_Q max="124e-12" port="DFF.Q" clock="C"/>
+                  <T_setup value="52e-12" port="DFF.D" clock="C"/>
+                  <T_clock_to_Q max="84e-12" port="DFF.Q" clock="C"/>
                 </pb_type>
                 <interconnect>
                   <direct input="DFF.Q" name="FF-Q" output="ff.Q"/>
@@ -613,8 +613,8 @@ ff[1].Q : mem_iopad_a2f_o_0.mem_out[0]</meta>
                   <input name="D" num_pins="1"/>
                   <output name="Q" num_pins="1"/>
                   <clock name="C" num_pins="1"/>
-                  <T_setup value="66e-12" port="DFFN.D" clock="C"/>
-                  <T_clock_to_Q max="124e-12" port="DFFN.Q" clock="C"/>
+                  <T_setup value="52e-12" port="DFFN.D" clock="C"/>
+                  <T_clock_to_Q max="84e-12" port="DFFN.Q" clock="C"/>
                 </pb_type>
                 <interconnect>
                   <direct input="DFFN.Q" name="FF-Q" output="ff.Q"/>
@@ -629,9 +629,9 @@ ff[1].Q : mem_iopad_a2f_o_0.mem_out[0]</meta>
                   <input name="R" num_pins="1"/>
                   <output name="Q" num_pins="1"/>
                   <clock name="C" num_pins="1"/>
-                  <T_setup value="66e-12" port="DFFR.D" clock="C"/>
-                  <T_setup value="66e-12" port="DFFR.R" clock="C"/>
-                  <T_clock_to_Q max="124e-12" port="DFFR.Q" clock="C"/>
+                  <T_setup value="52e-12" port="DFFR.D" clock="C"/>
+                  <T_setup value="140e-12" port="DFFR.R" clock="C"/>
+                  <T_clock_to_Q max="84e-12" port="DFFR.Q" clock="C"/>
                 </pb_type>
                 <interconnect>
                   <direct input="DFFR.Q" name="FF-Q" output="ff.Q"/>
@@ -647,9 +647,9 @@ ff[1].Q : mem_iopad_a2f_o_0.mem_out[0]</meta>
                   <input name="R" num_pins="1"/>
                   <output name="Q" num_pins="1"/>
                   <clock name="C" num_pins="1"/>
-                  <T_setup value="66e-12" port="DFFNR.D" clock="C"/>
-                  <T_setup value="66e-12" port="DFFNR.R" clock="C"/>
-                  <T_clock_to_Q max="124e-12" port="DFFNR.Q" clock="C"/>
+                  <T_setup value="52e-12" port="DFFNR.D" clock="C"/>
+                  <T_setup value="140e-12" port="DFFNR.R" clock="C"/>
+                  <T_clock_to_Q max="84e-12" port="DFFNR.Q" clock="C"/>
                 </pb_type>
                 <interconnect>
                   <direct input="DFFNR.Q" name="FF-Q" output="ff.Q"/>
@@ -665,9 +665,9 @@ ff[1].Q : mem_iopad_a2f_o_0.mem_out[0]</meta>
                   <input name="S" num_pins="1"/>
                   <output name="Q" num_pins="1"/>
                   <clock name="C" num_pins="1"/>
-                  <T_setup value="66e-12" port="DFFS.D" clock="C"/>
-                  <T_setup value="66e-12" port="DFFS.S" clock="C"/>
-                  <T_clock_to_Q max="124e-12" port="DFFS.Q" clock="C"/>
+                  <T_setup value="52e-12" port="DFFS.D" clock="C"/>
+                  <T_setup value="140e-12" port="DFFS.S" clock="C"/>
+                  <T_clock_to_Q max="84e-12" port="DFFS.Q" clock="C"/>
                 </pb_type>
                 <interconnect>
                   <direct input="DFFS.Q" name="FF-Q" output="ff.Q"/>
@@ -683,9 +683,9 @@ ff[1].Q : mem_iopad_a2f_o_0.mem_out[0]</meta>
                   <input name="S" num_pins="1"/>
                   <output name="Q" num_pins="1"/>
                   <clock name="C" num_pins="1"/>
-                  <T_setup value="66e-12" port="DFFNS.D" clock="C"/>
-                  <T_setup value="66e-12" port="DFFNS.S" clock="C"/>
-                  <T_clock_to_Q max="124e-12" port="DFFNS.Q" clock="C"/>
+                  <T_setup value="52e-12" port="DFFNS.D" clock="C"/>
+                  <T_setup value="140e-12" port="DFFNS.S" clock="C"/>
+                  <T_clock_to_Q max="84e-12" port="DFFNS.Q" clock="C"/>
                 </pb_type>
                 <interconnect>
                   <direct input="DFFNS.Q" name="FF-Q" output="ff.Q"/>
@@ -705,8 +705,8 @@ ff[1].Q : mem_iopad_a2f_o_0.mem_out[0]</meta>
               <direct name="direct4" input="ble4.reset" output="ff.R"/>
               <direct name="direct5" input="ble4.preset" output="ff.S"/>
               <mux name="mux1" input="ff.Q lut4.out" output="ble4.out">
-                <delay_constant max="90e-12" min="50e-12" in_port="lut4.out" out_port="ble4.out"/>
-                <delay_constant max="100e-12" min="50e-12" in_port="ff.Q" out_port="ble4.out"/>
+                <delay_constant max="70e-12" min="60e-12" in_port="lut4.out" out_port="ble4.out"/>
+                <delay_constant max="45e-12" min="40e-12" in_port="ff.Q" out_port="ble4.out"/>
               </mux>
             </interconnect>
           </pb_type>
@@ -732,8 +732,8 @@ ff[1].Q : mem_iopad_a2f_o_0.mem_out[0]</meta>
                   <input name="D" num_pins="1"/>
                   <output name="Q" num_pins="1"/>
                   <clock name="C" num_pins="1"/>
-                  <T_setup value="66e-12" port="DFF.D" clock="C"/>
-                  <T_clock_to_Q max="124e-12" port="DFF.Q" clock="C"/>
+                  <T_setup value="52e-12" port="DFF.D" clock="C"/>
+                  <T_clock_to_Q max="84e-12" port="DFF.Q" clock="C"/>
                 </pb_type>
                 <interconnect>
                   <direct input="DFF.Q" name="FF-Q" output="ff.Q">
@@ -778,10 +778,21 @@ ff[1].Q : mem_iopad_a2f_o_0.mem_out[0]</meta>
               <input name="in" num_pins="4"/>
               <output name="lut4_out" num_pins="1"/>
               <output name="cout" num_pins="1"/>
-              <delay_constant max="0.28e-9" min="0.1e-9" in_port="adder_lut4.cin" out_port="adder_lut4.lut4_out"/>
-              <delay_constant max="0.04e-9" min="0.04e-9" in_port="adder_lut4.cin" out_port="adder_lut4.cout"/>
-              <delay_constant max="0.26e-9" min="0.08e-9" in_port="adder_lut4.in" out_port="adder_lut4.lut4_out"/>
-              <delay_constant max="0.14e-9" min="0.07e-9" in_port="adder_lut4.in" out_port="adder_lut4.cout"/>
+              <delay_constant max="0.125e-9" min="0.110e-9" in_port="adder_lut4.cin" out_port="adder_lut4.lut4_out"/>
+              <delay_constant max="0.047e-9" min="0.034e-9" in_port="adder_lut4.cin" out_port="adder_lut4.cout"/>
+              <delay_constant max="0.202e-9" min="0.089e-9" in_port="adder_lut4.in" out_port="adder_lut4.cout"/>
+              <delay_matrix type="max" in_port="adder_lut4.in" out_port="adder_lut4.lut4_out">
+                120e-12
+                170e-12
+                220e-12
+                260e-12
+              </delay_matrix>
+              <delay_matrix type="min" in_port="adder_lut4.in" out_port="adder_lut4.lut4_out">
+                80e-12
+                110e-12
+                140e-12
+                170e-12
+              </delay_matrix>
             </pb_type>
             <interconnect>
               <direct name="direct1" input="soft_adder.in" output="adder_lut4.in"/>
@@ -922,7 +933,6 @@ frac_logic.out : mem_fabric_out_0.mem_out[0]</meta>
         <direct name="clbouts2" input="fle[7:4].out" output="clb.O[7:4]"/>
         <direct name="shift_register_in" input="clb.reg_in" output="fle[0:0].reg_in">
           <pack_pattern name="shiftchain" in_port="clb.reg_in" out_port="fle[0:0].reg_in"/>
-          <delay_constant max="0.16e-9" in_port="clb.reg_in" out_port="fle[0:0].reg_in"/>
         </direct>
         <direct name="shift_register_out" input="fle[7:7].reg_out" output="clb.reg_out">
           <pack_pattern name="shiftchain" in_port="fle[7:7].reg_out" out_port="clb.reg_out"/>
@@ -931,7 +941,6 @@ frac_logic.out : mem_fabric_out_0.mem_out[0]</meta>
           <pack_pattern name="shiftchain" in_port="fle[6:0].reg_out" out_port="fle[7:1].reg_in"/>
         </direct>
         <direct name="scan_chain_in" input="clb.sc_in" output="fle[0:0].sc_in">
-          <delay_constant max="0.16e-9" in_port="clb.sc_in" out_port="fle[0:0].sc_in"/>
         </direct>
         <direct name="scan_chain_out" input="fle[7:7].sc_out" output="clb.sc_out">
         </direct>
@@ -939,7 +948,6 @@ frac_logic.out : mem_fabric_out_0.mem_out[0]</meta>
         </direct>
         <direct name="carry_chain_in" input="clb.cin" output="fle[0:0].cin">
           <pack_pattern name="chain" in_port="clb.cin" out_port="fle[0:0].cin"/>
-          <delay_constant max="0.07e-9" min="0.03e-9" in_port="clb.cin" out_port="fle[0:0].cin"/>
         </direct>
         <direct name="carry_chain_out" input="fle[7:7].cout" output="clb.cout">
           <pack_pattern name="chain" in_port="fle[7:7].cout" out_port="clb.cout"/>
@@ -948,6 +956,38 @@ frac_logic.out : mem_fabric_out_0.mem_out[0]</meta>
           <pack_pattern name="chain" in_port="fle[6:0].cout" out_port="fle[7:1].cin"/>
         </direct>
         <mux input="clb.I[0] clb.I[1] clb.I[2] clb.I[3] clb.I[4] clb.I[5] clb.I[6] clb.I[7] clb.I[8] clb.I[9] clb.I[10] clb.I[11] clb.I[12] clb.I[13] clb.I[14] clb.I[15] clb.I[16] clb.I[17] clb.I[18] clb.I[19] clb.I[20] clb.I[21] clb.I[22] clb.I[23] fle[0].out fle[1].out fle[2].out fle[3].out fle[4].out fle[5].out fle[6].out fle[7].out" name="crossbar_fle[0].in[0]" output="fle[0].in[0]">
+          <delay_constant in_port="clb.I[0]" max="0.27e-9" min="0.17e-9" out_port="fle[0].in[0]"/>
+          <delay_constant in_port="clb.I[1]" max="0.27e-9" min="0.17e-9" out_port="fle[0].in[0]"/>
+          <delay_constant in_port="clb.I[2]" max="0.27e-9" min="0.17e-9" out_port="fle[0].in[0]"/>
+          <delay_constant in_port="clb.I[3]" max="0.27e-9" min="0.17e-9" out_port="fle[0].in[0]"/>
+          <delay_constant in_port="clb.I[4]" max="0.27e-9" min="0.17e-9" out_port="fle[0].in[0]"/>
+          <delay_constant in_port="clb.I[5]" max="0.27e-9" min="0.17e-9" out_port="fle[0].in[0]"/>
+          <delay_constant in_port="clb.I[6]" max="0.27e-9" min="0.17e-9" out_port="fle[0].in[0]"/>
+          <delay_constant in_port="clb.I[7]" max="0.27e-9" min="0.17e-9" out_port="fle[0].in[0]"/>
+          <delay_constant in_port="clb.I[8]" max="0.27e-9" min="0.17e-9" out_port="fle[0].in[0]"/>
+          <delay_constant in_port="clb.I[9]" max="0.27e-9" min="0.17e-9" out_port="fle[0].in[0]"/>
+          <delay_constant in_port="clb.I[10]" max="0.27e-9" min="0.17e-9" out_port="fle[0].in[0]"/>
+          <delay_constant in_port="clb.I[11]" max="0.27e-9" min="0.17e-9" out_port="fle[0].in[0]"/>
+          <delay_constant in_port="clb.I[12]" max="0.27e-9" min="0.17e-9" out_port="fle[0].in[0]"/>
+          <delay_constant in_port="clb.I[13]" max="0.27e-9" min="0.17e-9" out_port="fle[0].in[0]"/>
+          <delay_constant in_port="clb.I[14]" max="0.27e-9" min="0.17e-9" out_port="fle[0].in[0]"/>
+          <delay_constant in_port="clb.I[15]" max="0.27e-9" min="0.17e-9" out_port="fle[0].in[0]"/>
+          <delay_constant in_port="clb.I[16]" max="0.27e-9" min="0.17e-9" out_port="fle[0].in[0]"/>
+          <delay_constant in_port="clb.I[17]" max="0.27e-9" min="0.17e-9" out_port="fle[0].in[0]"/>
+          <delay_constant in_port="clb.I[18]" max="0.27e-9" min="0.17e-9" out_port="fle[0].in[0]"/>
+          <delay_constant in_port="clb.I[19]" max="0.27e-9" min="0.17e-9" out_port="fle[0].in[0]"/>
+          <delay_constant in_port="clb.I[20]" max="0.27e-9" min="0.17e-9" out_port="fle[0].in[0]"/>
+          <delay_constant in_port="clb.I[21]" max="0.27e-9" min="0.17e-9" out_port="fle[0].in[0]"/>
+          <delay_constant in_port="clb.I[22]" max="0.27e-9" min="0.17e-9" out_port="fle[0].in[0]"/>
+          <delay_constant in_port="clb.I[23]" max="0.27e-9" min="0.17e-9" out_port="fle[0].in[0]"/>
+          <delay_constant in_port="fle[0].out" max="0.31e-9" min="0.21e-9" out_port="fle[0].in[0]"/>
+          <delay_constant in_port="fle[1].out" max="0.31e-9" min="0.21e-9" out_port="fle[0].in[0]"/>
+          <delay_constant in_port="fle[2].out" max="0.31e-9" min="0.21e-9" out_port="fle[0].in[0]"/>
+          <delay_constant in_port="fle[3].out" max="0.31e-9" min="0.21e-9" out_port="fle[0].in[0]"/>
+          <delay_constant in_port="fle[4].out" max="0.31e-9" min="0.21e-9" out_port="fle[0].in[0]"/>
+          <delay_constant in_port="fle[5].out" max="0.31e-9" min="0.21e-9" out_port="fle[0].in[0]"/>
+          <delay_constant in_port="fle[6].out" max="0.31e-9" min="0.21e-9" out_port="fle[0].in[0]"/>
+          <delay_constant in_port="fle[7].out" max="0.31e-9" min="0.21e-9" out_port="fle[0].in[0]"/>
           <metadata>
             <meta name="fasm_mux">
 clb.I[0] : NULL
@@ -985,6 +1025,38 @@ fle[7].out : mem_fle_0_in_0.mem_out[0],mem_fle_0_in_0.mem_out[1],mem_fle_0_in_0.
           </metadata>
         </mux>
         <mux input="clb.I[0] clb.I[1] clb.I[2] clb.I[3] clb.I[4] clb.I[5] clb.I[6] clb.I[7] clb.I[8] clb.I[9] clb.I[10] clb.I[11] clb.I[12] clb.I[13] clb.I[14] clb.I[15] clb.I[16] clb.I[17] clb.I[18] clb.I[19] clb.I[20] clb.I[21] clb.I[22] clb.I[23] fle[0].out fle[1].out fle[2].out fle[3].out fle[4].out fle[5].out fle[6].out fle[7].out" name="crossbar_fle[0].in[1]" output="fle[0].in[1]">
+          <delay_constant in_port="clb.I[0]" max="0.27e-9" min="0.17e-9" out_port="fle[0].in[1]"/>
+          <delay_constant in_port="clb.I[1]" max="0.27e-9" min="0.17e-9" out_port="fle[0].in[1]"/>
+          <delay_constant in_port="clb.I[2]" max="0.27e-9" min="0.17e-9" out_port="fle[0].in[1]"/>
+          <delay_constant in_port="clb.I[3]" max="0.27e-9" min="0.17e-9" out_port="fle[0].in[1]"/>
+          <delay_constant in_port="clb.I[4]" max="0.27e-9" min="0.17e-9" out_port="fle[0].in[1]"/>
+          <delay_constant in_port="clb.I[5]" max="0.27e-9" min="0.17e-9" out_port="fle[0].in[1]"/>
+          <delay_constant in_port="clb.I[6]" max="0.27e-9" min="0.17e-9" out_port="fle[0].in[1]"/>
+          <delay_constant in_port="clb.I[7]" max="0.27e-9" min="0.17e-9" out_port="fle[0].in[1]"/>
+          <delay_constant in_port="clb.I[8]" max="0.27e-9" min="0.17e-9" out_port="fle[0].in[1]"/>
+          <delay_constant in_port="clb.I[9]" max="0.27e-9" min="0.17e-9" out_port="fle[0].in[1]"/>
+          <delay_constant in_port="clb.I[10]" max="0.27e-9" min="0.17e-9" out_port="fle[0].in[1]"/>
+          <delay_constant in_port="clb.I[11]" max="0.27e-9" min="0.17e-9" out_port="fle[0].in[1]"/>
+          <delay_constant in_port="clb.I[12]" max="0.27e-9" min="0.17e-9" out_port="fle[0].in[1]"/>
+          <delay_constant in_port="clb.I[13]" max="0.27e-9" min="0.17e-9" out_port="fle[0].in[1]"/>
+          <delay_constant in_port="clb.I[14]" max="0.27e-9" min="0.17e-9" out_port="fle[0].in[1]"/>
+          <delay_constant in_port="clb.I[15]" max="0.27e-9" min="0.17e-9" out_port="fle[0].in[1]"/>
+          <delay_constant in_port="clb.I[16]" max="0.27e-9" min="0.17e-9" out_port="fle[0].in[1]"/>
+          <delay_constant in_port="clb.I[17]" max="0.27e-9" min="0.17e-9" out_port="fle[0].in[1]"/>
+          <delay_constant in_port="clb.I[18]" max="0.27e-9" min="0.17e-9" out_port="fle[0].in[1]"/>
+          <delay_constant in_port="clb.I[19]" max="0.27e-9" min="0.17e-9" out_port="fle[0].in[1]"/>
+          <delay_constant in_port="clb.I[20]" max="0.27e-9" min="0.17e-9" out_port="fle[0].in[1]"/>
+          <delay_constant in_port="clb.I[21]" max="0.27e-9" min="0.17e-9" out_port="fle[0].in[1]"/>
+          <delay_constant in_port="clb.I[22]" max="0.27e-9" min="0.17e-9" out_port="fle[0].in[1]"/>
+          <delay_constant in_port="clb.I[23]" max="0.27e-9" min="0.17e-9" out_port="fle[0].in[1]"/>
+          <delay_constant in_port="fle[0].out" max="0.31e-9" min="0.21e-9" out_port="fle[0].in[1]"/>
+          <delay_constant in_port="fle[1].out" max="0.31e-9" min="0.21e-9" out_port="fle[0].in[1]"/>
+          <delay_constant in_port="fle[2].out" max="0.31e-9" min="0.21e-9" out_port="fle[0].in[1]"/>
+          <delay_constant in_port="fle[3].out" max="0.31e-9" min="0.21e-9" out_port="fle[0].in[1]"/>
+          <delay_constant in_port="fle[4].out" max="0.31e-9" min="0.21e-9" out_port="fle[0].in[1]"/>
+          <delay_constant in_port="fle[5].out" max="0.31e-9" min="0.21e-9" out_port="fle[0].in[1]"/>
+          <delay_constant in_port="fle[6].out" max="0.31e-9" min="0.21e-9" out_port="fle[0].in[1]"/>
+          <delay_constant in_port="fle[7].out" max="0.31e-9" min="0.21e-9" out_port="fle[0].in[1]"/>
           <metadata>
             <meta name="fasm_mux">
 clb.I[0] : NULL
@@ -1022,6 +1094,38 @@ fle[7].out : mem_fle_0_in_1.mem_out[0],mem_fle_0_in_1.mem_out[1],mem_fle_0_in_1.
           </metadata>
         </mux>
         <mux input="clb.I[0] clb.I[1] clb.I[2] clb.I[3] clb.I[4] clb.I[5] clb.I[6] clb.I[7] clb.I[8] clb.I[9] clb.I[10] clb.I[11] clb.I[12] clb.I[13] clb.I[14] clb.I[15] clb.I[16] clb.I[17] clb.I[18] clb.I[19] clb.I[20] clb.I[21] clb.I[22] clb.I[23] fle[0].out fle[1].out fle[2].out fle[3].out fle[4].out fle[5].out fle[6].out fle[7].out" name="crossbar_fle[0].in[2]" output="fle[0].in[2]">
+          <delay_constant in_port="clb.I[0]" max="0.27e-9" min="0.17e-9" out_port="fle[0].in[2]"/>
+          <delay_constant in_port="clb.I[1]" max="0.27e-9" min="0.17e-9" out_port="fle[0].in[2]"/>
+          <delay_constant in_port="clb.I[2]" max="0.27e-9" min="0.17e-9" out_port="fle[0].in[2]"/>
+          <delay_constant in_port="clb.I[3]" max="0.27e-9" min="0.17e-9" out_port="fle[0].in[2]"/>
+          <delay_constant in_port="clb.I[4]" max="0.27e-9" min="0.17e-9" out_port="fle[0].in[2]"/>
+          <delay_constant in_port="clb.I[5]" max="0.27e-9" min="0.17e-9" out_port="fle[0].in[2]"/>
+          <delay_constant in_port="clb.I[6]" max="0.27e-9" min="0.17e-9" out_port="fle[0].in[2]"/>
+          <delay_constant in_port="clb.I[7]" max="0.27e-9" min="0.17e-9" out_port="fle[0].in[2]"/>
+          <delay_constant in_port="clb.I[8]" max="0.27e-9" min="0.17e-9" out_port="fle[0].in[2]"/>
+          <delay_constant in_port="clb.I[9]" max="0.27e-9" min="0.17e-9" out_port="fle[0].in[2]"/>
+          <delay_constant in_port="clb.I[10]" max="0.27e-9" min="0.17e-9" out_port="fle[0].in[2]"/>
+          <delay_constant in_port="clb.I[11]" max="0.27e-9" min="0.17e-9" out_port="fle[0].in[2]"/>
+          <delay_constant in_port="clb.I[12]" max="0.27e-9" min="0.17e-9" out_port="fle[0].in[2]"/>
+          <delay_constant in_port="clb.I[13]" max="0.27e-9" min="0.17e-9" out_port="fle[0].in[2]"/>
+          <delay_constant in_port="clb.I[14]" max="0.27e-9" min="0.17e-9" out_port="fle[0].in[2]"/>
+          <delay_constant in_port="clb.I[15]" max="0.27e-9" min="0.17e-9" out_port="fle[0].in[2]"/>
+          <delay_constant in_port="clb.I[16]" max="0.27e-9" min="0.17e-9" out_port="fle[0].in[2]"/>
+          <delay_constant in_port="clb.I[17]" max="0.27e-9" min="0.17e-9" out_port="fle[0].in[2]"/>
+          <delay_constant in_port="clb.I[18]" max="0.27e-9" min="0.17e-9" out_port="fle[0].in[2]"/>
+          <delay_constant in_port="clb.I[19]" max="0.27e-9" min="0.17e-9" out_port="fle[0].in[2]"/>
+          <delay_constant in_port="clb.I[20]" max="0.27e-9" min="0.17e-9" out_port="fle[0].in[2]"/>
+          <delay_constant in_port="clb.I[21]" max="0.27e-9" min="0.17e-9" out_port="fle[0].in[2]"/>
+          <delay_constant in_port="clb.I[22]" max="0.27e-9" min="0.17e-9" out_port="fle[0].in[2]"/>
+          <delay_constant in_port="clb.I[23]" max="0.27e-9" min="0.17e-9" out_port="fle[0].in[2]"/>
+          <delay_constant in_port="fle[0].out" max="0.31e-9" min="0.21e-9" out_port="fle[0].in[2]"/>
+          <delay_constant in_port="fle[1].out" max="0.31e-9" min="0.21e-9" out_port="fle[0].in[2]"/>
+          <delay_constant in_port="fle[2].out" max="0.31e-9" min="0.21e-9" out_port="fle[0].in[2]"/>
+          <delay_constant in_port="fle[3].out" max="0.31e-9" min="0.21e-9" out_port="fle[0].in[2]"/>
+          <delay_constant in_port="fle[4].out" max="0.31e-9" min="0.21e-9" out_port="fle[0].in[2]"/>
+          <delay_constant in_port="fle[5].out" max="0.31e-9" min="0.21e-9" out_port="fle[0].in[2]"/>
+          <delay_constant in_port="fle[6].out" max="0.31e-9" min="0.21e-9" out_port="fle[0].in[2]"/>
+          <delay_constant in_port="fle[7].out" max="0.31e-9" min="0.21e-9" out_port="fle[0].in[2]"/>
           <metadata>
             <meta name="fasm_mux">
 clb.I[0] : NULL
@@ -1059,6 +1163,38 @@ fle[7].out : mem_fle_0_in_2.mem_out[0],mem_fle_0_in_2.mem_out[1],mem_fle_0_in_2.
           </metadata>
         </mux>
         <mux input="clb.I[0] clb.I[1] clb.I[2] clb.I[3] clb.I[4] clb.I[5] clb.I[6] clb.I[7] clb.I[8] clb.I[9] clb.I[10] clb.I[11] clb.I[12] clb.I[13] clb.I[14] clb.I[15] clb.I[16] clb.I[17] clb.I[18] clb.I[19] clb.I[20] clb.I[21] clb.I[22] clb.I[23] fle[0].out fle[1].out fle[2].out fle[3].out fle[4].out fle[5].out fle[6].out fle[7].out" name="crossbar_fle[0].in[3]" output="fle[0].in[3]">
+          <delay_constant in_port="clb.I[0]" max="0.27e-9" min="0.17e-9" out_port="fle[0].in[3]"/>
+          <delay_constant in_port="clb.I[1]" max="0.27e-9" min="0.17e-9" out_port="fle[0].in[3]"/>
+          <delay_constant in_port="clb.I[2]" max="0.27e-9" min="0.17e-9" out_port="fle[0].in[3]"/>
+          <delay_constant in_port="clb.I[3]" max="0.27e-9" min="0.17e-9" out_port="fle[0].in[3]"/>
+          <delay_constant in_port="clb.I[4]" max="0.27e-9" min="0.17e-9" out_port="fle[0].in[3]"/>
+          <delay_constant in_port="clb.I[5]" max="0.27e-9" min="0.17e-9" out_port="fle[0].in[3]"/>
+          <delay_constant in_port="clb.I[6]" max="0.27e-9" min="0.17e-9" out_port="fle[0].in[3]"/>
+          <delay_constant in_port="clb.I[7]" max="0.27e-9" min="0.17e-9" out_port="fle[0].in[3]"/>
+          <delay_constant in_port="clb.I[8]" max="0.27e-9" min="0.17e-9" out_port="fle[0].in[3]"/>
+          <delay_constant in_port="clb.I[9]" max="0.27e-9" min="0.17e-9" out_port="fle[0].in[3]"/>
+          <delay_constant in_port="clb.I[10]" max="0.27e-9" min="0.17e-9" out_port="fle[0].in[3]"/>
+          <delay_constant in_port="clb.I[11]" max="0.27e-9" min="0.17e-9" out_port="fle[0].in[3]"/>
+          <delay_constant in_port="clb.I[12]" max="0.27e-9" min="0.17e-9" out_port="fle[0].in[3]"/>
+          <delay_constant in_port="clb.I[13]" max="0.27e-9" min="0.17e-9" out_port="fle[0].in[3]"/>
+          <delay_constant in_port="clb.I[14]" max="0.27e-9" min="0.17e-9" out_port="fle[0].in[3]"/>
+          <delay_constant in_port="clb.I[15]" max="0.27e-9" min="0.17e-9" out_port="fle[0].in[3]"/>
+          <delay_constant in_port="clb.I[16]" max="0.27e-9" min="0.17e-9" out_port="fle[0].in[3]"/>
+          <delay_constant in_port="clb.I[17]" max="0.27e-9" min="0.17e-9" out_port="fle[0].in[3]"/>
+          <delay_constant in_port="clb.I[18]" max="0.27e-9" min="0.17e-9" out_port="fle[0].in[3]"/>
+          <delay_constant in_port="clb.I[19]" max="0.27e-9" min="0.17e-9" out_port="fle[0].in[3]"/>
+          <delay_constant in_port="clb.I[20]" max="0.27e-9" min="0.17e-9" out_port="fle[0].in[3]"/>
+          <delay_constant in_port="clb.I[21]" max="0.27e-9" min="0.17e-9" out_port="fle[0].in[3]"/>
+          <delay_constant in_port="clb.I[22]" max="0.27e-9" min="0.17e-9" out_port="fle[0].in[3]"/>
+          <delay_constant in_port="clb.I[23]" max="0.27e-9" min="0.17e-9" out_port="fle[0].in[3]"/>
+          <delay_constant in_port="fle[0].out" max="0.31e-9" min="0.21e-9" out_port="fle[0].in[3]"/>
+          <delay_constant in_port="fle[1].out" max="0.31e-9" min="0.21e-9" out_port="fle[0].in[3]"/>
+          <delay_constant in_port="fle[2].out" max="0.31e-9" min="0.21e-9" out_port="fle[0].in[3]"/>
+          <delay_constant in_port="fle[3].out" max="0.31e-9" min="0.21e-9" out_port="fle[0].in[3]"/>
+          <delay_constant in_port="fle[4].out" max="0.31e-9" min="0.21e-9" out_port="fle[0].in[3]"/>
+          <delay_constant in_port="fle[5].out" max="0.31e-9" min="0.21e-9" out_port="fle[0].in[3]"/>
+          <delay_constant in_port="fle[6].out" max="0.31e-9" min="0.21e-9" out_port="fle[0].in[3]"/>
+          <delay_constant in_port="fle[7].out" max="0.31e-9" min="0.21e-9" out_port="fle[0].in[3]"/>
           <metadata>
             <meta name="fasm_mux">
 clb.I[0] : NULL
@@ -1096,6 +1232,38 @@ fle[7].out : mem_fle_0_in_3.mem_out[0],mem_fle_0_in_3.mem_out[1],mem_fle_0_in_3.
           </metadata>
         </mux>
         <mux input="clb.I[0] clb.I[1] clb.I[2] clb.I[3] clb.I[4] clb.I[5] clb.I[6] clb.I[7] clb.I[8] clb.I[9] clb.I[10] clb.I[11] clb.I[12] clb.I[13] clb.I[14] clb.I[15] clb.I[16] clb.I[17] clb.I[18] clb.I[19] clb.I[20] clb.I[21] clb.I[22] clb.I[23] fle[0].out fle[1].out fle[2].out fle[3].out fle[4].out fle[5].out fle[6].out fle[7].out" name="crossbar_fle[1].in[0]" output="fle[1].in[0]">
+          <delay_constant in_port="clb.I[0]" max="0.27e-9" min="0.17e-9" out_port="fle[1].in[0]"/>
+          <delay_constant in_port="clb.I[1]" max="0.27e-9" min="0.17e-9" out_port="fle[1].in[0]"/>
+          <delay_constant in_port="clb.I[2]" max="0.27e-9" min="0.17e-9" out_port="fle[1].in[0]"/>
+          <delay_constant in_port="clb.I[3]" max="0.27e-9" min="0.17e-9" out_port="fle[1].in[0]"/>
+          <delay_constant in_port="clb.I[4]" max="0.27e-9" min="0.17e-9" out_port="fle[1].in[0]"/>
+          <delay_constant in_port="clb.I[5]" max="0.27e-9" min="0.17e-9" out_port="fle[1].in[0]"/>
+          <delay_constant in_port="clb.I[6]" max="0.27e-9" min="0.17e-9" out_port="fle[1].in[0]"/>
+          <delay_constant in_port="clb.I[7]" max="0.27e-9" min="0.17e-9" out_port="fle[1].in[0]"/>
+          <delay_constant in_port="clb.I[8]" max="0.27e-9" min="0.17e-9" out_port="fle[1].in[0]"/>
+          <delay_constant in_port="clb.I[9]" max="0.27e-9" min="0.17e-9" out_port="fle[1].in[0]"/>
+          <delay_constant in_port="clb.I[10]" max="0.27e-9" min="0.17e-9" out_port="fle[1].in[0]"/>
+          <delay_constant in_port="clb.I[11]" max="0.27e-9" min="0.17e-9" out_port="fle[1].in[0]"/>
+          <delay_constant in_port="clb.I[12]" max="0.27e-9" min="0.17e-9" out_port="fle[1].in[0]"/>
+          <delay_constant in_port="clb.I[13]" max="0.27e-9" min="0.17e-9" out_port="fle[1].in[0]"/>
+          <delay_constant in_port="clb.I[14]" max="0.27e-9" min="0.17e-9" out_port="fle[1].in[0]"/>
+          <delay_constant in_port="clb.I[15]" max="0.27e-9" min="0.17e-9" out_port="fle[1].in[0]"/>
+          <delay_constant in_port="clb.I[16]" max="0.27e-9" min="0.17e-9" out_port="fle[1].in[0]"/>
+          <delay_constant in_port="clb.I[17]" max="0.27e-9" min="0.17e-9" out_port="fle[1].in[0]"/>
+          <delay_constant in_port="clb.I[18]" max="0.27e-9" min="0.17e-9" out_port="fle[1].in[0]"/>
+          <delay_constant in_port="clb.I[19]" max="0.27e-9" min="0.17e-9" out_port="fle[1].in[0]"/>
+          <delay_constant in_port="clb.I[20]" max="0.27e-9" min="0.17e-9" out_port="fle[1].in[0]"/>
+          <delay_constant in_port="clb.I[21]" max="0.27e-9" min="0.17e-9" out_port="fle[1].in[0]"/>
+          <delay_constant in_port="clb.I[22]" max="0.27e-9" min="0.17e-9" out_port="fle[1].in[0]"/>
+          <delay_constant in_port="clb.I[23]" max="0.27e-9" min="0.17e-9" out_port="fle[1].in[0]"/>
+          <delay_constant in_port="fle[0].out" max="0.31e-9" min="0.21e-9" out_port="fle[1].in[0]"/>
+          <delay_constant in_port="fle[1].out" max="0.31e-9" min="0.21e-9" out_port="fle[1].in[0]"/>
+          <delay_constant in_port="fle[2].out" max="0.31e-9" min="0.21e-9" out_port="fle[1].in[0]"/>
+          <delay_constant in_port="fle[3].out" max="0.31e-9" min="0.21e-9" out_port="fle[1].in[0]"/>
+          <delay_constant in_port="fle[4].out" max="0.31e-9" min="0.21e-9" out_port="fle[1].in[0]"/>
+          <delay_constant in_port="fle[5].out" max="0.31e-9" min="0.21e-9" out_port="fle[1].in[0]"/>
+          <delay_constant in_port="fle[6].out" max="0.31e-9" min="0.21e-9" out_port="fle[1].in[0]"/>
+          <delay_constant in_port="fle[7].out" max="0.31e-9" min="0.21e-9" out_port="fle[1].in[0]"/>
           <metadata>
             <meta name="fasm_mux">
 clb.I[0] : NULL
@@ -1133,6 +1301,38 @@ fle[7].out : mem_fle_1_in_0.mem_out[0],mem_fle_1_in_0.mem_out[1],mem_fle_1_in_0.
           </metadata>
         </mux>
         <mux input="clb.I[0] clb.I[1] clb.I[2] clb.I[3] clb.I[4] clb.I[5] clb.I[6] clb.I[7] clb.I[8] clb.I[9] clb.I[10] clb.I[11] clb.I[12] clb.I[13] clb.I[14] clb.I[15] clb.I[16] clb.I[17] clb.I[18] clb.I[19] clb.I[20] clb.I[21] clb.I[22] clb.I[23] fle[0].out fle[1].out fle[2].out fle[3].out fle[4].out fle[5].out fle[6].out fle[7].out" name="crossbar_fle[1].in[1]" output="fle[1].in[1]">
+          <delay_constant in_port="clb.I[0]" max="0.27e-9" min="0.17e-9" out_port="fle[1].in[1]"/>
+          <delay_constant in_port="clb.I[1]" max="0.27e-9" min="0.17e-9" out_port="fle[1].in[1]"/>
+          <delay_constant in_port="clb.I[2]" max="0.27e-9" min="0.17e-9" out_port="fle[1].in[1]"/>
+          <delay_constant in_port="clb.I[3]" max="0.27e-9" min="0.17e-9" out_port="fle[1].in[1]"/>
+          <delay_constant in_port="clb.I[4]" max="0.27e-9" min="0.17e-9" out_port="fle[1].in[1]"/>
+          <delay_constant in_port="clb.I[5]" max="0.27e-9" min="0.17e-9" out_port="fle[1].in[1]"/>
+          <delay_constant in_port="clb.I[6]" max="0.27e-9" min="0.17e-9" out_port="fle[1].in[1]"/>
+          <delay_constant in_port="clb.I[7]" max="0.27e-9" min="0.17e-9" out_port="fle[1].in[1]"/>
+          <delay_constant in_port="clb.I[8]" max="0.27e-9" min="0.17e-9" out_port="fle[1].in[1]"/>
+          <delay_constant in_port="clb.I[9]" max="0.27e-9" min="0.17e-9" out_port="fle[1].in[1]"/>
+          <delay_constant in_port="clb.I[10]" max="0.27e-9" min="0.17e-9" out_port="fle[1].in[1]"/>
+          <delay_constant in_port="clb.I[11]" max="0.27e-9" min="0.17e-9" out_port="fle[1].in[1]"/>
+          <delay_constant in_port="clb.I[12]" max="0.27e-9" min="0.17e-9" out_port="fle[1].in[1]"/>
+          <delay_constant in_port="clb.I[13]" max="0.27e-9" min="0.17e-9" out_port="fle[1].in[1]"/>
+          <delay_constant in_port="clb.I[14]" max="0.27e-9" min="0.17e-9" out_port="fle[1].in[1]"/>
+          <delay_constant in_port="clb.I[15]" max="0.27e-9" min="0.17e-9" out_port="fle[1].in[1]"/>
+          <delay_constant in_port="clb.I[16]" max="0.27e-9" min="0.17e-9" out_port="fle[1].in[1]"/>
+          <delay_constant in_port="clb.I[17]" max="0.27e-9" min="0.17e-9" out_port="fle[1].in[1]"/>
+          <delay_constant in_port="clb.I[18]" max="0.27e-9" min="0.17e-9" out_port="fle[1].in[1]"/>
+          <delay_constant in_port="clb.I[19]" max="0.27e-9" min="0.17e-9" out_port="fle[1].in[1]"/>
+          <delay_constant in_port="clb.I[20]" max="0.27e-9" min="0.17e-9" out_port="fle[1].in[1]"/>
+          <delay_constant in_port="clb.I[21]" max="0.27e-9" min="0.17e-9" out_port="fle[1].in[1]"/>
+          <delay_constant in_port="clb.I[22]" max="0.27e-9" min="0.17e-9" out_port="fle[1].in[1]"/>
+          <delay_constant in_port="clb.I[23]" max="0.27e-9" min="0.17e-9" out_port="fle[1].in[1]"/>
+          <delay_constant in_port="fle[0].out" max="0.31e-9" min="0.21e-9" out_port="fle[1].in[1]"/>
+          <delay_constant in_port="fle[1].out" max="0.31e-9" min="0.21e-9" out_port="fle[1].in[1]"/>
+          <delay_constant in_port="fle[2].out" max="0.31e-9" min="0.21e-9" out_port="fle[1].in[1]"/>
+          <delay_constant in_port="fle[3].out" max="0.31e-9" min="0.21e-9" out_port="fle[1].in[1]"/>
+          <delay_constant in_port="fle[4].out" max="0.31e-9" min="0.21e-9" out_port="fle[1].in[1]"/>
+          <delay_constant in_port="fle[5].out" max="0.31e-9" min="0.21e-9" out_port="fle[1].in[1]"/>
+          <delay_constant in_port="fle[6].out" max="0.31e-9" min="0.21e-9" out_port="fle[1].in[1]"/>
+          <delay_constant in_port="fle[7].out" max="0.31e-9" min="0.21e-9" out_port="fle[1].in[1]"/>
           <metadata>
             <meta name="fasm_mux">
 clb.I[0] : NULL
@@ -1170,6 +1370,38 @@ fle[7].out : mem_fle_1_in_1.mem_out[0],mem_fle_1_in_1.mem_out[1],mem_fle_1_in_1.
           </metadata>
         </mux>
         <mux input="clb.I[0] clb.I[1] clb.I[2] clb.I[3] clb.I[4] clb.I[5] clb.I[6] clb.I[7] clb.I[8] clb.I[9] clb.I[10] clb.I[11] clb.I[12] clb.I[13] clb.I[14] clb.I[15] clb.I[16] clb.I[17] clb.I[18] clb.I[19] clb.I[20] clb.I[21] clb.I[22] clb.I[23] fle[0].out fle[1].out fle[2].out fle[3].out fle[4].out fle[5].out fle[6].out fle[7].out" name="crossbar_fle[1].in[2]" output="fle[1].in[2]">
+          <delay_constant in_port="clb.I[0]" max="0.27e-9" min="0.17e-9" out_port="fle[1].in[2]"/>
+          <delay_constant in_port="clb.I[1]" max="0.27e-9" min="0.17e-9" out_port="fle[1].in[2]"/>
+          <delay_constant in_port="clb.I[2]" max="0.27e-9" min="0.17e-9" out_port="fle[1].in[2]"/>
+          <delay_constant in_port="clb.I[3]" max="0.27e-9" min="0.17e-9" out_port="fle[1].in[2]"/>
+          <delay_constant in_port="clb.I[4]" max="0.27e-9" min="0.17e-9" out_port="fle[1].in[2]"/>
+          <delay_constant in_port="clb.I[5]" max="0.27e-9" min="0.17e-9" out_port="fle[1].in[2]"/>
+          <delay_constant in_port="clb.I[6]" max="0.27e-9" min="0.17e-9" out_port="fle[1].in[2]"/>
+          <delay_constant in_port="clb.I[7]" max="0.27e-9" min="0.17e-9" out_port="fle[1].in[2]"/>
+          <delay_constant in_port="clb.I[8]" max="0.27e-9" min="0.17e-9" out_port="fle[1].in[2]"/>
+          <delay_constant in_port="clb.I[9]" max="0.27e-9" min="0.17e-9" out_port="fle[1].in[2]"/>
+          <delay_constant in_port="clb.I[10]" max="0.27e-9" min="0.17e-9" out_port="fle[1].in[2]"/>
+          <delay_constant in_port="clb.I[11]" max="0.27e-9" min="0.17e-9" out_port="fle[1].in[2]"/>
+          <delay_constant in_port="clb.I[12]" max="0.27e-9" min="0.17e-9" out_port="fle[1].in[2]"/>
+          <delay_constant in_port="clb.I[13]" max="0.27e-9" min="0.17e-9" out_port="fle[1].in[2]"/>
+          <delay_constant in_port="clb.I[14]" max="0.27e-9" min="0.17e-9" out_port="fle[1].in[2]"/>
+          <delay_constant in_port="clb.I[15]" max="0.27e-9" min="0.17e-9" out_port="fle[1].in[2]"/>
+          <delay_constant in_port="clb.I[16]" max="0.27e-9" min="0.17e-9" out_port="fle[1].in[2]"/>
+          <delay_constant in_port="clb.I[17]" max="0.27e-9" min="0.17e-9" out_port="fle[1].in[2]"/>
+          <delay_constant in_port="clb.I[18]" max="0.27e-9" min="0.17e-9" out_port="fle[1].in[2]"/>
+          <delay_constant in_port="clb.I[19]" max="0.27e-9" min="0.17e-9" out_port="fle[1].in[2]"/>
+          <delay_constant in_port="clb.I[20]" max="0.27e-9" min="0.17e-9" out_port="fle[1].in[2]"/>
+          <delay_constant in_port="clb.I[21]" max="0.27e-9" min="0.17e-9" out_port="fle[1].in[2]"/>
+          <delay_constant in_port="clb.I[22]" max="0.27e-9" min="0.17e-9" out_port="fle[1].in[2]"/>
+          <delay_constant in_port="clb.I[23]" max="0.27e-9" min="0.17e-9" out_port="fle[1].in[2]"/>
+          <delay_constant in_port="fle[0].out" max="0.31e-9" min="0.21e-9" out_port="fle[1].in[2]"/>
+          <delay_constant in_port="fle[1].out" max="0.31e-9" min="0.21e-9" out_port="fle[1].in[2]"/>
+          <delay_constant in_port="fle[2].out" max="0.31e-9" min="0.21e-9" out_port="fle[1].in[2]"/>
+          <delay_constant in_port="fle[3].out" max="0.31e-9" min="0.21e-9" out_port="fle[1].in[2]"/>
+          <delay_constant in_port="fle[4].out" max="0.31e-9" min="0.21e-9" out_port="fle[1].in[2]"/>
+          <delay_constant in_port="fle[5].out" max="0.31e-9" min="0.21e-9" out_port="fle[1].in[2]"/>
+          <delay_constant in_port="fle[6].out" max="0.31e-9" min="0.21e-9" out_port="fle[1].in[2]"/>
+          <delay_constant in_port="fle[7].out" max="0.31e-9" min="0.21e-9" out_port="fle[1].in[2]"/>
           <metadata>
             <meta name="fasm_mux">
 clb.I[0] : NULL
@@ -1207,6 +1439,38 @@ fle[7].out : mem_fle_1_in_2.mem_out[0],mem_fle_1_in_2.mem_out[1],mem_fle_1_in_2.
           </metadata>
         </mux>
         <mux input="clb.I[0] clb.I[1] clb.I[2] clb.I[3] clb.I[4] clb.I[5] clb.I[6] clb.I[7] clb.I[8] clb.I[9] clb.I[10] clb.I[11] clb.I[12] clb.I[13] clb.I[14] clb.I[15] clb.I[16] clb.I[17] clb.I[18] clb.I[19] clb.I[20] clb.I[21] clb.I[22] clb.I[23] fle[0].out fle[1].out fle[2].out fle[3].out fle[4].out fle[5].out fle[6].out fle[7].out" name="crossbar_fle[1].in[3]" output="fle[1].in[3]">
+          <delay_constant in_port="clb.I[0]" max="0.27e-9" min="0.17e-9" out_port="fle[1].in[3]"/>
+          <delay_constant in_port="clb.I[1]" max="0.27e-9" min="0.17e-9" out_port="fle[1].in[3]"/>
+          <delay_constant in_port="clb.I[2]" max="0.27e-9" min="0.17e-9" out_port="fle[1].in[3]"/>
+          <delay_constant in_port="clb.I[3]" max="0.27e-9" min="0.17e-9" out_port="fle[1].in[3]"/>
+          <delay_constant in_port="clb.I[4]" max="0.27e-9" min="0.17e-9" out_port="fle[1].in[3]"/>
+          <delay_constant in_port="clb.I[5]" max="0.27e-9" min="0.17e-9" out_port="fle[1].in[3]"/>
+          <delay_constant in_port="clb.I[6]" max="0.27e-9" min="0.17e-9" out_port="fle[1].in[3]"/>
+          <delay_constant in_port="clb.I[7]" max="0.27e-9" min="0.17e-9" out_port="fle[1].in[3]"/>
+          <delay_constant in_port="clb.I[8]" max="0.27e-9" min="0.17e-9" out_port="fle[1].in[3]"/>
+          <delay_constant in_port="clb.I[9]" max="0.27e-9" min="0.17e-9" out_port="fle[1].in[3]"/>
+          <delay_constant in_port="clb.I[10]" max="0.27e-9" min="0.17e-9" out_port="fle[1].in[3]"/>
+          <delay_constant in_port="clb.I[11]" max="0.27e-9" min="0.17e-9" out_port="fle[1].in[3]"/>
+          <delay_constant in_port="clb.I[12]" max="0.27e-9" min="0.17e-9" out_port="fle[1].in[3]"/>
+          <delay_constant in_port="clb.I[13]" max="0.27e-9" min="0.17e-9" out_port="fle[1].in[3]"/>
+          <delay_constant in_port="clb.I[14]" max="0.27e-9" min="0.17e-9" out_port="fle[1].in[3]"/>
+          <delay_constant in_port="clb.I[15]" max="0.27e-9" min="0.17e-9" out_port="fle[1].in[3]"/>
+          <delay_constant in_port="clb.I[16]" max="0.27e-9" min="0.17e-9" out_port="fle[1].in[3]"/>
+          <delay_constant in_port="clb.I[17]" max="0.27e-9" min="0.17e-9" out_port="fle[1].in[3]"/>
+          <delay_constant in_port="clb.I[18]" max="0.27e-9" min="0.17e-9" out_port="fle[1].in[3]"/>
+          <delay_constant in_port="clb.I[19]" max="0.27e-9" min="0.17e-9" out_port="fle[1].in[3]"/>
+          <delay_constant in_port="clb.I[20]" max="0.27e-9" min="0.17e-9" out_port="fle[1].in[3]"/>
+          <delay_constant in_port="clb.I[21]" max="0.27e-9" min="0.17e-9" out_port="fle[1].in[3]"/>
+          <delay_constant in_port="clb.I[22]" max="0.27e-9" min="0.17e-9" out_port="fle[1].in[3]"/>
+          <delay_constant in_port="clb.I[23]" max="0.27e-9" min="0.17e-9" out_port="fle[1].in[3]"/>
+          <delay_constant in_port="fle[0].out" max="0.31e-9" min="0.21e-9" out_port="fle[1].in[3]"/>
+          <delay_constant in_port="fle[1].out" max="0.31e-9" min="0.21e-9" out_port="fle[1].in[3]"/>
+          <delay_constant in_port="fle[2].out" max="0.31e-9" min="0.21e-9" out_port="fle[1].in[3]"/>
+          <delay_constant in_port="fle[3].out" max="0.31e-9" min="0.21e-9" out_port="fle[1].in[3]"/>
+          <delay_constant in_port="fle[4].out" max="0.31e-9" min="0.21e-9" out_port="fle[1].in[3]"/>
+          <delay_constant in_port="fle[5].out" max="0.31e-9" min="0.21e-9" out_port="fle[1].in[3]"/>
+          <delay_constant in_port="fle[6].out" max="0.31e-9" min="0.21e-9" out_port="fle[1].in[3]"/>
+          <delay_constant in_port="fle[7].out" max="0.31e-9" min="0.21e-9" out_port="fle[1].in[3]"/>
           <metadata>
             <meta name="fasm_mux">
 clb.I[0] : NULL
@@ -1244,6 +1508,38 @@ fle[7].out : mem_fle_1_in_3.mem_out[0],mem_fle_1_in_3.mem_out[1],mem_fle_1_in_3.
           </metadata>
         </mux>
         <mux input="clb.I[0] clb.I[1] clb.I[2] clb.I[3] clb.I[4] clb.I[5] clb.I[6] clb.I[7] clb.I[8] clb.I[9] clb.I[10] clb.I[11] clb.I[12] clb.I[13] clb.I[14] clb.I[15] clb.I[16] clb.I[17] clb.I[18] clb.I[19] clb.I[20] clb.I[21] clb.I[22] clb.I[23] fle[0].out fle[1].out fle[2].out fle[3].out fle[4].out fle[5].out fle[6].out fle[7].out" name="crossbar_fle[2].in[0]" output="fle[2].in[0]">
+          <delay_constant in_port="clb.I[0]" max="0.27e-9" min="0.17e-9" out_port="fle[2].in[0]"/>
+          <delay_constant in_port="clb.I[1]" max="0.27e-9" min="0.17e-9" out_port="fle[2].in[0]"/>
+          <delay_constant in_port="clb.I[2]" max="0.27e-9" min="0.17e-9" out_port="fle[2].in[0]"/>
+          <delay_constant in_port="clb.I[3]" max="0.27e-9" min="0.17e-9" out_port="fle[2].in[0]"/>
+          <delay_constant in_port="clb.I[4]" max="0.27e-9" min="0.17e-9" out_port="fle[2].in[0]"/>
+          <delay_constant in_port="clb.I[5]" max="0.27e-9" min="0.17e-9" out_port="fle[2].in[0]"/>
+          <delay_constant in_port="clb.I[6]" max="0.27e-9" min="0.17e-9" out_port="fle[2].in[0]"/>
+          <delay_constant in_port="clb.I[7]" max="0.27e-9" min="0.17e-9" out_port="fle[2].in[0]"/>
+          <delay_constant in_port="clb.I[8]" max="0.27e-9" min="0.17e-9" out_port="fle[2].in[0]"/>
+          <delay_constant in_port="clb.I[9]" max="0.27e-9" min="0.17e-9" out_port="fle[2].in[0]"/>
+          <delay_constant in_port="clb.I[10]" max="0.27e-9" min="0.17e-9" out_port="fle[2].in[0]"/>
+          <delay_constant in_port="clb.I[11]" max="0.27e-9" min="0.17e-9" out_port="fle[2].in[0]"/>
+          <delay_constant in_port="clb.I[12]" max="0.27e-9" min="0.17e-9" out_port="fle[2].in[0]"/>
+          <delay_constant in_port="clb.I[13]" max="0.27e-9" min="0.17e-9" out_port="fle[2].in[0]"/>
+          <delay_constant in_port="clb.I[14]" max="0.27e-9" min="0.17e-9" out_port="fle[2].in[0]"/>
+          <delay_constant in_port="clb.I[15]" max="0.27e-9" min="0.17e-9" out_port="fle[2].in[0]"/>
+          <delay_constant in_port="clb.I[16]" max="0.27e-9" min="0.17e-9" out_port="fle[2].in[0]"/>
+          <delay_constant in_port="clb.I[17]" max="0.27e-9" min="0.17e-9" out_port="fle[2].in[0]"/>
+          <delay_constant in_port="clb.I[18]" max="0.27e-9" min="0.17e-9" out_port="fle[2].in[0]"/>
+          <delay_constant in_port="clb.I[19]" max="0.27e-9" min="0.17e-9" out_port="fle[2].in[0]"/>
+          <delay_constant in_port="clb.I[20]" max="0.27e-9" min="0.17e-9" out_port="fle[2].in[0]"/>
+          <delay_constant in_port="clb.I[21]" max="0.27e-9" min="0.17e-9" out_port="fle[2].in[0]"/>
+          <delay_constant in_port="clb.I[22]" max="0.27e-9" min="0.17e-9" out_port="fle[2].in[0]"/>
+          <delay_constant in_port="clb.I[23]" max="0.27e-9" min="0.17e-9" out_port="fle[2].in[0]"/>
+          <delay_constant in_port="fle[0].out" max="0.31e-9" min="0.21e-9" out_port="fle[2].in[0]"/>
+          <delay_constant in_port="fle[1].out" max="0.31e-9" min="0.21e-9" out_port="fle[2].in[0]"/>
+          <delay_constant in_port="fle[2].out" max="0.31e-9" min="0.21e-9" out_port="fle[2].in[0]"/>
+          <delay_constant in_port="fle[3].out" max="0.31e-9" min="0.21e-9" out_port="fle[2].in[0]"/>
+          <delay_constant in_port="fle[4].out" max="0.31e-9" min="0.21e-9" out_port="fle[2].in[0]"/>
+          <delay_constant in_port="fle[5].out" max="0.31e-9" min="0.21e-9" out_port="fle[2].in[0]"/>
+          <delay_constant in_port="fle[6].out" max="0.31e-9" min="0.21e-9" out_port="fle[2].in[0]"/>
+          <delay_constant in_port="fle[7].out" max="0.31e-9" min="0.21e-9" out_port="fle[2].in[0]"/>
           <metadata>
             <meta name="fasm_mux">
 clb.I[0] : NULL
@@ -1281,6 +1577,38 @@ fle[7].out : mem_fle_2_in_0.mem_out[0],mem_fle_2_in_0.mem_out[1],mem_fle_2_in_0.
           </metadata>
         </mux>
         <mux input="clb.I[0] clb.I[1] clb.I[2] clb.I[3] clb.I[4] clb.I[5] clb.I[6] clb.I[7] clb.I[8] clb.I[9] clb.I[10] clb.I[11] clb.I[12] clb.I[13] clb.I[14] clb.I[15] clb.I[16] clb.I[17] clb.I[18] clb.I[19] clb.I[20] clb.I[21] clb.I[22] clb.I[23] fle[0].out fle[1].out fle[2].out fle[3].out fle[4].out fle[5].out fle[6].out fle[7].out" name="crossbar_fle[2].in[1]" output="fle[2].in[1]">
+          <delay_constant in_port="clb.I[0]" max="0.27e-9" min="0.17e-9" out_port="fle[2].in[1]"/>
+          <delay_constant in_port="clb.I[1]" max="0.27e-9" min="0.17e-9" out_port="fle[2].in[1]"/>
+          <delay_constant in_port="clb.I[2]" max="0.27e-9" min="0.17e-9" out_port="fle[2].in[1]"/>
+          <delay_constant in_port="clb.I[3]" max="0.27e-9" min="0.17e-9" out_port="fle[2].in[1]"/>
+          <delay_constant in_port="clb.I[4]" max="0.27e-9" min="0.17e-9" out_port="fle[2].in[1]"/>
+          <delay_constant in_port="clb.I[5]" max="0.27e-9" min="0.17e-9" out_port="fle[2].in[1]"/>
+          <delay_constant in_port="clb.I[6]" max="0.27e-9" min="0.17e-9" out_port="fle[2].in[1]"/>
+          <delay_constant in_port="clb.I[7]" max="0.27e-9" min="0.17e-9" out_port="fle[2].in[1]"/>
+          <delay_constant in_port="clb.I[8]" max="0.27e-9" min="0.17e-9" out_port="fle[2].in[1]"/>
+          <delay_constant in_port="clb.I[9]" max="0.27e-9" min="0.17e-9" out_port="fle[2].in[1]"/>
+          <delay_constant in_port="clb.I[10]" max="0.27e-9" min="0.17e-9" out_port="fle[2].in[1]"/>
+          <delay_constant in_port="clb.I[11]" max="0.27e-9" min="0.17e-9" out_port="fle[2].in[1]"/>
+          <delay_constant in_port="clb.I[12]" max="0.27e-9" min="0.17e-9" out_port="fle[2].in[1]"/>
+          <delay_constant in_port="clb.I[13]" max="0.27e-9" min="0.17e-9" out_port="fle[2].in[1]"/>
+          <delay_constant in_port="clb.I[14]" max="0.27e-9" min="0.17e-9" out_port="fle[2].in[1]"/>
+          <delay_constant in_port="clb.I[15]" max="0.27e-9" min="0.17e-9" out_port="fle[2].in[1]"/>
+          <delay_constant in_port="clb.I[16]" max="0.27e-9" min="0.17e-9" out_port="fle[2].in[1]"/>
+          <delay_constant in_port="clb.I[17]" max="0.27e-9" min="0.17e-9" out_port="fle[2].in[1]"/>
+          <delay_constant in_port="clb.I[18]" max="0.27e-9" min="0.17e-9" out_port="fle[2].in[1]"/>
+          <delay_constant in_port="clb.I[19]" max="0.27e-9" min="0.17e-9" out_port="fle[2].in[1]"/>
+          <delay_constant in_port="clb.I[20]" max="0.27e-9" min="0.17e-9" out_port="fle[2].in[1]"/>
+          <delay_constant in_port="clb.I[21]" max="0.27e-9" min="0.17e-9" out_port="fle[2].in[1]"/>
+          <delay_constant in_port="clb.I[22]" max="0.27e-9" min="0.17e-9" out_port="fle[2].in[1]"/>
+          <delay_constant in_port="clb.I[23]" max="0.27e-9" min="0.17e-9" out_port="fle[2].in[1]"/>
+          <delay_constant in_port="fle[0].out" max="0.31e-9" min="0.21e-9" out_port="fle[2].in[1]"/>
+          <delay_constant in_port="fle[1].out" max="0.31e-9" min="0.21e-9" out_port="fle[2].in[1]"/>
+          <delay_constant in_port="fle[2].out" max="0.31e-9" min="0.21e-9" out_port="fle[2].in[1]"/>
+          <delay_constant in_port="fle[3].out" max="0.31e-9" min="0.21e-9" out_port="fle[2].in[1]"/>
+          <delay_constant in_port="fle[4].out" max="0.31e-9" min="0.21e-9" out_port="fle[2].in[1]"/>
+          <delay_constant in_port="fle[5].out" max="0.31e-9" min="0.21e-9" out_port="fle[2].in[1]"/>
+          <delay_constant in_port="fle[6].out" max="0.31e-9" min="0.21e-9" out_port="fle[2].in[1]"/>
+          <delay_constant in_port="fle[7].out" max="0.31e-9" min="0.21e-9" out_port="fle[2].in[1]"/>
           <metadata>
             <meta name="fasm_mux">
 clb.I[0] : NULL
@@ -1318,6 +1646,38 @@ fle[7].out : mem_fle_2_in_1.mem_out[0],mem_fle_2_in_1.mem_out[1],mem_fle_2_in_1.
           </metadata>
         </mux>
         <mux input="clb.I[0] clb.I[1] clb.I[2] clb.I[3] clb.I[4] clb.I[5] clb.I[6] clb.I[7] clb.I[8] clb.I[9] clb.I[10] clb.I[11] clb.I[12] clb.I[13] clb.I[14] clb.I[15] clb.I[16] clb.I[17] clb.I[18] clb.I[19] clb.I[20] clb.I[21] clb.I[22] clb.I[23] fle[0].out fle[1].out fle[2].out fle[3].out fle[4].out fle[5].out fle[6].out fle[7].out" name="crossbar_fle[2].in[2]" output="fle[2].in[2]">
+          <delay_constant in_port="clb.I[0]" max="0.27e-9" min="0.17e-9" out_port="fle[2].in[2]"/>
+          <delay_constant in_port="clb.I[1]" max="0.27e-9" min="0.17e-9" out_port="fle[2].in[2]"/>
+          <delay_constant in_port="clb.I[2]" max="0.27e-9" min="0.17e-9" out_port="fle[2].in[2]"/>
+          <delay_constant in_port="clb.I[3]" max="0.27e-9" min="0.17e-9" out_port="fle[2].in[2]"/>
+          <delay_constant in_port="clb.I[4]" max="0.27e-9" min="0.17e-9" out_port="fle[2].in[2]"/>
+          <delay_constant in_port="clb.I[5]" max="0.27e-9" min="0.17e-9" out_port="fle[2].in[2]"/>
+          <delay_constant in_port="clb.I[6]" max="0.27e-9" min="0.17e-9" out_port="fle[2].in[2]"/>
+          <delay_constant in_port="clb.I[7]" max="0.27e-9" min="0.17e-9" out_port="fle[2].in[2]"/>
+          <delay_constant in_port="clb.I[8]" max="0.27e-9" min="0.17e-9" out_port="fle[2].in[2]"/>
+          <delay_constant in_port="clb.I[9]" max="0.27e-9" min="0.17e-9" out_port="fle[2].in[2]"/>
+          <delay_constant in_port="clb.I[10]" max="0.27e-9" min="0.17e-9" out_port="fle[2].in[2]"/>
+          <delay_constant in_port="clb.I[11]" max="0.27e-9" min="0.17e-9" out_port="fle[2].in[2]"/>
+          <delay_constant in_port="clb.I[12]" max="0.27e-9" min="0.17e-9" out_port="fle[2].in[2]"/>
+          <delay_constant in_port="clb.I[13]" max="0.27e-9" min="0.17e-9" out_port="fle[2].in[2]"/>
+          <delay_constant in_port="clb.I[14]" max="0.27e-9" min="0.17e-9" out_port="fle[2].in[2]"/>
+          <delay_constant in_port="clb.I[15]" max="0.27e-9" min="0.17e-9" out_port="fle[2].in[2]"/>
+          <delay_constant in_port="clb.I[16]" max="0.27e-9" min="0.17e-9" out_port="fle[2].in[2]"/>
+          <delay_constant in_port="clb.I[17]" max="0.27e-9" min="0.17e-9" out_port="fle[2].in[2]"/>
+          <delay_constant in_port="clb.I[18]" max="0.27e-9" min="0.17e-9" out_port="fle[2].in[2]"/>
+          <delay_constant in_port="clb.I[19]" max="0.27e-9" min="0.17e-9" out_port="fle[2].in[2]"/>
+          <delay_constant in_port="clb.I[20]" max="0.27e-9" min="0.17e-9" out_port="fle[2].in[2]"/>
+          <delay_constant in_port="clb.I[21]" max="0.27e-9" min="0.17e-9" out_port="fle[2].in[2]"/>
+          <delay_constant in_port="clb.I[22]" max="0.27e-9" min="0.17e-9" out_port="fle[2].in[2]"/>
+          <delay_constant in_port="clb.I[23]" max="0.27e-9" min="0.17e-9" out_port="fle[2].in[2]"/>
+          <delay_constant in_port="fle[0].out" max="0.31e-9" min="0.21e-9" out_port="fle[2].in[2]"/>
+          <delay_constant in_port="fle[1].out" max="0.31e-9" min="0.21e-9" out_port="fle[2].in[2]"/>
+          <delay_constant in_port="fle[2].out" max="0.31e-9" min="0.21e-9" out_port="fle[2].in[2]"/>
+          <delay_constant in_port="fle[3].out" max="0.31e-9" min="0.21e-9" out_port="fle[2].in[2]"/>
+          <delay_constant in_port="fle[4].out" max="0.31e-9" min="0.21e-9" out_port="fle[2].in[2]"/>
+          <delay_constant in_port="fle[5].out" max="0.31e-9" min="0.21e-9" out_port="fle[2].in[2]"/>
+          <delay_constant in_port="fle[6].out" max="0.31e-9" min="0.21e-9" out_port="fle[2].in[2]"/>
+          <delay_constant in_port="fle[7].out" max="0.31e-9" min="0.21e-9" out_port="fle[2].in[2]"/>
           <metadata>
             <meta name="fasm_mux">
 clb.I[0] : NULL
@@ -1355,6 +1715,38 @@ fle[7].out : mem_fle_2_in_2.mem_out[0],mem_fle_2_in_2.mem_out[1],mem_fle_2_in_2.
           </metadata>
         </mux>
         <mux input="clb.I[0] clb.I[1] clb.I[2] clb.I[3] clb.I[4] clb.I[5] clb.I[6] clb.I[7] clb.I[8] clb.I[9] clb.I[10] clb.I[11] clb.I[12] clb.I[13] clb.I[14] clb.I[15] clb.I[16] clb.I[17] clb.I[18] clb.I[19] clb.I[20] clb.I[21] clb.I[22] clb.I[23] fle[0].out fle[1].out fle[2].out fle[3].out fle[4].out fle[5].out fle[6].out fle[7].out" name="crossbar_fle[2].in[3]" output="fle[2].in[3]">
+          <delay_constant in_port="clb.I[0]" max="0.27e-9" min="0.17e-9" out_port="fle[2].in[3]"/>
+          <delay_constant in_port="clb.I[1]" max="0.27e-9" min="0.17e-9" out_port="fle[2].in[3]"/>
+          <delay_constant in_port="clb.I[2]" max="0.27e-9" min="0.17e-9" out_port="fle[2].in[3]"/>
+          <delay_constant in_port="clb.I[3]" max="0.27e-9" min="0.17e-9" out_port="fle[2].in[3]"/>
+          <delay_constant in_port="clb.I[4]" max="0.27e-9" min="0.17e-9" out_port="fle[2].in[3]"/>
+          <delay_constant in_port="clb.I[5]" max="0.27e-9" min="0.17e-9" out_port="fle[2].in[3]"/>
+          <delay_constant in_port="clb.I[6]" max="0.27e-9" min="0.17e-9" out_port="fle[2].in[3]"/>
+          <delay_constant in_port="clb.I[7]" max="0.27e-9" min="0.17e-9" out_port="fle[2].in[3]"/>
+          <delay_constant in_port="clb.I[8]" max="0.27e-9" min="0.17e-9" out_port="fle[2].in[3]"/>
+          <delay_constant in_port="clb.I[9]" max="0.27e-9" min="0.17e-9" out_port="fle[2].in[3]"/>
+          <delay_constant in_port="clb.I[10]" max="0.27e-9" min="0.17e-9" out_port="fle[2].in[3]"/>
+          <delay_constant in_port="clb.I[11]" max="0.27e-9" min="0.17e-9" out_port="fle[2].in[3]"/>
+          <delay_constant in_port="clb.I[12]" max="0.27e-9" min="0.17e-9" out_port="fle[2].in[3]"/>
+          <delay_constant in_port="clb.I[13]" max="0.27e-9" min="0.17e-9" out_port="fle[2].in[3]"/>
+          <delay_constant in_port="clb.I[14]" max="0.27e-9" min="0.17e-9" out_port="fle[2].in[3]"/>
+          <delay_constant in_port="clb.I[15]" max="0.27e-9" min="0.17e-9" out_port="fle[2].in[3]"/>
+          <delay_constant in_port="clb.I[16]" max="0.27e-9" min="0.17e-9" out_port="fle[2].in[3]"/>
+          <delay_constant in_port="clb.I[17]" max="0.27e-9" min="0.17e-9" out_port="fle[2].in[3]"/>
+          <delay_constant in_port="clb.I[18]" max="0.27e-9" min="0.17e-9" out_port="fle[2].in[3]"/>
+          <delay_constant in_port="clb.I[19]" max="0.27e-9" min="0.17e-9" out_port="fle[2].in[3]"/>
+          <delay_constant in_port="clb.I[20]" max="0.27e-9" min="0.17e-9" out_port="fle[2].in[3]"/>
+          <delay_constant in_port="clb.I[21]" max="0.27e-9" min="0.17e-9" out_port="fle[2].in[3]"/>
+          <delay_constant in_port="clb.I[22]" max="0.27e-9" min="0.17e-9" out_port="fle[2].in[3]"/>
+          <delay_constant in_port="clb.I[23]" max="0.27e-9" min="0.17e-9" out_port="fle[2].in[3]"/>
+          <delay_constant in_port="fle[0].out" max="0.31e-9" min="0.21e-9" out_port="fle[2].in[3]"/>
+          <delay_constant in_port="fle[1].out" max="0.31e-9" min="0.21e-9" out_port="fle[2].in[3]"/>
+          <delay_constant in_port="fle[2].out" max="0.31e-9" min="0.21e-9" out_port="fle[2].in[3]"/>
+          <delay_constant in_port="fle[3].out" max="0.31e-9" min="0.21e-9" out_port="fle[2].in[3]"/>
+          <delay_constant in_port="fle[4].out" max="0.31e-9" min="0.21e-9" out_port="fle[2].in[3]"/>
+          <delay_constant in_port="fle[5].out" max="0.31e-9" min="0.21e-9" out_port="fle[2].in[3]"/>
+          <delay_constant in_port="fle[6].out" max="0.31e-9" min="0.21e-9" out_port="fle[2].in[3]"/>
+          <delay_constant in_port="fle[7].out" max="0.31e-9" min="0.21e-9" out_port="fle[2].in[3]"/>
           <metadata>
             <meta name="fasm_mux">
 clb.I[0] : NULL
@@ -1392,6 +1784,38 @@ fle[7].out : mem_fle_2_in_3.mem_out[0],mem_fle_2_in_3.mem_out[1],mem_fle_2_in_3.
           </metadata>
         </mux>
         <mux input="clb.I[0] clb.I[1] clb.I[2] clb.I[3] clb.I[4] clb.I[5] clb.I[6] clb.I[7] clb.I[8] clb.I[9] clb.I[10] clb.I[11] clb.I[12] clb.I[13] clb.I[14] clb.I[15] clb.I[16] clb.I[17] clb.I[18] clb.I[19] clb.I[20] clb.I[21] clb.I[22] clb.I[23] fle[0].out fle[1].out fle[2].out fle[3].out fle[4].out fle[5].out fle[6].out fle[7].out" name="crossbar_fle[3].in[0]" output="fle[3].in[0]">
+          <delay_constant in_port="clb.I[0]" max="0.27e-9" min="0.17e-9" out_port="fle[3].in[0]"/>
+          <delay_constant in_port="clb.I[1]" max="0.27e-9" min="0.17e-9" out_port="fle[3].in[0]"/>
+          <delay_constant in_port="clb.I[2]" max="0.27e-9" min="0.17e-9" out_port="fle[3].in[0]"/>
+          <delay_constant in_port="clb.I[3]" max="0.27e-9" min="0.17e-9" out_port="fle[3].in[0]"/>
+          <delay_constant in_port="clb.I[4]" max="0.27e-9" min="0.17e-9" out_port="fle[3].in[0]"/>
+          <delay_constant in_port="clb.I[5]" max="0.27e-9" min="0.17e-9" out_port="fle[3].in[0]"/>
+          <delay_constant in_port="clb.I[6]" max="0.27e-9" min="0.17e-9" out_port="fle[3].in[0]"/>
+          <delay_constant in_port="clb.I[7]" max="0.27e-9" min="0.17e-9" out_port="fle[3].in[0]"/>
+          <delay_constant in_port="clb.I[8]" max="0.27e-9" min="0.17e-9" out_port="fle[3].in[0]"/>
+          <delay_constant in_port="clb.I[9]" max="0.27e-9" min="0.17e-9" out_port="fle[3].in[0]"/>
+          <delay_constant in_port="clb.I[10]" max="0.27e-9" min="0.17e-9" out_port="fle[3].in[0]"/>
+          <delay_constant in_port="clb.I[11]" max="0.27e-9" min="0.17e-9" out_port="fle[3].in[0]"/>
+          <delay_constant in_port="clb.I[12]" max="0.27e-9" min="0.17e-9" out_port="fle[3].in[0]"/>
+          <delay_constant in_port="clb.I[13]" max="0.27e-9" min="0.17e-9" out_port="fle[3].in[0]"/>
+          <delay_constant in_port="clb.I[14]" max="0.27e-9" min="0.17e-9" out_port="fle[3].in[0]"/>
+          <delay_constant in_port="clb.I[15]" max="0.27e-9" min="0.17e-9" out_port="fle[3].in[0]"/>
+          <delay_constant in_port="clb.I[16]" max="0.27e-9" min="0.17e-9" out_port="fle[3].in[0]"/>
+          <delay_constant in_port="clb.I[17]" max="0.27e-9" min="0.17e-9" out_port="fle[3].in[0]"/>
+          <delay_constant in_port="clb.I[18]" max="0.27e-9" min="0.17e-9" out_port="fle[3].in[0]"/>
+          <delay_constant in_port="clb.I[19]" max="0.27e-9" min="0.17e-9" out_port="fle[3].in[0]"/>
+          <delay_constant in_port="clb.I[20]" max="0.27e-9" min="0.17e-9" out_port="fle[3].in[0]"/>
+          <delay_constant in_port="clb.I[21]" max="0.27e-9" min="0.17e-9" out_port="fle[3].in[0]"/>
+          <delay_constant in_port="clb.I[22]" max="0.27e-9" min="0.17e-9" out_port="fle[3].in[0]"/>
+          <delay_constant in_port="clb.I[23]" max="0.27e-9" min="0.17e-9" out_port="fle[3].in[0]"/>
+          <delay_constant in_port="fle[0].out" max="0.31e-9" min="0.21e-9" out_port="fle[3].in[0]"/>
+          <delay_constant in_port="fle[1].out" max="0.31e-9" min="0.21e-9" out_port="fle[3].in[0]"/>
+          <delay_constant in_port="fle[2].out" max="0.31e-9" min="0.21e-9" out_port="fle[3].in[0]"/>
+          <delay_constant in_port="fle[3].out" max="0.31e-9" min="0.21e-9" out_port="fle[3].in[0]"/>
+          <delay_constant in_port="fle[4].out" max="0.31e-9" min="0.21e-9" out_port="fle[3].in[0]"/>
+          <delay_constant in_port="fle[5].out" max="0.31e-9" min="0.21e-9" out_port="fle[3].in[0]"/>
+          <delay_constant in_port="fle[6].out" max="0.31e-9" min="0.21e-9" out_port="fle[3].in[0]"/>
+          <delay_constant in_port="fle[7].out" max="0.31e-9" min="0.21e-9" out_port="fle[3].in[0]"/>
           <metadata>
             <meta name="fasm_mux">
 clb.I[0] : NULL
@@ -1429,6 +1853,38 @@ fle[7].out : mem_fle_3_in_0.mem_out[0],mem_fle_3_in_0.mem_out[1],mem_fle_3_in_0.
           </metadata>
         </mux>
         <mux input="clb.I[0] clb.I[1] clb.I[2] clb.I[3] clb.I[4] clb.I[5] clb.I[6] clb.I[7] clb.I[8] clb.I[9] clb.I[10] clb.I[11] clb.I[12] clb.I[13] clb.I[14] clb.I[15] clb.I[16] clb.I[17] clb.I[18] clb.I[19] clb.I[20] clb.I[21] clb.I[22] clb.I[23] fle[0].out fle[1].out fle[2].out fle[3].out fle[4].out fle[5].out fle[6].out fle[7].out" name="crossbar_fle[3].in[1]" output="fle[3].in[1]">
+          <delay_constant in_port="clb.I[0]" max="0.27e-9" min="0.17e-9" out_port="fle[3].in[1]"/>
+          <delay_constant in_port="clb.I[1]" max="0.27e-9" min="0.17e-9" out_port="fle[3].in[1]"/>
+          <delay_constant in_port="clb.I[2]" max="0.27e-9" min="0.17e-9" out_port="fle[3].in[1]"/>
+          <delay_constant in_port="clb.I[3]" max="0.27e-9" min="0.17e-9" out_port="fle[3].in[1]"/>
+          <delay_constant in_port="clb.I[4]" max="0.27e-9" min="0.17e-9" out_port="fle[3].in[1]"/>
+          <delay_constant in_port="clb.I[5]" max="0.27e-9" min="0.17e-9" out_port="fle[3].in[1]"/>
+          <delay_constant in_port="clb.I[6]" max="0.27e-9" min="0.17e-9" out_port="fle[3].in[1]"/>
+          <delay_constant in_port="clb.I[7]" max="0.27e-9" min="0.17e-9" out_port="fle[3].in[1]"/>
+          <delay_constant in_port="clb.I[8]" max="0.27e-9" min="0.17e-9" out_port="fle[3].in[1]"/>
+          <delay_constant in_port="clb.I[9]" max="0.27e-9" min="0.17e-9" out_port="fle[3].in[1]"/>
+          <delay_constant in_port="clb.I[10]" max="0.27e-9" min="0.17e-9" out_port="fle[3].in[1]"/>
+          <delay_constant in_port="clb.I[11]" max="0.27e-9" min="0.17e-9" out_port="fle[3].in[1]"/>
+          <delay_constant in_port="clb.I[12]" max="0.27e-9" min="0.17e-9" out_port="fle[3].in[1]"/>
+          <delay_constant in_port="clb.I[13]" max="0.27e-9" min="0.17e-9" out_port="fle[3].in[1]"/>
+          <delay_constant in_port="clb.I[14]" max="0.27e-9" min="0.17e-9" out_port="fle[3].in[1]"/>
+          <delay_constant in_port="clb.I[15]" max="0.27e-9" min="0.17e-9" out_port="fle[3].in[1]"/>
+          <delay_constant in_port="clb.I[16]" max="0.27e-9" min="0.17e-9" out_port="fle[3].in[1]"/>
+          <delay_constant in_port="clb.I[17]" max="0.27e-9" min="0.17e-9" out_port="fle[3].in[1]"/>
+          <delay_constant in_port="clb.I[18]" max="0.27e-9" min="0.17e-9" out_port="fle[3].in[1]"/>
+          <delay_constant in_port="clb.I[19]" max="0.27e-9" min="0.17e-9" out_port="fle[3].in[1]"/>
+          <delay_constant in_port="clb.I[20]" max="0.27e-9" min="0.17e-9" out_port="fle[3].in[1]"/>
+          <delay_constant in_port="clb.I[21]" max="0.27e-9" min="0.17e-9" out_port="fle[3].in[1]"/>
+          <delay_constant in_port="clb.I[22]" max="0.27e-9" min="0.17e-9" out_port="fle[3].in[1]"/>
+          <delay_constant in_port="clb.I[23]" max="0.27e-9" min="0.17e-9" out_port="fle[3].in[1]"/>
+          <delay_constant in_port="fle[0].out" max="0.31e-9" min="0.21e-9" out_port="fle[3].in[1]"/>
+          <delay_constant in_port="fle[1].out" max="0.31e-9" min="0.21e-9" out_port="fle[3].in[1]"/>
+          <delay_constant in_port="fle[2].out" max="0.31e-9" min="0.21e-9" out_port="fle[3].in[1]"/>
+          <delay_constant in_port="fle[3].out" max="0.31e-9" min="0.21e-9" out_port="fle[3].in[1]"/>
+          <delay_constant in_port="fle[4].out" max="0.31e-9" min="0.21e-9" out_port="fle[3].in[1]"/>
+          <delay_constant in_port="fle[5].out" max="0.31e-9" min="0.21e-9" out_port="fle[3].in[1]"/>
+          <delay_constant in_port="fle[6].out" max="0.31e-9" min="0.21e-9" out_port="fle[3].in[1]"/>
+          <delay_constant in_port="fle[7].out" max="0.31e-9" min="0.21e-9" out_port="fle[3].in[1]"/>
           <metadata>
             <meta name="fasm_mux">
 clb.I[0] : NULL
@@ -1466,6 +1922,38 @@ fle[7].out : mem_fle_3_in_1.mem_out[0],mem_fle_3_in_1.mem_out[1],mem_fle_3_in_1.
           </metadata>
         </mux>
         <mux input="clb.I[0] clb.I[1] clb.I[2] clb.I[3] clb.I[4] clb.I[5] clb.I[6] clb.I[7] clb.I[8] clb.I[9] clb.I[10] clb.I[11] clb.I[12] clb.I[13] clb.I[14] clb.I[15] clb.I[16] clb.I[17] clb.I[18] clb.I[19] clb.I[20] clb.I[21] clb.I[22] clb.I[23] fle[0].out fle[1].out fle[2].out fle[3].out fle[4].out fle[5].out fle[6].out fle[7].out" name="crossbar_fle[3].in[2]" output="fle[3].in[2]">
+          <delay_constant in_port="clb.I[0]" max="0.27e-9" min="0.17e-9" out_port="fle[3].in[2]"/>
+          <delay_constant in_port="clb.I[1]" max="0.27e-9" min="0.17e-9" out_port="fle[3].in[2]"/>
+          <delay_constant in_port="clb.I[2]" max="0.27e-9" min="0.17e-9" out_port="fle[3].in[2]"/>
+          <delay_constant in_port="clb.I[3]" max="0.27e-9" min="0.17e-9" out_port="fle[3].in[2]"/>
+          <delay_constant in_port="clb.I[4]" max="0.27e-9" min="0.17e-9" out_port="fle[3].in[2]"/>
+          <delay_constant in_port="clb.I[5]" max="0.27e-9" min="0.17e-9" out_port="fle[3].in[2]"/>
+          <delay_constant in_port="clb.I[6]" max="0.27e-9" min="0.17e-9" out_port="fle[3].in[2]"/>
+          <delay_constant in_port="clb.I[7]" max="0.27e-9" min="0.17e-9" out_port="fle[3].in[2]"/>
+          <delay_constant in_port="clb.I[8]" max="0.27e-9" min="0.17e-9" out_port="fle[3].in[2]"/>
+          <delay_constant in_port="clb.I[9]" max="0.27e-9" min="0.17e-9" out_port="fle[3].in[2]"/>
+          <delay_constant in_port="clb.I[10]" max="0.27e-9" min="0.17e-9" out_port="fle[3].in[2]"/>
+          <delay_constant in_port="clb.I[11]" max="0.27e-9" min="0.17e-9" out_port="fle[3].in[2]"/>
+          <delay_constant in_port="clb.I[12]" max="0.27e-9" min="0.17e-9" out_port="fle[3].in[2]"/>
+          <delay_constant in_port="clb.I[13]" max="0.27e-9" min="0.17e-9" out_port="fle[3].in[2]"/>
+          <delay_constant in_port="clb.I[14]" max="0.27e-9" min="0.17e-9" out_port="fle[3].in[2]"/>
+          <delay_constant in_port="clb.I[15]" max="0.27e-9" min="0.17e-9" out_port="fle[3].in[2]"/>
+          <delay_constant in_port="clb.I[16]" max="0.27e-9" min="0.17e-9" out_port="fle[3].in[2]"/>
+          <delay_constant in_port="clb.I[17]" max="0.27e-9" min="0.17e-9" out_port="fle[3].in[2]"/>
+          <delay_constant in_port="clb.I[18]" max="0.27e-9" min="0.17e-9" out_port="fle[3].in[2]"/>
+          <delay_constant in_port="clb.I[19]" max="0.27e-9" min="0.17e-9" out_port="fle[3].in[2]"/>
+          <delay_constant in_port="clb.I[20]" max="0.27e-9" min="0.17e-9" out_port="fle[3].in[2]"/>
+          <delay_constant in_port="clb.I[21]" max="0.27e-9" min="0.17e-9" out_port="fle[3].in[2]"/>
+          <delay_constant in_port="clb.I[22]" max="0.27e-9" min="0.17e-9" out_port="fle[3].in[2]"/>
+          <delay_constant in_port="clb.I[23]" max="0.27e-9" min="0.17e-9" out_port="fle[3].in[2]"/>
+          <delay_constant in_port="fle[0].out" max="0.31e-9" min="0.21e-9" out_port="fle[3].in[2]"/>
+          <delay_constant in_port="fle[1].out" max="0.31e-9" min="0.21e-9" out_port="fle[3].in[2]"/>
+          <delay_constant in_port="fle[2].out" max="0.31e-9" min="0.21e-9" out_port="fle[3].in[2]"/>
+          <delay_constant in_port="fle[3].out" max="0.31e-9" min="0.21e-9" out_port="fle[3].in[2]"/>
+          <delay_constant in_port="fle[4].out" max="0.31e-9" min="0.21e-9" out_port="fle[3].in[2]"/>
+          <delay_constant in_port="fle[5].out" max="0.31e-9" min="0.21e-9" out_port="fle[3].in[2]"/>
+          <delay_constant in_port="fle[6].out" max="0.31e-9" min="0.21e-9" out_port="fle[3].in[2]"/>
+          <delay_constant in_port="fle[7].out" max="0.31e-9" min="0.21e-9" out_port="fle[3].in[2]"/>
           <metadata>
             <meta name="fasm_mux">
 clb.I[0] : NULL
@@ -1503,6 +1991,38 @@ fle[7].out : mem_fle_3_in_2.mem_out[0],mem_fle_3_in_2.mem_out[1],mem_fle_3_in_2.
           </metadata>
         </mux>
         <mux input="clb.I[0] clb.I[1] clb.I[2] clb.I[3] clb.I[4] clb.I[5] clb.I[6] clb.I[7] clb.I[8] clb.I[9] clb.I[10] clb.I[11] clb.I[12] clb.I[13] clb.I[14] clb.I[15] clb.I[16] clb.I[17] clb.I[18] clb.I[19] clb.I[20] clb.I[21] clb.I[22] clb.I[23] fle[0].out fle[1].out fle[2].out fle[3].out fle[4].out fle[5].out fle[6].out fle[7].out" name="crossbar_fle[3].in[3]" output="fle[3].in[3]">
+          <delay_constant in_port="clb.I[0]" max="0.27e-9" min="0.17e-9" out_port="fle[3].in[3]"/>
+          <delay_constant in_port="clb.I[1]" max="0.27e-9" min="0.17e-9" out_port="fle[3].in[3]"/>
+          <delay_constant in_port="clb.I[2]" max="0.27e-9" min="0.17e-9" out_port="fle[3].in[3]"/>
+          <delay_constant in_port="clb.I[3]" max="0.27e-9" min="0.17e-9" out_port="fle[3].in[3]"/>
+          <delay_constant in_port="clb.I[4]" max="0.27e-9" min="0.17e-9" out_port="fle[3].in[3]"/>
+          <delay_constant in_port="clb.I[5]" max="0.27e-9" min="0.17e-9" out_port="fle[3].in[3]"/>
+          <delay_constant in_port="clb.I[6]" max="0.27e-9" min="0.17e-9" out_port="fle[3].in[3]"/>
+          <delay_constant in_port="clb.I[7]" max="0.27e-9" min="0.17e-9" out_port="fle[3].in[3]"/>
+          <delay_constant in_port="clb.I[8]" max="0.27e-9" min="0.17e-9" out_port="fle[3].in[3]"/>
+          <delay_constant in_port="clb.I[9]" max="0.27e-9" min="0.17e-9" out_port="fle[3].in[3]"/>
+          <delay_constant in_port="clb.I[10]" max="0.27e-9" min="0.17e-9" out_port="fle[3].in[3]"/>
+          <delay_constant in_port="clb.I[11]" max="0.27e-9" min="0.17e-9" out_port="fle[3].in[3]"/>
+          <delay_constant in_port="clb.I[12]" max="0.27e-9" min="0.17e-9" out_port="fle[3].in[3]"/>
+          <delay_constant in_port="clb.I[13]" max="0.27e-9" min="0.17e-9" out_port="fle[3].in[3]"/>
+          <delay_constant in_port="clb.I[14]" max="0.27e-9" min="0.17e-9" out_port="fle[3].in[3]"/>
+          <delay_constant in_port="clb.I[15]" max="0.27e-9" min="0.17e-9" out_port="fle[3].in[3]"/>
+          <delay_constant in_port="clb.I[16]" max="0.27e-9" min="0.17e-9" out_port="fle[3].in[3]"/>
+          <delay_constant in_port="clb.I[17]" max="0.27e-9" min="0.17e-9" out_port="fle[3].in[3]"/>
+          <delay_constant in_port="clb.I[18]" max="0.27e-9" min="0.17e-9" out_port="fle[3].in[3]"/>
+          <delay_constant in_port="clb.I[19]" max="0.27e-9" min="0.17e-9" out_port="fle[3].in[3]"/>
+          <delay_constant in_port="clb.I[20]" max="0.27e-9" min="0.17e-9" out_port="fle[3].in[3]"/>
+          <delay_constant in_port="clb.I[21]" max="0.27e-9" min="0.17e-9" out_port="fle[3].in[3]"/>
+          <delay_constant in_port="clb.I[22]" max="0.27e-9" min="0.17e-9" out_port="fle[3].in[3]"/>
+          <delay_constant in_port="clb.I[23]" max="0.27e-9" min="0.17e-9" out_port="fle[3].in[3]"/>
+          <delay_constant in_port="fle[0].out" max="0.31e-9" min="0.21e-9" out_port="fle[3].in[3]"/>
+          <delay_constant in_port="fle[1].out" max="0.31e-9" min="0.21e-9" out_port="fle[3].in[3]"/>
+          <delay_constant in_port="fle[2].out" max="0.31e-9" min="0.21e-9" out_port="fle[3].in[3]"/>
+          <delay_constant in_port="fle[3].out" max="0.31e-9" min="0.21e-9" out_port="fle[3].in[3]"/>
+          <delay_constant in_port="fle[4].out" max="0.31e-9" min="0.21e-9" out_port="fle[3].in[3]"/>
+          <delay_constant in_port="fle[5].out" max="0.31e-9" min="0.21e-9" out_port="fle[3].in[3]"/>
+          <delay_constant in_port="fle[6].out" max="0.31e-9" min="0.21e-9" out_port="fle[3].in[3]"/>
+          <delay_constant in_port="fle[7].out" max="0.31e-9" min="0.21e-9" out_port="fle[3].in[3]"/>
           <metadata>
             <meta name="fasm_mux">
 clb.I[0] : NULL
@@ -1540,6 +2060,38 @@ fle[7].out : mem_fle_3_in_3.mem_out[0],mem_fle_3_in_3.mem_out[1],mem_fle_3_in_3.
           </metadata>
         </mux>
         <mux input="clb.I[0] clb.I[1] clb.I[2] clb.I[3] clb.I[4] clb.I[5] clb.I[6] clb.I[7] clb.I[8] clb.I[9] clb.I[10] clb.I[11] clb.I[12] clb.I[13] clb.I[14] clb.I[15] clb.I[16] clb.I[17] clb.I[18] clb.I[19] clb.I[20] clb.I[21] clb.I[22] clb.I[23] fle[0].out fle[1].out fle[2].out fle[3].out fle[4].out fle[5].out fle[6].out fle[7].out" name="crossbar_fle[4].in[0]" output="fle[4].in[0]">
+          <delay_constant in_port="clb.I[0]" max="0.27e-9" min="0.17e-9" out_port="fle[4].in[0]"/>
+          <delay_constant in_port="clb.I[1]" max="0.27e-9" min="0.17e-9" out_port="fle[4].in[0]"/>
+          <delay_constant in_port="clb.I[2]" max="0.27e-9" min="0.17e-9" out_port="fle[4].in[0]"/>
+          <delay_constant in_port="clb.I[3]" max="0.27e-9" min="0.17e-9" out_port="fle[4].in[0]"/>
+          <delay_constant in_port="clb.I[4]" max="0.27e-9" min="0.17e-9" out_port="fle[4].in[0]"/>
+          <delay_constant in_port="clb.I[5]" max="0.27e-9" min="0.17e-9" out_port="fle[4].in[0]"/>
+          <delay_constant in_port="clb.I[6]" max="0.27e-9" min="0.17e-9" out_port="fle[4].in[0]"/>
+          <delay_constant in_port="clb.I[7]" max="0.27e-9" min="0.17e-9" out_port="fle[4].in[0]"/>
+          <delay_constant in_port="clb.I[8]" max="0.27e-9" min="0.17e-9" out_port="fle[4].in[0]"/>
+          <delay_constant in_port="clb.I[9]" max="0.27e-9" min="0.17e-9" out_port="fle[4].in[0]"/>
+          <delay_constant in_port="clb.I[10]" max="0.27e-9" min="0.17e-9" out_port="fle[4].in[0]"/>
+          <delay_constant in_port="clb.I[11]" max="0.27e-9" min="0.17e-9" out_port="fle[4].in[0]"/>
+          <delay_constant in_port="clb.I[12]" max="0.27e-9" min="0.17e-9" out_port="fle[4].in[0]"/>
+          <delay_constant in_port="clb.I[13]" max="0.27e-9" min="0.17e-9" out_port="fle[4].in[0]"/>
+          <delay_constant in_port="clb.I[14]" max="0.27e-9" min="0.17e-9" out_port="fle[4].in[0]"/>
+          <delay_constant in_port="clb.I[15]" max="0.27e-9" min="0.17e-9" out_port="fle[4].in[0]"/>
+          <delay_constant in_port="clb.I[16]" max="0.27e-9" min="0.17e-9" out_port="fle[4].in[0]"/>
+          <delay_constant in_port="clb.I[17]" max="0.27e-9" min="0.17e-9" out_port="fle[4].in[0]"/>
+          <delay_constant in_port="clb.I[18]" max="0.27e-9" min="0.17e-9" out_port="fle[4].in[0]"/>
+          <delay_constant in_port="clb.I[19]" max="0.27e-9" min="0.17e-9" out_port="fle[4].in[0]"/>
+          <delay_constant in_port="clb.I[20]" max="0.27e-9" min="0.17e-9" out_port="fle[4].in[0]"/>
+          <delay_constant in_port="clb.I[21]" max="0.27e-9" min="0.17e-9" out_port="fle[4].in[0]"/>
+          <delay_constant in_port="clb.I[22]" max="0.27e-9" min="0.17e-9" out_port="fle[4].in[0]"/>
+          <delay_constant in_port="clb.I[23]" max="0.27e-9" min="0.17e-9" out_port="fle[4].in[0]"/>
+          <delay_constant in_port="fle[0].out" max="0.31e-9" min="0.21e-9" out_port="fle[4].in[0]"/>
+          <delay_constant in_port="fle[1].out" max="0.31e-9" min="0.21e-9" out_port="fle[4].in[0]"/>
+          <delay_constant in_port="fle[2].out" max="0.31e-9" min="0.21e-9" out_port="fle[4].in[0]"/>
+          <delay_constant in_port="fle[3].out" max="0.31e-9" min="0.21e-9" out_port="fle[4].in[0]"/>
+          <delay_constant in_port="fle[4].out" max="0.31e-9" min="0.21e-9" out_port="fle[4].in[0]"/>
+          <delay_constant in_port="fle[5].out" max="0.31e-9" min="0.21e-9" out_port="fle[4].in[0]"/>
+          <delay_constant in_port="fle[6].out" max="0.31e-9" min="0.21e-9" out_port="fle[4].in[0]"/>
+          <delay_constant in_port="fle[7].out" max="0.31e-9" min="0.21e-9" out_port="fle[4].in[0]"/>
           <metadata>
             <meta name="fasm_mux">
 clb.I[0] : NULL
@@ -1577,6 +2129,38 @@ fle[7].out : mem_fle_4_in_0.mem_out[0],mem_fle_4_in_0.mem_out[1],mem_fle_4_in_0.
           </metadata>
         </mux>
         <mux input="clb.I[0] clb.I[1] clb.I[2] clb.I[3] clb.I[4] clb.I[5] clb.I[6] clb.I[7] clb.I[8] clb.I[9] clb.I[10] clb.I[11] clb.I[12] clb.I[13] clb.I[14] clb.I[15] clb.I[16] clb.I[17] clb.I[18] clb.I[19] clb.I[20] clb.I[21] clb.I[22] clb.I[23] fle[0].out fle[1].out fle[2].out fle[3].out fle[4].out fle[5].out fle[6].out fle[7].out" name="crossbar_fle[4].in[1]" output="fle[4].in[1]">
+          <delay_constant in_port="clb.I[0]" max="0.27e-9" min="0.17e-9" out_port="fle[4].in[1]"/>
+          <delay_constant in_port="clb.I[1]" max="0.27e-9" min="0.17e-9" out_port="fle[4].in[1]"/>
+          <delay_constant in_port="clb.I[2]" max="0.27e-9" min="0.17e-9" out_port="fle[4].in[1]"/>
+          <delay_constant in_port="clb.I[3]" max="0.27e-9" min="0.17e-9" out_port="fle[4].in[1]"/>
+          <delay_constant in_port="clb.I[4]" max="0.27e-9" min="0.17e-9" out_port="fle[4].in[1]"/>
+          <delay_constant in_port="clb.I[5]" max="0.27e-9" min="0.17e-9" out_port="fle[4].in[1]"/>
+          <delay_constant in_port="clb.I[6]" max="0.27e-9" min="0.17e-9" out_port="fle[4].in[1]"/>
+          <delay_constant in_port="clb.I[7]" max="0.27e-9" min="0.17e-9" out_port="fle[4].in[1]"/>
+          <delay_constant in_port="clb.I[8]" max="0.27e-9" min="0.17e-9" out_port="fle[4].in[1]"/>
+          <delay_constant in_port="clb.I[9]" max="0.27e-9" min="0.17e-9" out_port="fle[4].in[1]"/>
+          <delay_constant in_port="clb.I[10]" max="0.27e-9" min="0.17e-9" out_port="fle[4].in[1]"/>
+          <delay_constant in_port="clb.I[11]" max="0.27e-9" min="0.17e-9" out_port="fle[4].in[1]"/>
+          <delay_constant in_port="clb.I[12]" max="0.27e-9" min="0.17e-9" out_port="fle[4].in[1]"/>
+          <delay_constant in_port="clb.I[13]" max="0.27e-9" min="0.17e-9" out_port="fle[4].in[1]"/>
+          <delay_constant in_port="clb.I[14]" max="0.27e-9" min="0.17e-9" out_port="fle[4].in[1]"/>
+          <delay_constant in_port="clb.I[15]" max="0.27e-9" min="0.17e-9" out_port="fle[4].in[1]"/>
+          <delay_constant in_port="clb.I[16]" max="0.27e-9" min="0.17e-9" out_port="fle[4].in[1]"/>
+          <delay_constant in_port="clb.I[17]" max="0.27e-9" min="0.17e-9" out_port="fle[4].in[1]"/>
+          <delay_constant in_port="clb.I[18]" max="0.27e-9" min="0.17e-9" out_port="fle[4].in[1]"/>
+          <delay_constant in_port="clb.I[19]" max="0.27e-9" min="0.17e-9" out_port="fle[4].in[1]"/>
+          <delay_constant in_port="clb.I[20]" max="0.27e-9" min="0.17e-9" out_port="fle[4].in[1]"/>
+          <delay_constant in_port="clb.I[21]" max="0.27e-9" min="0.17e-9" out_port="fle[4].in[1]"/>
+          <delay_constant in_port="clb.I[22]" max="0.27e-9" min="0.17e-9" out_port="fle[4].in[1]"/>
+          <delay_constant in_port="clb.I[23]" max="0.27e-9" min="0.17e-9" out_port="fle[4].in[1]"/>
+          <delay_constant in_port="fle[0].out" max="0.31e-9" min="0.21e-9" out_port="fle[4].in[1]"/>
+          <delay_constant in_port="fle[1].out" max="0.31e-9" min="0.21e-9" out_port="fle[4].in[1]"/>
+          <delay_constant in_port="fle[2].out" max="0.31e-9" min="0.21e-9" out_port="fle[4].in[1]"/>
+          <delay_constant in_port="fle[3].out" max="0.31e-9" min="0.21e-9" out_port="fle[4].in[1]"/>
+          <delay_constant in_port="fle[4].out" max="0.31e-9" min="0.21e-9" out_port="fle[4].in[1]"/>
+          <delay_constant in_port="fle[5].out" max="0.31e-9" min="0.21e-9" out_port="fle[4].in[1]"/>
+          <delay_constant in_port="fle[6].out" max="0.31e-9" min="0.21e-9" out_port="fle[4].in[1]"/>
+          <delay_constant in_port="fle[7].out" max="0.31e-9" min="0.21e-9" out_port="fle[4].in[1]"/>
           <metadata>
             <meta name="fasm_mux">
 clb.I[0] : NULL
@@ -1614,6 +2198,38 @@ fle[7].out : mem_fle_4_in_1.mem_out[0],mem_fle_4_in_1.mem_out[1],mem_fle_4_in_1.
           </metadata>
         </mux>
         <mux input="clb.I[0] clb.I[1] clb.I[2] clb.I[3] clb.I[4] clb.I[5] clb.I[6] clb.I[7] clb.I[8] clb.I[9] clb.I[10] clb.I[11] clb.I[12] clb.I[13] clb.I[14] clb.I[15] clb.I[16] clb.I[17] clb.I[18] clb.I[19] clb.I[20] clb.I[21] clb.I[22] clb.I[23] fle[0].out fle[1].out fle[2].out fle[3].out fle[4].out fle[5].out fle[6].out fle[7].out" name="crossbar_fle[4].in[2]" output="fle[4].in[2]">
+          <delay_constant in_port="clb.I[0]" max="0.27e-9" min="0.17e-9" out_port="fle[4].in[2]"/>
+          <delay_constant in_port="clb.I[1]" max="0.27e-9" min="0.17e-9" out_port="fle[4].in[2]"/>
+          <delay_constant in_port="clb.I[2]" max="0.27e-9" min="0.17e-9" out_port="fle[4].in[2]"/>
+          <delay_constant in_port="clb.I[3]" max="0.27e-9" min="0.17e-9" out_port="fle[4].in[2]"/>
+          <delay_constant in_port="clb.I[4]" max="0.27e-9" min="0.17e-9" out_port="fle[4].in[2]"/>
+          <delay_constant in_port="clb.I[5]" max="0.27e-9" min="0.17e-9" out_port="fle[4].in[2]"/>
+          <delay_constant in_port="clb.I[6]" max="0.27e-9" min="0.17e-9" out_port="fle[4].in[2]"/>
+          <delay_constant in_port="clb.I[7]" max="0.27e-9" min="0.17e-9" out_port="fle[4].in[2]"/>
+          <delay_constant in_port="clb.I[8]" max="0.27e-9" min="0.17e-9" out_port="fle[4].in[2]"/>
+          <delay_constant in_port="clb.I[9]" max="0.27e-9" min="0.17e-9" out_port="fle[4].in[2]"/>
+          <delay_constant in_port="clb.I[10]" max="0.27e-9" min="0.17e-9" out_port="fle[4].in[2]"/>
+          <delay_constant in_port="clb.I[11]" max="0.27e-9" min="0.17e-9" out_port="fle[4].in[2]"/>
+          <delay_constant in_port="clb.I[12]" max="0.27e-9" min="0.17e-9" out_port="fle[4].in[2]"/>
+          <delay_constant in_port="clb.I[13]" max="0.27e-9" min="0.17e-9" out_port="fle[4].in[2]"/>
+          <delay_constant in_port="clb.I[14]" max="0.27e-9" min="0.17e-9" out_port="fle[4].in[2]"/>
+          <delay_constant in_port="clb.I[15]" max="0.27e-9" min="0.17e-9" out_port="fle[4].in[2]"/>
+          <delay_constant in_port="clb.I[16]" max="0.27e-9" min="0.17e-9" out_port="fle[4].in[2]"/>
+          <delay_constant in_port="clb.I[17]" max="0.27e-9" min="0.17e-9" out_port="fle[4].in[2]"/>
+          <delay_constant in_port="clb.I[18]" max="0.27e-9" min="0.17e-9" out_port="fle[4].in[2]"/>
+          <delay_constant in_port="clb.I[19]" max="0.27e-9" min="0.17e-9" out_port="fle[4].in[2]"/>
+          <delay_constant in_port="clb.I[20]" max="0.27e-9" min="0.17e-9" out_port="fle[4].in[2]"/>
+          <delay_constant in_port="clb.I[21]" max="0.27e-9" min="0.17e-9" out_port="fle[4].in[2]"/>
+          <delay_constant in_port="clb.I[22]" max="0.27e-9" min="0.17e-9" out_port="fle[4].in[2]"/>
+          <delay_constant in_port="clb.I[23]" max="0.27e-9" min="0.17e-9" out_port="fle[4].in[2]"/>
+          <delay_constant in_port="fle[0].out" max="0.31e-9" min="0.21e-9" out_port="fle[4].in[2]"/>
+          <delay_constant in_port="fle[1].out" max="0.31e-9" min="0.21e-9" out_port="fle[4].in[2]"/>
+          <delay_constant in_port="fle[2].out" max="0.31e-9" min="0.21e-9" out_port="fle[4].in[2]"/>
+          <delay_constant in_port="fle[3].out" max="0.31e-9" min="0.21e-9" out_port="fle[4].in[2]"/>
+          <delay_constant in_port="fle[4].out" max="0.31e-9" min="0.21e-9" out_port="fle[4].in[2]"/>
+          <delay_constant in_port="fle[5].out" max="0.31e-9" min="0.21e-9" out_port="fle[4].in[2]"/>
+          <delay_constant in_port="fle[6].out" max="0.31e-9" min="0.21e-9" out_port="fle[4].in[2]"/>
+          <delay_constant in_port="fle[7].out" max="0.31e-9" min="0.21e-9" out_port="fle[4].in[2]"/>
           <metadata>
             <meta name="fasm_mux">
 clb.I[0] : NULL
@@ -1651,6 +2267,38 @@ fle[7].out : mem_fle_4_in_2.mem_out[0],mem_fle_4_in_2.mem_out[1],mem_fle_4_in_2.
           </metadata>
         </mux>
         <mux input="clb.I[0] clb.I[1] clb.I[2] clb.I[3] clb.I[4] clb.I[5] clb.I[6] clb.I[7] clb.I[8] clb.I[9] clb.I[10] clb.I[11] clb.I[12] clb.I[13] clb.I[14] clb.I[15] clb.I[16] clb.I[17] clb.I[18] clb.I[19] clb.I[20] clb.I[21] clb.I[22] clb.I[23] fle[0].out fle[1].out fle[2].out fle[3].out fle[4].out fle[5].out fle[6].out fle[7].out" name="crossbar_fle[4].in[3]" output="fle[4].in[3]">
+          <delay_constant in_port="clb.I[0]" max="0.27e-9" min="0.17e-9" out_port="fle[4].in[3]"/>
+          <delay_constant in_port="clb.I[1]" max="0.27e-9" min="0.17e-9" out_port="fle[4].in[3]"/>
+          <delay_constant in_port="clb.I[2]" max="0.27e-9" min="0.17e-9" out_port="fle[4].in[3]"/>
+          <delay_constant in_port="clb.I[3]" max="0.27e-9" min="0.17e-9" out_port="fle[4].in[3]"/>
+          <delay_constant in_port="clb.I[4]" max="0.27e-9" min="0.17e-9" out_port="fle[4].in[3]"/>
+          <delay_constant in_port="clb.I[5]" max="0.27e-9" min="0.17e-9" out_port="fle[4].in[3]"/>
+          <delay_constant in_port="clb.I[6]" max="0.27e-9" min="0.17e-9" out_port="fle[4].in[3]"/>
+          <delay_constant in_port="clb.I[7]" max="0.27e-9" min="0.17e-9" out_port="fle[4].in[3]"/>
+          <delay_constant in_port="clb.I[8]" max="0.27e-9" min="0.17e-9" out_port="fle[4].in[3]"/>
+          <delay_constant in_port="clb.I[9]" max="0.27e-9" min="0.17e-9" out_port="fle[4].in[3]"/>
+          <delay_constant in_port="clb.I[10]" max="0.27e-9" min="0.17e-9" out_port="fle[4].in[3]"/>
+          <delay_constant in_port="clb.I[11]" max="0.27e-9" min="0.17e-9" out_port="fle[4].in[3]"/>
+          <delay_constant in_port="clb.I[12]" max="0.27e-9" min="0.17e-9" out_port="fle[4].in[3]"/>
+          <delay_constant in_port="clb.I[13]" max="0.27e-9" min="0.17e-9" out_port="fle[4].in[3]"/>
+          <delay_constant in_port="clb.I[14]" max="0.27e-9" min="0.17e-9" out_port="fle[4].in[3]"/>
+          <delay_constant in_port="clb.I[15]" max="0.27e-9" min="0.17e-9" out_port="fle[4].in[3]"/>
+          <delay_constant in_port="clb.I[16]" max="0.27e-9" min="0.17e-9" out_port="fle[4].in[3]"/>
+          <delay_constant in_port="clb.I[17]" max="0.27e-9" min="0.17e-9" out_port="fle[4].in[3]"/>
+          <delay_constant in_port="clb.I[18]" max="0.27e-9" min="0.17e-9" out_port="fle[4].in[3]"/>
+          <delay_constant in_port="clb.I[19]" max="0.27e-9" min="0.17e-9" out_port="fle[4].in[3]"/>
+          <delay_constant in_port="clb.I[20]" max="0.27e-9" min="0.17e-9" out_port="fle[4].in[3]"/>
+          <delay_constant in_port="clb.I[21]" max="0.27e-9" min="0.17e-9" out_port="fle[4].in[3]"/>
+          <delay_constant in_port="clb.I[22]" max="0.27e-9" min="0.17e-9" out_port="fle[4].in[3]"/>
+          <delay_constant in_port="clb.I[23]" max="0.27e-9" min="0.17e-9" out_port="fle[4].in[3]"/>
+          <delay_constant in_port="fle[0].out" max="0.31e-9" min="0.21e-9" out_port="fle[4].in[3]"/>
+          <delay_constant in_port="fle[1].out" max="0.31e-9" min="0.21e-9" out_port="fle[4].in[3]"/>
+          <delay_constant in_port="fle[2].out" max="0.31e-9" min="0.21e-9" out_port="fle[4].in[3]"/>
+          <delay_constant in_port="fle[3].out" max="0.31e-9" min="0.21e-9" out_port="fle[4].in[3]"/>
+          <delay_constant in_port="fle[4].out" max="0.31e-9" min="0.21e-9" out_port="fle[4].in[3]"/>
+          <delay_constant in_port="fle[5].out" max="0.31e-9" min="0.21e-9" out_port="fle[4].in[3]"/>
+          <delay_constant in_port="fle[6].out" max="0.31e-9" min="0.21e-9" out_port="fle[4].in[3]"/>
+          <delay_constant in_port="fle[7].out" max="0.31e-9" min="0.21e-9" out_port="fle[4].in[3]"/>
           <metadata>
             <meta name="fasm_mux">
 clb.I[0] : NULL
@@ -1688,6 +2336,38 @@ fle[7].out : mem_fle_4_in_3.mem_out[0],mem_fle_4_in_3.mem_out[1],mem_fle_4_in_3.
           </metadata>
         </mux>
         <mux input="clb.I[0] clb.I[1] clb.I[2] clb.I[3] clb.I[4] clb.I[5] clb.I[6] clb.I[7] clb.I[8] clb.I[9] clb.I[10] clb.I[11] clb.I[12] clb.I[13] clb.I[14] clb.I[15] clb.I[16] clb.I[17] clb.I[18] clb.I[19] clb.I[20] clb.I[21] clb.I[22] clb.I[23] fle[0].out fle[1].out fle[2].out fle[3].out fle[4].out fle[5].out fle[6].out fle[7].out" name="crossbar_fle[5].in[0]" output="fle[5].in[0]">
+          <delay_constant in_port="clb.I[0]" max="0.27e-9" min="0.17e-9" out_port="fle[5].in[0]"/>
+          <delay_constant in_port="clb.I[1]" max="0.27e-9" min="0.17e-9" out_port="fle[5].in[0]"/>
+          <delay_constant in_port="clb.I[2]" max="0.27e-9" min="0.17e-9" out_port="fle[5].in[0]"/>
+          <delay_constant in_port="clb.I[3]" max="0.27e-9" min="0.17e-9" out_port="fle[5].in[0]"/>
+          <delay_constant in_port="clb.I[4]" max="0.27e-9" min="0.17e-9" out_port="fle[5].in[0]"/>
+          <delay_constant in_port="clb.I[5]" max="0.27e-9" min="0.17e-9" out_port="fle[5].in[0]"/>
+          <delay_constant in_port="clb.I[6]" max="0.27e-9" min="0.17e-9" out_port="fle[5].in[0]"/>
+          <delay_constant in_port="clb.I[7]" max="0.27e-9" min="0.17e-9" out_port="fle[5].in[0]"/>
+          <delay_constant in_port="clb.I[8]" max="0.27e-9" min="0.17e-9" out_port="fle[5].in[0]"/>
+          <delay_constant in_port="clb.I[9]" max="0.27e-9" min="0.17e-9" out_port="fle[5].in[0]"/>
+          <delay_constant in_port="clb.I[10]" max="0.27e-9" min="0.17e-9" out_port="fle[5].in[0]"/>
+          <delay_constant in_port="clb.I[11]" max="0.27e-9" min="0.17e-9" out_port="fle[5].in[0]"/>
+          <delay_constant in_port="clb.I[12]" max="0.27e-9" min="0.17e-9" out_port="fle[5].in[0]"/>
+          <delay_constant in_port="clb.I[13]" max="0.27e-9" min="0.17e-9" out_port="fle[5].in[0]"/>
+          <delay_constant in_port="clb.I[14]" max="0.27e-9" min="0.17e-9" out_port="fle[5].in[0]"/>
+          <delay_constant in_port="clb.I[15]" max="0.27e-9" min="0.17e-9" out_port="fle[5].in[0]"/>
+          <delay_constant in_port="clb.I[16]" max="0.27e-9" min="0.17e-9" out_port="fle[5].in[0]"/>
+          <delay_constant in_port="clb.I[17]" max="0.27e-9" min="0.17e-9" out_port="fle[5].in[0]"/>
+          <delay_constant in_port="clb.I[18]" max="0.27e-9" min="0.17e-9" out_port="fle[5].in[0]"/>
+          <delay_constant in_port="clb.I[19]" max="0.27e-9" min="0.17e-9" out_port="fle[5].in[0]"/>
+          <delay_constant in_port="clb.I[20]" max="0.27e-9" min="0.17e-9" out_port="fle[5].in[0]"/>
+          <delay_constant in_port="clb.I[21]" max="0.27e-9" min="0.17e-9" out_port="fle[5].in[0]"/>
+          <delay_constant in_port="clb.I[22]" max="0.27e-9" min="0.17e-9" out_port="fle[5].in[0]"/>
+          <delay_constant in_port="clb.I[23]" max="0.27e-9" min="0.17e-9" out_port="fle[5].in[0]"/>
+          <delay_constant in_port="fle[0].out" max="0.31e-9" min="0.21e-9" out_port="fle[5].in[0]"/>
+          <delay_constant in_port="fle[1].out" max="0.31e-9" min="0.21e-9" out_port="fle[5].in[0]"/>
+          <delay_constant in_port="fle[2].out" max="0.31e-9" min="0.21e-9" out_port="fle[5].in[0]"/>
+          <delay_constant in_port="fle[3].out" max="0.31e-9" min="0.21e-9" out_port="fle[5].in[0]"/>
+          <delay_constant in_port="fle[4].out" max="0.31e-9" min="0.21e-9" out_port="fle[5].in[0]"/>
+          <delay_constant in_port="fle[5].out" max="0.31e-9" min="0.21e-9" out_port="fle[5].in[0]"/>
+          <delay_constant in_port="fle[6].out" max="0.31e-9" min="0.21e-9" out_port="fle[5].in[0]"/>
+          <delay_constant in_port="fle[7].out" max="0.31e-9" min="0.21e-9" out_port="fle[5].in[0]"/>
           <metadata>
             <meta name="fasm_mux">
 clb.I[0] : NULL
@@ -1725,6 +2405,38 @@ fle[7].out : mem_fle_5_in_0.mem_out[0],mem_fle_5_in_0.mem_out[1],mem_fle_5_in_0.
           </metadata>
         </mux>
         <mux input="clb.I[0] clb.I[1] clb.I[2] clb.I[3] clb.I[4] clb.I[5] clb.I[6] clb.I[7] clb.I[8] clb.I[9] clb.I[10] clb.I[11] clb.I[12] clb.I[13] clb.I[14] clb.I[15] clb.I[16] clb.I[17] clb.I[18] clb.I[19] clb.I[20] clb.I[21] clb.I[22] clb.I[23] fle[0].out fle[1].out fle[2].out fle[3].out fle[4].out fle[5].out fle[6].out fle[7].out" name="crossbar_fle[5].in[1]" output="fle[5].in[1]">
+          <delay_constant in_port="clb.I[0]" max="0.27e-9" min="0.17e-9" out_port="fle[5].in[1]"/>
+          <delay_constant in_port="clb.I[1]" max="0.27e-9" min="0.17e-9" out_port="fle[5].in[1]"/>
+          <delay_constant in_port="clb.I[2]" max="0.27e-9" min="0.17e-9" out_port="fle[5].in[1]"/>
+          <delay_constant in_port="clb.I[3]" max="0.27e-9" min="0.17e-9" out_port="fle[5].in[1]"/>
+          <delay_constant in_port="clb.I[4]" max="0.27e-9" min="0.17e-9" out_port="fle[5].in[1]"/>
+          <delay_constant in_port="clb.I[5]" max="0.27e-9" min="0.17e-9" out_port="fle[5].in[1]"/>
+          <delay_constant in_port="clb.I[6]" max="0.27e-9" min="0.17e-9" out_port="fle[5].in[1]"/>
+          <delay_constant in_port="clb.I[7]" max="0.27e-9" min="0.17e-9" out_port="fle[5].in[1]"/>
+          <delay_constant in_port="clb.I[8]" max="0.27e-9" min="0.17e-9" out_port="fle[5].in[1]"/>
+          <delay_constant in_port="clb.I[9]" max="0.27e-9" min="0.17e-9" out_port="fle[5].in[1]"/>
+          <delay_constant in_port="clb.I[10]" max="0.27e-9" min="0.17e-9" out_port="fle[5].in[1]"/>
+          <delay_constant in_port="clb.I[11]" max="0.27e-9" min="0.17e-9" out_port="fle[5].in[1]"/>
+          <delay_constant in_port="clb.I[12]" max="0.27e-9" min="0.17e-9" out_port="fle[5].in[1]"/>
+          <delay_constant in_port="clb.I[13]" max="0.27e-9" min="0.17e-9" out_port="fle[5].in[1]"/>
+          <delay_constant in_port="clb.I[14]" max="0.27e-9" min="0.17e-9" out_port="fle[5].in[1]"/>
+          <delay_constant in_port="clb.I[15]" max="0.27e-9" min="0.17e-9" out_port="fle[5].in[1]"/>
+          <delay_constant in_port="clb.I[16]" max="0.27e-9" min="0.17e-9" out_port="fle[5].in[1]"/>
+          <delay_constant in_port="clb.I[17]" max="0.27e-9" min="0.17e-9" out_port="fle[5].in[1]"/>
+          <delay_constant in_port="clb.I[18]" max="0.27e-9" min="0.17e-9" out_port="fle[5].in[1]"/>
+          <delay_constant in_port="clb.I[19]" max="0.27e-9" min="0.17e-9" out_port="fle[5].in[1]"/>
+          <delay_constant in_port="clb.I[20]" max="0.27e-9" min="0.17e-9" out_port="fle[5].in[1]"/>
+          <delay_constant in_port="clb.I[21]" max="0.27e-9" min="0.17e-9" out_port="fle[5].in[1]"/>
+          <delay_constant in_port="clb.I[22]" max="0.27e-9" min="0.17e-9" out_port="fle[5].in[1]"/>
+          <delay_constant in_port="clb.I[23]" max="0.27e-9" min="0.17e-9" out_port="fle[5].in[1]"/>
+          <delay_constant in_port="fle[0].out" max="0.31e-9" min="0.21e-9" out_port="fle[5].in[1]"/>
+          <delay_constant in_port="fle[1].out" max="0.31e-9" min="0.21e-9" out_port="fle[5].in[1]"/>
+          <delay_constant in_port="fle[2].out" max="0.31e-9" min="0.21e-9" out_port="fle[5].in[1]"/>
+          <delay_constant in_port="fle[3].out" max="0.31e-9" min="0.21e-9" out_port="fle[5].in[1]"/>
+          <delay_constant in_port="fle[4].out" max="0.31e-9" min="0.21e-9" out_port="fle[5].in[1]"/>
+          <delay_constant in_port="fle[5].out" max="0.31e-9" min="0.21e-9" out_port="fle[5].in[1]"/>
+          <delay_constant in_port="fle[6].out" max="0.31e-9" min="0.21e-9" out_port="fle[5].in[1]"/>
+          <delay_constant in_port="fle[7].out" max="0.31e-9" min="0.21e-9" out_port="fle[5].in[1]"/>
           <metadata>
             <meta name="fasm_mux">
 clb.I[0] : NULL
@@ -1762,6 +2474,38 @@ fle[7].out : mem_fle_5_in_1.mem_out[0],mem_fle_5_in_1.mem_out[1],mem_fle_5_in_1.
           </metadata>
         </mux>
         <mux input="clb.I[0] clb.I[1] clb.I[2] clb.I[3] clb.I[4] clb.I[5] clb.I[6] clb.I[7] clb.I[8] clb.I[9] clb.I[10] clb.I[11] clb.I[12] clb.I[13] clb.I[14] clb.I[15] clb.I[16] clb.I[17] clb.I[18] clb.I[19] clb.I[20] clb.I[21] clb.I[22] clb.I[23] fle[0].out fle[1].out fle[2].out fle[3].out fle[4].out fle[5].out fle[6].out fle[7].out" name="crossbar_fle[5].in[2]" output="fle[5].in[2]">
+          <delay_constant in_port="clb.I[0]" max="0.27e-9" min="0.17e-9" out_port="fle[5].in[2]"/>
+          <delay_constant in_port="clb.I[1]" max="0.27e-9" min="0.17e-9" out_port="fle[5].in[2]"/>
+          <delay_constant in_port="clb.I[2]" max="0.27e-9" min="0.17e-9" out_port="fle[5].in[2]"/>
+          <delay_constant in_port="clb.I[3]" max="0.27e-9" min="0.17e-9" out_port="fle[5].in[2]"/>
+          <delay_constant in_port="clb.I[4]" max="0.27e-9" min="0.17e-9" out_port="fle[5].in[2]"/>
+          <delay_constant in_port="clb.I[5]" max="0.27e-9" min="0.17e-9" out_port="fle[5].in[2]"/>
+          <delay_constant in_port="clb.I[6]" max="0.27e-9" min="0.17e-9" out_port="fle[5].in[2]"/>
+          <delay_constant in_port="clb.I[7]" max="0.27e-9" min="0.17e-9" out_port="fle[5].in[2]"/>
+          <delay_constant in_port="clb.I[8]" max="0.27e-9" min="0.17e-9" out_port="fle[5].in[2]"/>
+          <delay_constant in_port="clb.I[9]" max="0.27e-9" min="0.17e-9" out_port="fle[5].in[2]"/>
+          <delay_constant in_port="clb.I[10]" max="0.27e-9" min="0.17e-9" out_port="fle[5].in[2]"/>
+          <delay_constant in_port="clb.I[11]" max="0.27e-9" min="0.17e-9" out_port="fle[5].in[2]"/>
+          <delay_constant in_port="clb.I[12]" max="0.27e-9" min="0.17e-9" out_port="fle[5].in[2]"/>
+          <delay_constant in_port="clb.I[13]" max="0.27e-9" min="0.17e-9" out_port="fle[5].in[2]"/>
+          <delay_constant in_port="clb.I[14]" max="0.27e-9" min="0.17e-9" out_port="fle[5].in[2]"/>
+          <delay_constant in_port="clb.I[15]" max="0.27e-9" min="0.17e-9" out_port="fle[5].in[2]"/>
+          <delay_constant in_port="clb.I[16]" max="0.27e-9" min="0.17e-9" out_port="fle[5].in[2]"/>
+          <delay_constant in_port="clb.I[17]" max="0.27e-9" min="0.17e-9" out_port="fle[5].in[2]"/>
+          <delay_constant in_port="clb.I[18]" max="0.27e-9" min="0.17e-9" out_port="fle[5].in[2]"/>
+          <delay_constant in_port="clb.I[19]" max="0.27e-9" min="0.17e-9" out_port="fle[5].in[2]"/>
+          <delay_constant in_port="clb.I[20]" max="0.27e-9" min="0.17e-9" out_port="fle[5].in[2]"/>
+          <delay_constant in_port="clb.I[21]" max="0.27e-9" min="0.17e-9" out_port="fle[5].in[2]"/>
+          <delay_constant in_port="clb.I[22]" max="0.27e-9" min="0.17e-9" out_port="fle[5].in[2]"/>
+          <delay_constant in_port="clb.I[23]" max="0.27e-9" min="0.17e-9" out_port="fle[5].in[2]"/>
+          <delay_constant in_port="fle[0].out" max="0.31e-9" min="0.21e-9" out_port="fle[5].in[2]"/>
+          <delay_constant in_port="fle[1].out" max="0.31e-9" min="0.21e-9" out_port="fle[5].in[2]"/>
+          <delay_constant in_port="fle[2].out" max="0.31e-9" min="0.21e-9" out_port="fle[5].in[2]"/>
+          <delay_constant in_port="fle[3].out" max="0.31e-9" min="0.21e-9" out_port="fle[5].in[2]"/>
+          <delay_constant in_port="fle[4].out" max="0.31e-9" min="0.21e-9" out_port="fle[5].in[2]"/>
+          <delay_constant in_port="fle[5].out" max="0.31e-9" min="0.21e-9" out_port="fle[5].in[2]"/>
+          <delay_constant in_port="fle[6].out" max="0.31e-9" min="0.21e-9" out_port="fle[5].in[2]"/>
+          <delay_constant in_port="fle[7].out" max="0.31e-9" min="0.21e-9" out_port="fle[5].in[2]"/>
           <metadata>
             <meta name="fasm_mux">
 clb.I[0] : NULL
@@ -1799,6 +2543,38 @@ fle[7].out : mem_fle_5_in_2.mem_out[0],mem_fle_5_in_2.mem_out[1],mem_fle_5_in_2.
           </metadata>
         </mux>
         <mux input="clb.I[0] clb.I[1] clb.I[2] clb.I[3] clb.I[4] clb.I[5] clb.I[6] clb.I[7] clb.I[8] clb.I[9] clb.I[10] clb.I[11] clb.I[12] clb.I[13] clb.I[14] clb.I[15] clb.I[16] clb.I[17] clb.I[18] clb.I[19] clb.I[20] clb.I[21] clb.I[22] clb.I[23] fle[0].out fle[1].out fle[2].out fle[3].out fle[4].out fle[5].out fle[6].out fle[7].out" name="crossbar_fle[5].in[3]" output="fle[5].in[3]">
+          <delay_constant in_port="clb.I[0]" max="0.27e-9" min="0.17e-9" out_port="fle[5].in[3]"/>
+          <delay_constant in_port="clb.I[1]" max="0.27e-9" min="0.17e-9" out_port="fle[5].in[3]"/>
+          <delay_constant in_port="clb.I[2]" max="0.27e-9" min="0.17e-9" out_port="fle[5].in[3]"/>
+          <delay_constant in_port="clb.I[3]" max="0.27e-9" min="0.17e-9" out_port="fle[5].in[3]"/>
+          <delay_constant in_port="clb.I[4]" max="0.27e-9" min="0.17e-9" out_port="fle[5].in[3]"/>
+          <delay_constant in_port="clb.I[5]" max="0.27e-9" min="0.17e-9" out_port="fle[5].in[3]"/>
+          <delay_constant in_port="clb.I[6]" max="0.27e-9" min="0.17e-9" out_port="fle[5].in[3]"/>
+          <delay_constant in_port="clb.I[7]" max="0.27e-9" min="0.17e-9" out_port="fle[5].in[3]"/>
+          <delay_constant in_port="clb.I[8]" max="0.27e-9" min="0.17e-9" out_port="fle[5].in[3]"/>
+          <delay_constant in_port="clb.I[9]" max="0.27e-9" min="0.17e-9" out_port="fle[5].in[3]"/>
+          <delay_constant in_port="clb.I[10]" max="0.27e-9" min="0.17e-9" out_port="fle[5].in[3]"/>
+          <delay_constant in_port="clb.I[11]" max="0.27e-9" min="0.17e-9" out_port="fle[5].in[3]"/>
+          <delay_constant in_port="clb.I[12]" max="0.27e-9" min="0.17e-9" out_port="fle[5].in[3]"/>
+          <delay_constant in_port="clb.I[13]" max="0.27e-9" min="0.17e-9" out_port="fle[5].in[3]"/>
+          <delay_constant in_port="clb.I[14]" max="0.27e-9" min="0.17e-9" out_port="fle[5].in[3]"/>
+          <delay_constant in_port="clb.I[15]" max="0.27e-9" min="0.17e-9" out_port="fle[5].in[3]"/>
+          <delay_constant in_port="clb.I[16]" max="0.27e-9" min="0.17e-9" out_port="fle[5].in[3]"/>
+          <delay_constant in_port="clb.I[17]" max="0.27e-9" min="0.17e-9" out_port="fle[5].in[3]"/>
+          <delay_constant in_port="clb.I[18]" max="0.27e-9" min="0.17e-9" out_port="fle[5].in[3]"/>
+          <delay_constant in_port="clb.I[19]" max="0.27e-9" min="0.17e-9" out_port="fle[5].in[3]"/>
+          <delay_constant in_port="clb.I[20]" max="0.27e-9" min="0.17e-9" out_port="fle[5].in[3]"/>
+          <delay_constant in_port="clb.I[21]" max="0.27e-9" min="0.17e-9" out_port="fle[5].in[3]"/>
+          <delay_constant in_port="clb.I[22]" max="0.27e-9" min="0.17e-9" out_port="fle[5].in[3]"/>
+          <delay_constant in_port="clb.I[23]" max="0.27e-9" min="0.17e-9" out_port="fle[5].in[3]"/>
+          <delay_constant in_port="fle[0].out" max="0.31e-9" min="0.21e-9" out_port="fle[5].in[3]"/>
+          <delay_constant in_port="fle[1].out" max="0.31e-9" min="0.21e-9" out_port="fle[5].in[3]"/>
+          <delay_constant in_port="fle[2].out" max="0.31e-9" min="0.21e-9" out_port="fle[5].in[3]"/>
+          <delay_constant in_port="fle[3].out" max="0.31e-9" min="0.21e-9" out_port="fle[5].in[3]"/>
+          <delay_constant in_port="fle[4].out" max="0.31e-9" min="0.21e-9" out_port="fle[5].in[3]"/>
+          <delay_constant in_port="fle[5].out" max="0.31e-9" min="0.21e-9" out_port="fle[5].in[3]"/>
+          <delay_constant in_port="fle[6].out" max="0.31e-9" min="0.21e-9" out_port="fle[5].in[3]"/>
+          <delay_constant in_port="fle[7].out" max="0.31e-9" min="0.21e-9" out_port="fle[5].in[3]"/>
           <metadata>
             <meta name="fasm_mux">
 clb.I[0] : NULL
@@ -1836,6 +2612,38 @@ fle[7].out : mem_fle_5_in_3.mem_out[0],mem_fle_5_in_3.mem_out[1],mem_fle_5_in_3.
           </metadata>
         </mux>
         <mux input="clb.I[0] clb.I[1] clb.I[2] clb.I[3] clb.I[4] clb.I[5] clb.I[6] clb.I[7] clb.I[8] clb.I[9] clb.I[10] clb.I[11] clb.I[12] clb.I[13] clb.I[14] clb.I[15] clb.I[16] clb.I[17] clb.I[18] clb.I[19] clb.I[20] clb.I[21] clb.I[22] clb.I[23] fle[0].out fle[1].out fle[2].out fle[3].out fle[4].out fle[5].out fle[6].out fle[7].out" name="crossbar_fle[6].in[0]" output="fle[6].in[0]">
+          <delay_constant in_port="clb.I[0]" max="0.27e-9" min="0.17e-9" out_port="fle[6].in[0]"/>
+          <delay_constant in_port="clb.I[1]" max="0.27e-9" min="0.17e-9" out_port="fle[6].in[0]"/>
+          <delay_constant in_port="clb.I[2]" max="0.27e-9" min="0.17e-9" out_port="fle[6].in[0]"/>
+          <delay_constant in_port="clb.I[3]" max="0.27e-9" min="0.17e-9" out_port="fle[6].in[0]"/>
+          <delay_constant in_port="clb.I[4]" max="0.27e-9" min="0.17e-9" out_port="fle[6].in[0]"/>
+          <delay_constant in_port="clb.I[5]" max="0.27e-9" min="0.17e-9" out_port="fle[6].in[0]"/>
+          <delay_constant in_port="clb.I[6]" max="0.27e-9" min="0.17e-9" out_port="fle[6].in[0]"/>
+          <delay_constant in_port="clb.I[7]" max="0.27e-9" min="0.17e-9" out_port="fle[6].in[0]"/>
+          <delay_constant in_port="clb.I[8]" max="0.27e-9" min="0.17e-9" out_port="fle[6].in[0]"/>
+          <delay_constant in_port="clb.I[9]" max="0.27e-9" min="0.17e-9" out_port="fle[6].in[0]"/>
+          <delay_constant in_port="clb.I[10]" max="0.27e-9" min="0.17e-9" out_port="fle[6].in[0]"/>
+          <delay_constant in_port="clb.I[11]" max="0.27e-9" min="0.17e-9" out_port="fle[6].in[0]"/>
+          <delay_constant in_port="clb.I[12]" max="0.27e-9" min="0.17e-9" out_port="fle[6].in[0]"/>
+          <delay_constant in_port="clb.I[13]" max="0.27e-9" min="0.17e-9" out_port="fle[6].in[0]"/>
+          <delay_constant in_port="clb.I[14]" max="0.27e-9" min="0.17e-9" out_port="fle[6].in[0]"/>
+          <delay_constant in_port="clb.I[15]" max="0.27e-9" min="0.17e-9" out_port="fle[6].in[0]"/>
+          <delay_constant in_port="clb.I[16]" max="0.27e-9" min="0.17e-9" out_port="fle[6].in[0]"/>
+          <delay_constant in_port="clb.I[17]" max="0.27e-9" min="0.17e-9" out_port="fle[6].in[0]"/>
+          <delay_constant in_port="clb.I[18]" max="0.27e-9" min="0.17e-9" out_port="fle[6].in[0]"/>
+          <delay_constant in_port="clb.I[19]" max="0.27e-9" min="0.17e-9" out_port="fle[6].in[0]"/>
+          <delay_constant in_port="clb.I[20]" max="0.27e-9" min="0.17e-9" out_port="fle[6].in[0]"/>
+          <delay_constant in_port="clb.I[21]" max="0.27e-9" min="0.17e-9" out_port="fle[6].in[0]"/>
+          <delay_constant in_port="clb.I[22]" max="0.27e-9" min="0.17e-9" out_port="fle[6].in[0]"/>
+          <delay_constant in_port="clb.I[23]" max="0.27e-9" min="0.17e-9" out_port="fle[6].in[0]"/>
+          <delay_constant in_port="fle[0].out" max="0.31e-9" min="0.21e-9" out_port="fle[6].in[0]"/>
+          <delay_constant in_port="fle[1].out" max="0.31e-9" min="0.21e-9" out_port="fle[6].in[0]"/>
+          <delay_constant in_port="fle[2].out" max="0.31e-9" min="0.21e-9" out_port="fle[6].in[0]"/>
+          <delay_constant in_port="fle[3].out" max="0.31e-9" min="0.21e-9" out_port="fle[6].in[0]"/>
+          <delay_constant in_port="fle[4].out" max="0.31e-9" min="0.21e-9" out_port="fle[6].in[0]"/>
+          <delay_constant in_port="fle[5].out" max="0.31e-9" min="0.21e-9" out_port="fle[6].in[0]"/>
+          <delay_constant in_port="fle[6].out" max="0.31e-9" min="0.21e-9" out_port="fle[6].in[0]"/>
+          <delay_constant in_port="fle[7].out" max="0.31e-9" min="0.21e-9" out_port="fle[6].in[0]"/>
           <metadata>
             <meta name="fasm_mux">
 clb.I[0] : NULL
@@ -1873,6 +2681,38 @@ fle[7].out : mem_fle_6_in_0.mem_out[0],mem_fle_6_in_0.mem_out[1],mem_fle_6_in_0.
           </metadata>
         </mux>
         <mux input="clb.I[0] clb.I[1] clb.I[2] clb.I[3] clb.I[4] clb.I[5] clb.I[6] clb.I[7] clb.I[8] clb.I[9] clb.I[10] clb.I[11] clb.I[12] clb.I[13] clb.I[14] clb.I[15] clb.I[16] clb.I[17] clb.I[18] clb.I[19] clb.I[20] clb.I[21] clb.I[22] clb.I[23] fle[0].out fle[1].out fle[2].out fle[3].out fle[4].out fle[5].out fle[6].out fle[7].out" name="crossbar_fle[6].in[1]" output="fle[6].in[1]">
+          <delay_constant in_port="clb.I[0]" max="0.27e-9" min="0.17e-9" out_port="fle[6].in[1]"/>
+          <delay_constant in_port="clb.I[1]" max="0.27e-9" min="0.17e-9" out_port="fle[6].in[1]"/>
+          <delay_constant in_port="clb.I[2]" max="0.27e-9" min="0.17e-9" out_port="fle[6].in[1]"/>
+          <delay_constant in_port="clb.I[3]" max="0.27e-9" min="0.17e-9" out_port="fle[6].in[1]"/>
+          <delay_constant in_port="clb.I[4]" max="0.27e-9" min="0.17e-9" out_port="fle[6].in[1]"/>
+          <delay_constant in_port="clb.I[5]" max="0.27e-9" min="0.17e-9" out_port="fle[6].in[1]"/>
+          <delay_constant in_port="clb.I[6]" max="0.27e-9" min="0.17e-9" out_port="fle[6].in[1]"/>
+          <delay_constant in_port="clb.I[7]" max="0.27e-9" min="0.17e-9" out_port="fle[6].in[1]"/>
+          <delay_constant in_port="clb.I[8]" max="0.27e-9" min="0.17e-9" out_port="fle[6].in[1]"/>
+          <delay_constant in_port="clb.I[9]" max="0.27e-9" min="0.17e-9" out_port="fle[6].in[1]"/>
+          <delay_constant in_port="clb.I[10]" max="0.27e-9" min="0.17e-9" out_port="fle[6].in[1]"/>
+          <delay_constant in_port="clb.I[11]" max="0.27e-9" min="0.17e-9" out_port="fle[6].in[1]"/>
+          <delay_constant in_port="clb.I[12]" max="0.27e-9" min="0.17e-9" out_port="fle[6].in[1]"/>
+          <delay_constant in_port="clb.I[13]" max="0.27e-9" min="0.17e-9" out_port="fle[6].in[1]"/>
+          <delay_constant in_port="clb.I[14]" max="0.27e-9" min="0.17e-9" out_port="fle[6].in[1]"/>
+          <delay_constant in_port="clb.I[15]" max="0.27e-9" min="0.17e-9" out_port="fle[6].in[1]"/>
+          <delay_constant in_port="clb.I[16]" max="0.27e-9" min="0.17e-9" out_port="fle[6].in[1]"/>
+          <delay_constant in_port="clb.I[17]" max="0.27e-9" min="0.17e-9" out_port="fle[6].in[1]"/>
+          <delay_constant in_port="clb.I[18]" max="0.27e-9" min="0.17e-9" out_port="fle[6].in[1]"/>
+          <delay_constant in_port="clb.I[19]" max="0.27e-9" min="0.17e-9" out_port="fle[6].in[1]"/>
+          <delay_constant in_port="clb.I[20]" max="0.27e-9" min="0.17e-9" out_port="fle[6].in[1]"/>
+          <delay_constant in_port="clb.I[21]" max="0.27e-9" min="0.17e-9" out_port="fle[6].in[1]"/>
+          <delay_constant in_port="clb.I[22]" max="0.27e-9" min="0.17e-9" out_port="fle[6].in[1]"/>
+          <delay_constant in_port="clb.I[23]" max="0.27e-9" min="0.17e-9" out_port="fle[6].in[1]"/>
+          <delay_constant in_port="fle[0].out" max="0.31e-9" min="0.21e-9" out_port="fle[6].in[1]"/>
+          <delay_constant in_port="fle[1].out" max="0.31e-9" min="0.21e-9" out_port="fle[6].in[1]"/>
+          <delay_constant in_port="fle[2].out" max="0.31e-9" min="0.21e-9" out_port="fle[6].in[1]"/>
+          <delay_constant in_port="fle[3].out" max="0.31e-9" min="0.21e-9" out_port="fle[6].in[1]"/>
+          <delay_constant in_port="fle[4].out" max="0.31e-9" min="0.21e-9" out_port="fle[6].in[1]"/>
+          <delay_constant in_port="fle[5].out" max="0.31e-9" min="0.21e-9" out_port="fle[6].in[1]"/>
+          <delay_constant in_port="fle[6].out" max="0.31e-9" min="0.21e-9" out_port="fle[6].in[1]"/>
+          <delay_constant in_port="fle[7].out" max="0.31e-9" min="0.21e-9" out_port="fle[6].in[1]"/>
           <metadata>
             <meta name="fasm_mux">
 clb.I[0] : NULL
@@ -1910,6 +2750,38 @@ fle[7].out : mem_fle_6_in_1.mem_out[0],mem_fle_6_in_1.mem_out[1],mem_fle_6_in_1.
           </metadata>
         </mux>
         <mux input="clb.I[0] clb.I[1] clb.I[2] clb.I[3] clb.I[4] clb.I[5] clb.I[6] clb.I[7] clb.I[8] clb.I[9] clb.I[10] clb.I[11] clb.I[12] clb.I[13] clb.I[14] clb.I[15] clb.I[16] clb.I[17] clb.I[18] clb.I[19] clb.I[20] clb.I[21] clb.I[22] clb.I[23] fle[0].out fle[1].out fle[2].out fle[3].out fle[4].out fle[5].out fle[6].out fle[7].out" name="crossbar_fle[6].in[2]" output="fle[6].in[2]">
+          <delay_constant in_port="clb.I[0]" max="0.27e-9" min="0.17e-9" out_port="fle[6].in[2]"/>
+          <delay_constant in_port="clb.I[1]" max="0.27e-9" min="0.17e-9" out_port="fle[6].in[2]"/>
+          <delay_constant in_port="clb.I[2]" max="0.27e-9" min="0.17e-9" out_port="fle[6].in[2]"/>
+          <delay_constant in_port="clb.I[3]" max="0.27e-9" min="0.17e-9" out_port="fle[6].in[2]"/>
+          <delay_constant in_port="clb.I[4]" max="0.27e-9" min="0.17e-9" out_port="fle[6].in[2]"/>
+          <delay_constant in_port="clb.I[5]" max="0.27e-9" min="0.17e-9" out_port="fle[6].in[2]"/>
+          <delay_constant in_port="clb.I[6]" max="0.27e-9" min="0.17e-9" out_port="fle[6].in[2]"/>
+          <delay_constant in_port="clb.I[7]" max="0.27e-9" min="0.17e-9" out_port="fle[6].in[2]"/>
+          <delay_constant in_port="clb.I[8]" max="0.27e-9" min="0.17e-9" out_port="fle[6].in[2]"/>
+          <delay_constant in_port="clb.I[9]" max="0.27e-9" min="0.17e-9" out_port="fle[6].in[2]"/>
+          <delay_constant in_port="clb.I[10]" max="0.27e-9" min="0.17e-9" out_port="fle[6].in[2]"/>
+          <delay_constant in_port="clb.I[11]" max="0.27e-9" min="0.17e-9" out_port="fle[6].in[2]"/>
+          <delay_constant in_port="clb.I[12]" max="0.27e-9" min="0.17e-9" out_port="fle[6].in[2]"/>
+          <delay_constant in_port="clb.I[13]" max="0.27e-9" min="0.17e-9" out_port="fle[6].in[2]"/>
+          <delay_constant in_port="clb.I[14]" max="0.27e-9" min="0.17e-9" out_port="fle[6].in[2]"/>
+          <delay_constant in_port="clb.I[15]" max="0.27e-9" min="0.17e-9" out_port="fle[6].in[2]"/>
+          <delay_constant in_port="clb.I[16]" max="0.27e-9" min="0.17e-9" out_port="fle[6].in[2]"/>
+          <delay_constant in_port="clb.I[17]" max="0.27e-9" min="0.17e-9" out_port="fle[6].in[2]"/>
+          <delay_constant in_port="clb.I[18]" max="0.27e-9" min="0.17e-9" out_port="fle[6].in[2]"/>
+          <delay_constant in_port="clb.I[19]" max="0.27e-9" min="0.17e-9" out_port="fle[6].in[2]"/>
+          <delay_constant in_port="clb.I[20]" max="0.27e-9" min="0.17e-9" out_port="fle[6].in[2]"/>
+          <delay_constant in_port="clb.I[21]" max="0.27e-9" min="0.17e-9" out_port="fle[6].in[2]"/>
+          <delay_constant in_port="clb.I[22]" max="0.27e-9" min="0.17e-9" out_port="fle[6].in[2]"/>
+          <delay_constant in_port="clb.I[23]" max="0.27e-9" min="0.17e-9" out_port="fle[6].in[2]"/>
+          <delay_constant in_port="fle[0].out" max="0.31e-9" min="0.21e-9" out_port="fle[6].in[2]"/>
+          <delay_constant in_port="fle[1].out" max="0.31e-9" min="0.21e-9" out_port="fle[6].in[2]"/>
+          <delay_constant in_port="fle[2].out" max="0.31e-9" min="0.21e-9" out_port="fle[6].in[2]"/>
+          <delay_constant in_port="fle[3].out" max="0.31e-9" min="0.21e-9" out_port="fle[6].in[2]"/>
+          <delay_constant in_port="fle[4].out" max="0.31e-9" min="0.21e-9" out_port="fle[6].in[2]"/>
+          <delay_constant in_port="fle[5].out" max="0.31e-9" min="0.21e-9" out_port="fle[6].in[2]"/>
+          <delay_constant in_port="fle[6].out" max="0.31e-9" min="0.21e-9" out_port="fle[6].in[2]"/>
+          <delay_constant in_port="fle[7].out" max="0.31e-9" min="0.21e-9" out_port="fle[6].in[2]"/>
           <metadata>
             <meta name="fasm_mux">
 clb.I[0] : NULL
@@ -1947,6 +2819,38 @@ fle[7].out : mem_fle_6_in_2.mem_out[0],mem_fle_6_in_2.mem_out[1],mem_fle_6_in_2.
           </metadata>
         </mux>
         <mux input="clb.I[0] clb.I[1] clb.I[2] clb.I[3] clb.I[4] clb.I[5] clb.I[6] clb.I[7] clb.I[8] clb.I[9] clb.I[10] clb.I[11] clb.I[12] clb.I[13] clb.I[14] clb.I[15] clb.I[16] clb.I[17] clb.I[18] clb.I[19] clb.I[20] clb.I[21] clb.I[22] clb.I[23] fle[0].out fle[1].out fle[2].out fle[3].out fle[4].out fle[5].out fle[6].out fle[7].out" name="crossbar_fle[6].in[3]" output="fle[6].in[3]">
+          <delay_constant in_port="clb.I[0]" max="0.27e-9" min="0.17e-9" out_port="fle[6].in[3]"/>
+          <delay_constant in_port="clb.I[1]" max="0.27e-9" min="0.17e-9" out_port="fle[6].in[3]"/>
+          <delay_constant in_port="clb.I[2]" max="0.27e-9" min="0.17e-9" out_port="fle[6].in[3]"/>
+          <delay_constant in_port="clb.I[3]" max="0.27e-9" min="0.17e-9" out_port="fle[6].in[3]"/>
+          <delay_constant in_port="clb.I[4]" max="0.27e-9" min="0.17e-9" out_port="fle[6].in[3]"/>
+          <delay_constant in_port="clb.I[5]" max="0.27e-9" min="0.17e-9" out_port="fle[6].in[3]"/>
+          <delay_constant in_port="clb.I[6]" max="0.27e-9" min="0.17e-9" out_port="fle[6].in[3]"/>
+          <delay_constant in_port="clb.I[7]" max="0.27e-9" min="0.17e-9" out_port="fle[6].in[3]"/>
+          <delay_constant in_port="clb.I[8]" max="0.27e-9" min="0.17e-9" out_port="fle[6].in[3]"/>
+          <delay_constant in_port="clb.I[9]" max="0.27e-9" min="0.17e-9" out_port="fle[6].in[3]"/>
+          <delay_constant in_port="clb.I[10]" max="0.27e-9" min="0.17e-9" out_port="fle[6].in[3]"/>
+          <delay_constant in_port="clb.I[11]" max="0.27e-9" min="0.17e-9" out_port="fle[6].in[3]"/>
+          <delay_constant in_port="clb.I[12]" max="0.27e-9" min="0.17e-9" out_port="fle[6].in[3]"/>
+          <delay_constant in_port="clb.I[13]" max="0.27e-9" min="0.17e-9" out_port="fle[6].in[3]"/>
+          <delay_constant in_port="clb.I[14]" max="0.27e-9" min="0.17e-9" out_port="fle[6].in[3]"/>
+          <delay_constant in_port="clb.I[15]" max="0.27e-9" min="0.17e-9" out_port="fle[6].in[3]"/>
+          <delay_constant in_port="clb.I[16]" max="0.27e-9" min="0.17e-9" out_port="fle[6].in[3]"/>
+          <delay_constant in_port="clb.I[17]" max="0.27e-9" min="0.17e-9" out_port="fle[6].in[3]"/>
+          <delay_constant in_port="clb.I[18]" max="0.27e-9" min="0.17e-9" out_port="fle[6].in[3]"/>
+          <delay_constant in_port="clb.I[19]" max="0.27e-9" min="0.17e-9" out_port="fle[6].in[3]"/>
+          <delay_constant in_port="clb.I[20]" max="0.27e-9" min="0.17e-9" out_port="fle[6].in[3]"/>
+          <delay_constant in_port="clb.I[21]" max="0.27e-9" min="0.17e-9" out_port="fle[6].in[3]"/>
+          <delay_constant in_port="clb.I[22]" max="0.27e-9" min="0.17e-9" out_port="fle[6].in[3]"/>
+          <delay_constant in_port="clb.I[23]" max="0.27e-9" min="0.17e-9" out_port="fle[6].in[3]"/>
+          <delay_constant in_port="fle[0].out" max="0.31e-9" min="0.21e-9" out_port="fle[6].in[3]"/>
+          <delay_constant in_port="fle[1].out" max="0.31e-9" min="0.21e-9" out_port="fle[6].in[3]"/>
+          <delay_constant in_port="fle[2].out" max="0.31e-9" min="0.21e-9" out_port="fle[6].in[3]"/>
+          <delay_constant in_port="fle[3].out" max="0.31e-9" min="0.21e-9" out_port="fle[6].in[3]"/>
+          <delay_constant in_port="fle[4].out" max="0.31e-9" min="0.21e-9" out_port="fle[6].in[3]"/>
+          <delay_constant in_port="fle[5].out" max="0.31e-9" min="0.21e-9" out_port="fle[6].in[3]"/>
+          <delay_constant in_port="fle[6].out" max="0.31e-9" min="0.21e-9" out_port="fle[6].in[3]"/>
+          <delay_constant in_port="fle[7].out" max="0.31e-9" min="0.21e-9" out_port="fle[6].in[3]"/>
           <metadata>
             <meta name="fasm_mux">
 clb.I[0] : NULL
@@ -1984,6 +2888,38 @@ fle[7].out : mem_fle_6_in_3.mem_out[0],mem_fle_6_in_3.mem_out[1],mem_fle_6_in_3.
           </metadata>
         </mux>
         <mux input="clb.I[0] clb.I[1] clb.I[2] clb.I[3] clb.I[4] clb.I[5] clb.I[6] clb.I[7] clb.I[8] clb.I[9] clb.I[10] clb.I[11] clb.I[12] clb.I[13] clb.I[14] clb.I[15] clb.I[16] clb.I[17] clb.I[18] clb.I[19] clb.I[20] clb.I[21] clb.I[22] clb.I[23] fle[0].out fle[1].out fle[2].out fle[3].out fle[4].out fle[5].out fle[6].out fle[7].out" name="crossbar_fle[7].in[0]" output="fle[7].in[0]">
+          <delay_constant in_port="clb.I[0]" max="0.27e-9" min="0.17e-9" out_port="fle[7].in[0]"/>
+          <delay_constant in_port="clb.I[1]" max="0.27e-9" min="0.17e-9" out_port="fle[7].in[0]"/>
+          <delay_constant in_port="clb.I[2]" max="0.27e-9" min="0.17e-9" out_port="fle[7].in[0]"/>
+          <delay_constant in_port="clb.I[3]" max="0.27e-9" min="0.17e-9" out_port="fle[7].in[0]"/>
+          <delay_constant in_port="clb.I[4]" max="0.27e-9" min="0.17e-9" out_port="fle[7].in[0]"/>
+          <delay_constant in_port="clb.I[5]" max="0.27e-9" min="0.17e-9" out_port="fle[7].in[0]"/>
+          <delay_constant in_port="clb.I[6]" max="0.27e-9" min="0.17e-9" out_port="fle[7].in[0]"/>
+          <delay_constant in_port="clb.I[7]" max="0.27e-9" min="0.17e-9" out_port="fle[7].in[0]"/>
+          <delay_constant in_port="clb.I[8]" max="0.27e-9" min="0.17e-9" out_port="fle[7].in[0]"/>
+          <delay_constant in_port="clb.I[9]" max="0.27e-9" min="0.17e-9" out_port="fle[7].in[0]"/>
+          <delay_constant in_port="clb.I[10]" max="0.27e-9" min="0.17e-9" out_port="fle[7].in[0]"/>
+          <delay_constant in_port="clb.I[11]" max="0.27e-9" min="0.17e-9" out_port="fle[7].in[0]"/>
+          <delay_constant in_port="clb.I[12]" max="0.27e-9" min="0.17e-9" out_port="fle[7].in[0]"/>
+          <delay_constant in_port="clb.I[13]" max="0.27e-9" min="0.17e-9" out_port="fle[7].in[0]"/>
+          <delay_constant in_port="clb.I[14]" max="0.27e-9" min="0.17e-9" out_port="fle[7].in[0]"/>
+          <delay_constant in_port="clb.I[15]" max="0.27e-9" min="0.17e-9" out_port="fle[7].in[0]"/>
+          <delay_constant in_port="clb.I[16]" max="0.27e-9" min="0.17e-9" out_port="fle[7].in[0]"/>
+          <delay_constant in_port="clb.I[17]" max="0.27e-9" min="0.17e-9" out_port="fle[7].in[0]"/>
+          <delay_constant in_port="clb.I[18]" max="0.27e-9" min="0.17e-9" out_port="fle[7].in[0]"/>
+          <delay_constant in_port="clb.I[19]" max="0.27e-9" min="0.17e-9" out_port="fle[7].in[0]"/>
+          <delay_constant in_port="clb.I[20]" max="0.27e-9" min="0.17e-9" out_port="fle[7].in[0]"/>
+          <delay_constant in_port="clb.I[21]" max="0.27e-9" min="0.17e-9" out_port="fle[7].in[0]"/>
+          <delay_constant in_port="clb.I[22]" max="0.27e-9" min="0.17e-9" out_port="fle[7].in[0]"/>
+          <delay_constant in_port="clb.I[23]" max="0.27e-9" min="0.17e-9" out_port="fle[7].in[0]"/>
+          <delay_constant in_port="fle[0].out" max="0.31e-9" min="0.21e-9" out_port="fle[7].in[0]"/>
+          <delay_constant in_port="fle[1].out" max="0.31e-9" min="0.21e-9" out_port="fle[7].in[0]"/>
+          <delay_constant in_port="fle[2].out" max="0.31e-9" min="0.21e-9" out_port="fle[7].in[0]"/>
+          <delay_constant in_port="fle[3].out" max="0.31e-9" min="0.21e-9" out_port="fle[7].in[0]"/>
+          <delay_constant in_port="fle[4].out" max="0.31e-9" min="0.21e-9" out_port="fle[7].in[0]"/>
+          <delay_constant in_port="fle[5].out" max="0.31e-9" min="0.21e-9" out_port="fle[7].in[0]"/>
+          <delay_constant in_port="fle[6].out" max="0.31e-9" min="0.21e-9" out_port="fle[7].in[0]"/>
+          <delay_constant in_port="fle[7].out" max="0.31e-9" min="0.21e-9" out_port="fle[7].in[0]"/>
           <metadata>
             <meta name="fasm_mux">
 clb.I[0] : NULL
@@ -2021,6 +2957,38 @@ fle[7].out : mem_fle_7_in_0.mem_out[0],mem_fle_7_in_0.mem_out[1],mem_fle_7_in_0.
           </metadata>
         </mux>
         <mux input="clb.I[0] clb.I[1] clb.I[2] clb.I[3] clb.I[4] clb.I[5] clb.I[6] clb.I[7] clb.I[8] clb.I[9] clb.I[10] clb.I[11] clb.I[12] clb.I[13] clb.I[14] clb.I[15] clb.I[16] clb.I[17] clb.I[18] clb.I[19] clb.I[20] clb.I[21] clb.I[22] clb.I[23] fle[0].out fle[1].out fle[2].out fle[3].out fle[4].out fle[5].out fle[6].out fle[7].out" name="crossbar_fle[7].in[1]" output="fle[7].in[1]">
+          <delay_constant in_port="clb.I[0]" max="0.27e-9" min="0.17e-9" out_port="fle[7].in[1]"/>
+          <delay_constant in_port="clb.I[1]" max="0.27e-9" min="0.17e-9" out_port="fle[7].in[1]"/>
+          <delay_constant in_port="clb.I[2]" max="0.27e-9" min="0.17e-9" out_port="fle[7].in[1]"/>
+          <delay_constant in_port="clb.I[3]" max="0.27e-9" min="0.17e-9" out_port="fle[7].in[1]"/>
+          <delay_constant in_port="clb.I[4]" max="0.27e-9" min="0.17e-9" out_port="fle[7].in[1]"/>
+          <delay_constant in_port="clb.I[5]" max="0.27e-9" min="0.17e-9" out_port="fle[7].in[1]"/>
+          <delay_constant in_port="clb.I[6]" max="0.27e-9" min="0.17e-9" out_port="fle[7].in[1]"/>
+          <delay_constant in_port="clb.I[7]" max="0.27e-9" min="0.17e-9" out_port="fle[7].in[1]"/>
+          <delay_constant in_port="clb.I[8]" max="0.27e-9" min="0.17e-9" out_port="fle[7].in[1]"/>
+          <delay_constant in_port="clb.I[9]" max="0.27e-9" min="0.17e-9" out_port="fle[7].in[1]"/>
+          <delay_constant in_port="clb.I[10]" max="0.27e-9" min="0.17e-9" out_port="fle[7].in[1]"/>
+          <delay_constant in_port="clb.I[11]" max="0.27e-9" min="0.17e-9" out_port="fle[7].in[1]"/>
+          <delay_constant in_port="clb.I[12]" max="0.27e-9" min="0.17e-9" out_port="fle[7].in[1]"/>
+          <delay_constant in_port="clb.I[13]" max="0.27e-9" min="0.17e-9" out_port="fle[7].in[1]"/>
+          <delay_constant in_port="clb.I[14]" max="0.27e-9" min="0.17e-9" out_port="fle[7].in[1]"/>
+          <delay_constant in_port="clb.I[15]" max="0.27e-9" min="0.17e-9" out_port="fle[7].in[1]"/>
+          <delay_constant in_port="clb.I[16]" max="0.27e-9" min="0.17e-9" out_port="fle[7].in[1]"/>
+          <delay_constant in_port="clb.I[17]" max="0.27e-9" min="0.17e-9" out_port="fle[7].in[1]"/>
+          <delay_constant in_port="clb.I[18]" max="0.27e-9" min="0.17e-9" out_port="fle[7].in[1]"/>
+          <delay_constant in_port="clb.I[19]" max="0.27e-9" min="0.17e-9" out_port="fle[7].in[1]"/>
+          <delay_constant in_port="clb.I[20]" max="0.27e-9" min="0.17e-9" out_port="fle[7].in[1]"/>
+          <delay_constant in_port="clb.I[21]" max="0.27e-9" min="0.17e-9" out_port="fle[7].in[1]"/>
+          <delay_constant in_port="clb.I[22]" max="0.27e-9" min="0.17e-9" out_port="fle[7].in[1]"/>
+          <delay_constant in_port="clb.I[23]" max="0.27e-9" min="0.17e-9" out_port="fle[7].in[1]"/>
+          <delay_constant in_port="fle[0].out" max="0.31e-9" min="0.21e-9" out_port="fle[7].in[1]"/>
+          <delay_constant in_port="fle[1].out" max="0.31e-9" min="0.21e-9" out_port="fle[7].in[1]"/>
+          <delay_constant in_port="fle[2].out" max="0.31e-9" min="0.21e-9" out_port="fle[7].in[1]"/>
+          <delay_constant in_port="fle[3].out" max="0.31e-9" min="0.21e-9" out_port="fle[7].in[1]"/>
+          <delay_constant in_port="fle[4].out" max="0.31e-9" min="0.21e-9" out_port="fle[7].in[1]"/>
+          <delay_constant in_port="fle[5].out" max="0.31e-9" min="0.21e-9" out_port="fle[7].in[1]"/>
+          <delay_constant in_port="fle[6].out" max="0.31e-9" min="0.21e-9" out_port="fle[7].in[1]"/>
+          <delay_constant in_port="fle[7].out" max="0.31e-9" min="0.21e-9" out_port="fle[7].in[1]"/>
           <metadata>
             <meta name="fasm_mux">
 clb.I[0] : NULL
@@ -2058,6 +3026,38 @@ fle[7].out : mem_fle_7_in_1.mem_out[0],mem_fle_7_in_1.mem_out[1],mem_fle_7_in_1.
           </metadata>
         </mux>
         <mux input="clb.I[0] clb.I[1] clb.I[2] clb.I[3] clb.I[4] clb.I[5] clb.I[6] clb.I[7] clb.I[8] clb.I[9] clb.I[10] clb.I[11] clb.I[12] clb.I[13] clb.I[14] clb.I[15] clb.I[16] clb.I[17] clb.I[18] clb.I[19] clb.I[20] clb.I[21] clb.I[22] clb.I[23] fle[0].out fle[1].out fle[2].out fle[3].out fle[4].out fle[5].out fle[6].out fle[7].out" name="crossbar_fle[7].in[2]" output="fle[7].in[2]">
+          <delay_constant in_port="clb.I[0]" max="0.27e-9" min="0.17e-9" out_port="fle[7].in[2]"/>
+          <delay_constant in_port="clb.I[1]" max="0.27e-9" min="0.17e-9" out_port="fle[7].in[2]"/>
+          <delay_constant in_port="clb.I[2]" max="0.27e-9" min="0.17e-9" out_port="fle[7].in[2]"/>
+          <delay_constant in_port="clb.I[3]" max="0.27e-9" min="0.17e-9" out_port="fle[7].in[2]"/>
+          <delay_constant in_port="clb.I[4]" max="0.27e-9" min="0.17e-9" out_port="fle[7].in[2]"/>
+          <delay_constant in_port="clb.I[5]" max="0.27e-9" min="0.17e-9" out_port="fle[7].in[2]"/>
+          <delay_constant in_port="clb.I[6]" max="0.27e-9" min="0.17e-9" out_port="fle[7].in[2]"/>
+          <delay_constant in_port="clb.I[7]" max="0.27e-9" min="0.17e-9" out_port="fle[7].in[2]"/>
+          <delay_constant in_port="clb.I[8]" max="0.27e-9" min="0.17e-9" out_port="fle[7].in[2]"/>
+          <delay_constant in_port="clb.I[9]" max="0.27e-9" min="0.17e-9" out_port="fle[7].in[2]"/>
+          <delay_constant in_port="clb.I[10]" max="0.27e-9" min="0.17e-9" out_port="fle[7].in[2]"/>
+          <delay_constant in_port="clb.I[11]" max="0.27e-9" min="0.17e-9" out_port="fle[7].in[2]"/>
+          <delay_constant in_port="clb.I[12]" max="0.27e-9" min="0.17e-9" out_port="fle[7].in[2]"/>
+          <delay_constant in_port="clb.I[13]" max="0.27e-9" min="0.17e-9" out_port="fle[7].in[2]"/>
+          <delay_constant in_port="clb.I[14]" max="0.27e-9" min="0.17e-9" out_port="fle[7].in[2]"/>
+          <delay_constant in_port="clb.I[15]" max="0.27e-9" min="0.17e-9" out_port="fle[7].in[2]"/>
+          <delay_constant in_port="clb.I[16]" max="0.27e-9" min="0.17e-9" out_port="fle[7].in[2]"/>
+          <delay_constant in_port="clb.I[17]" max="0.27e-9" min="0.17e-9" out_port="fle[7].in[2]"/>
+          <delay_constant in_port="clb.I[18]" max="0.27e-9" min="0.17e-9" out_port="fle[7].in[2]"/>
+          <delay_constant in_port="clb.I[19]" max="0.27e-9" min="0.17e-9" out_port="fle[7].in[2]"/>
+          <delay_constant in_port="clb.I[20]" max="0.27e-9" min="0.17e-9" out_port="fle[7].in[2]"/>
+          <delay_constant in_port="clb.I[21]" max="0.27e-9" min="0.17e-9" out_port="fle[7].in[2]"/>
+          <delay_constant in_port="clb.I[22]" max="0.27e-9" min="0.17e-9" out_port="fle[7].in[2]"/>
+          <delay_constant in_port="clb.I[23]" max="0.27e-9" min="0.17e-9" out_port="fle[7].in[2]"/>
+          <delay_constant in_port="fle[0].out" max="0.31e-9" min="0.21e-9" out_port="fle[7].in[2]"/>
+          <delay_constant in_port="fle[1].out" max="0.31e-9" min="0.21e-9" out_port="fle[7].in[2]"/>
+          <delay_constant in_port="fle[2].out" max="0.31e-9" min="0.21e-9" out_port="fle[7].in[2]"/>
+          <delay_constant in_port="fle[3].out" max="0.31e-9" min="0.21e-9" out_port="fle[7].in[2]"/>
+          <delay_constant in_port="fle[4].out" max="0.31e-9" min="0.21e-9" out_port="fle[7].in[2]"/>
+          <delay_constant in_port="fle[5].out" max="0.31e-9" min="0.21e-9" out_port="fle[7].in[2]"/>
+          <delay_constant in_port="fle[6].out" max="0.31e-9" min="0.21e-9" out_port="fle[7].in[2]"/>
+          <delay_constant in_port="fle[7].out" max="0.31e-9" min="0.21e-9" out_port="fle[7].in[2]"/>
           <metadata>
             <meta name="fasm_mux">
 clb.I[0] : NULL
@@ -2095,6 +3095,38 @@ fle[7].out : mem_fle_7_in_2.mem_out[0],mem_fle_7_in_2.mem_out[1],mem_fle_7_in_2.
           </metadata>
         </mux>
         <mux input="clb.I[0] clb.I[1] clb.I[2] clb.I[3] clb.I[4] clb.I[5] clb.I[6] clb.I[7] clb.I[8] clb.I[9] clb.I[10] clb.I[11] clb.I[12] clb.I[13] clb.I[14] clb.I[15] clb.I[16] clb.I[17] clb.I[18] clb.I[19] clb.I[20] clb.I[21] clb.I[22] clb.I[23] fle[0].out fle[1].out fle[2].out fle[3].out fle[4].out fle[5].out fle[6].out fle[7].out" name="crossbar_fle[7].in[3]" output="fle[7].in[3]">
+          <delay_constant in_port="clb.I[0]" max="0.27e-9" min="0.17e-9" out_port="fle[7].in[3]"/>
+          <delay_constant in_port="clb.I[1]" max="0.27e-9" min="0.17e-9" out_port="fle[7].in[3]"/>
+          <delay_constant in_port="clb.I[2]" max="0.27e-9" min="0.17e-9" out_port="fle[7].in[3]"/>
+          <delay_constant in_port="clb.I[3]" max="0.27e-9" min="0.17e-9" out_port="fle[7].in[3]"/>
+          <delay_constant in_port="clb.I[4]" max="0.27e-9" min="0.17e-9" out_port="fle[7].in[3]"/>
+          <delay_constant in_port="clb.I[5]" max="0.27e-9" min="0.17e-9" out_port="fle[7].in[3]"/>
+          <delay_constant in_port="clb.I[6]" max="0.27e-9" min="0.17e-9" out_port="fle[7].in[3]"/>
+          <delay_constant in_port="clb.I[7]" max="0.27e-9" min="0.17e-9" out_port="fle[7].in[3]"/>
+          <delay_constant in_port="clb.I[8]" max="0.27e-9" min="0.17e-9" out_port="fle[7].in[3]"/>
+          <delay_constant in_port="clb.I[9]" max="0.27e-9" min="0.17e-9" out_port="fle[7].in[3]"/>
+          <delay_constant in_port="clb.I[10]" max="0.27e-9" min="0.17e-9" out_port="fle[7].in[3]"/>
+          <delay_constant in_port="clb.I[11]" max="0.27e-9" min="0.17e-9" out_port="fle[7].in[3]"/>
+          <delay_constant in_port="clb.I[12]" max="0.27e-9" min="0.17e-9" out_port="fle[7].in[3]"/>
+          <delay_constant in_port="clb.I[13]" max="0.27e-9" min="0.17e-9" out_port="fle[7].in[3]"/>
+          <delay_constant in_port="clb.I[14]" max="0.27e-9" min="0.17e-9" out_port="fle[7].in[3]"/>
+          <delay_constant in_port="clb.I[15]" max="0.27e-9" min="0.17e-9" out_port="fle[7].in[3]"/>
+          <delay_constant in_port="clb.I[16]" max="0.27e-9" min="0.17e-9" out_port="fle[7].in[3]"/>
+          <delay_constant in_port="clb.I[17]" max="0.27e-9" min="0.17e-9" out_port="fle[7].in[3]"/>
+          <delay_constant in_port="clb.I[18]" max="0.27e-9" min="0.17e-9" out_port="fle[7].in[3]"/>
+          <delay_constant in_port="clb.I[19]" max="0.27e-9" min="0.17e-9" out_port="fle[7].in[3]"/>
+          <delay_constant in_port="clb.I[20]" max="0.27e-9" min="0.17e-9" out_port="fle[7].in[3]"/>
+          <delay_constant in_port="clb.I[21]" max="0.27e-9" min="0.17e-9" out_port="fle[7].in[3]"/>
+          <delay_constant in_port="clb.I[22]" max="0.27e-9" min="0.17e-9" out_port="fle[7].in[3]"/>
+          <delay_constant in_port="clb.I[23]" max="0.27e-9" min="0.17e-9" out_port="fle[7].in[3]"/>
+          <delay_constant in_port="fle[0].out" max="0.31e-9" min="0.21e-9" out_port="fle[7].in[3]"/>
+          <delay_constant in_port="fle[1].out" max="0.31e-9" min="0.21e-9" out_port="fle[7].in[3]"/>
+          <delay_constant in_port="fle[2].out" max="0.31e-9" min="0.21e-9" out_port="fle[7].in[3]"/>
+          <delay_constant in_port="fle[3].out" max="0.31e-9" min="0.21e-9" out_port="fle[7].in[3]"/>
+          <delay_constant in_port="fle[4].out" max="0.31e-9" min="0.21e-9" out_port="fle[7].in[3]"/>
+          <delay_constant in_port="fle[5].out" max="0.31e-9" min="0.21e-9" out_port="fle[7].in[3]"/>
+          <delay_constant in_port="fle[6].out" max="0.31e-9" min="0.21e-9" out_port="fle[7].in[3]"/>
+          <delay_constant in_port="fle[7].out" max="0.31e-9" min="0.21e-9" out_port="fle[7].in[3]"/>
           <metadata>
             <meta name="fasm_mux">
 clb.I[0] : NULL
@@ -2132,6 +3164,10 @@ fle[7].out : mem_fle_7_in_3.mem_out[0],mem_fle_7_in_3.mem_out[1],mem_fle_7_in_3.
           </metadata>
         </mux>
         <mux input="clb.clk[0] clb.clk[1] clb.clk[2] clb.clk[3]" name="clks_fle[0].clk" output="fle[0].clk">
+          <delay_constant in_port="clb.clk[0]" max="2.124e-9" min="2.056e-9" out_port="fle[0].clk"/>
+          <delay_constant in_port="clb.clk[1]" max="2.124e-9" min="2.056e-9" out_port="fle[0].clk"/>
+          <delay_constant in_port="clb.clk[2]" max="2.124e-9" min="2.056e-9" out_port="fle[0].clk"/>
+          <delay_constant in_port="clb.clk[3]" max="2.124e-9" min="2.056e-9" out_port="fle[0].clk"/>
           <metadata>
             <meta name="fasm_mux">
 clb.clk[0] : NULL
@@ -2141,6 +3177,10 @@ clb.clk[3] : mem_fle_0_clk_0.mem_out[0],mem_fle_0_clk_0.mem_out[1]</meta>
           </metadata>
         </mux>
         <mux input="clb.clk[0] clb.clk[1] clb.clk[2] clb.clk[3]" name="clks_fle[1].clk" output="fle[1].clk">
+          <delay_constant in_port="clb.clk[0]" max="2.124e-9" min="2.056e-9" out_port="fle[1].clk"/>
+          <delay_constant in_port="clb.clk[1]" max="2.124e-9" min="2.056e-9" out_port="fle[1].clk"/>
+          <delay_constant in_port="clb.clk[2]" max="2.124e-9" min="2.056e-9" out_port="fle[1].clk"/>
+          <delay_constant in_port="clb.clk[3]" max="2.124e-9" min="2.056e-9" out_port="fle[1].clk"/>
           <metadata>
             <meta name="fasm_mux">
 clb.clk[0] : NULL
@@ -2150,6 +3190,10 @@ clb.clk[3] : mem_fle_1_clk_0.mem_out[0],mem_fle_1_clk_0.mem_out[1]</meta>
           </metadata>
         </mux>
         <mux input="clb.clk[0] clb.clk[1] clb.clk[2] clb.clk[3]" name="clks_fle[2].clk" output="fle[2].clk">
+          <delay_constant in_port="clb.clk[0]" max="2.124e-9" min="2.056e-9" out_port="fle[2].clk"/>
+          <delay_constant in_port="clb.clk[1]" max="2.124e-9" min="2.056e-9" out_port="fle[2].clk"/>
+          <delay_constant in_port="clb.clk[2]" max="2.124e-9" min="2.056e-9" out_port="fle[2].clk"/>
+          <delay_constant in_port="clb.clk[3]" max="2.124e-9" min="2.056e-9" out_port="fle[2].clk"/>
           <metadata>
             <meta name="fasm_mux">
 clb.clk[0] : NULL
@@ -2159,6 +3203,10 @@ clb.clk[3] : mem_fle_2_clk_0.mem_out[0],mem_fle_2_clk_0.mem_out[1]</meta>
           </metadata>
         </mux>
         <mux input="clb.clk[0] clb.clk[1] clb.clk[2] clb.clk[3]" name="clks_fle[3].clk" output="fle[3].clk">
+          <delay_constant in_port="clb.clk[0]" max="2.124e-9" min="2.056e-9" out_port="fle[3].clk"/>
+          <delay_constant in_port="clb.clk[1]" max="2.124e-9" min="2.056e-9" out_port="fle[3].clk"/>
+          <delay_constant in_port="clb.clk[2]" max="2.124e-9" min="2.056e-9" out_port="fle[3].clk"/>
+          <delay_constant in_port="clb.clk[3]" max="2.124e-9" min="2.056e-9" out_port="fle[3].clk"/>
           <metadata>
             <meta name="fasm_mux">
 clb.clk[0] : NULL
@@ -2168,6 +3216,10 @@ clb.clk[3] : mem_fle_3_clk_0.mem_out[0],mem_fle_3_clk_0.mem_out[1]</meta>
           </metadata>
         </mux>
         <mux input="clb.clk[0] clb.clk[1] clb.clk[2] clb.clk[3]" name="clks_fle[4].clk" output="fle[4].clk">
+          <delay_constant in_port="clb.clk[0]" max="2.124e-9" min="2.056e-9" out_port="fle[4].clk"/>
+          <delay_constant in_port="clb.clk[1]" max="2.124e-9" min="2.056e-9" out_port="fle[4].clk"/>
+          <delay_constant in_port="clb.clk[2]" max="2.124e-9" min="2.056e-9" out_port="fle[4].clk"/>
+          <delay_constant in_port="clb.clk[3]" max="2.124e-9" min="2.056e-9" out_port="fle[4].clk"/>
           <metadata>
             <meta name="fasm_mux">
 clb.clk[0] : NULL
@@ -2177,6 +3229,10 @@ clb.clk[3] : mem_fle_4_clk_0.mem_out[0],mem_fle_4_clk_0.mem_out[1]</meta>
           </metadata>
         </mux>
         <mux input="clb.clk[0] clb.clk[1] clb.clk[2] clb.clk[3]" name="clks_fle[5].clk" output="fle[5].clk">
+          <delay_constant in_port="clb.clk[0]" max="2.124e-9" min="2.056e-9" out_port="fle[5].clk"/>
+          <delay_constant in_port="clb.clk[1]" max="2.124e-9" min="2.056e-9" out_port="fle[5].clk"/>
+          <delay_constant in_port="clb.clk[2]" max="2.124e-9" min="2.056e-9" out_port="fle[5].clk"/>
+          <delay_constant in_port="clb.clk[3]" max="2.124e-9" min="2.056e-9" out_port="fle[5].clk"/>
           <metadata>
             <meta name="fasm_mux">
 clb.clk[0] : NULL
@@ -2186,6 +3242,10 @@ clb.clk[3] : mem_fle_5_clk_0.mem_out[0],mem_fle_5_clk_0.mem_out[1]</meta>
           </metadata>
         </mux>
         <mux input="clb.clk[0] clb.clk[1] clb.clk[2] clb.clk[3]" name="clks_fle[6].clk" output="fle[6].clk">
+          <delay_constant in_port="clb.clk[0]" max="2.124e-9" min="2.056e-9" out_port="fle[6].clk"/>
+          <delay_constant in_port="clb.clk[1]" max="2.124e-9" min="2.056e-9" out_port="fle[6].clk"/>
+          <delay_constant in_port="clb.clk[2]" max="2.124e-9" min="2.056e-9" out_port="fle[6].clk"/>
+          <delay_constant in_port="clb.clk[3]" max="2.124e-9" min="2.056e-9" out_port="fle[6].clk"/>
           <metadata>
             <meta name="fasm_mux">
 clb.clk[0] : NULL
@@ -2195,6 +3255,10 @@ clb.clk[3] : mem_fle_6_clk_0.mem_out[0],mem_fle_6_clk_0.mem_out[1]</meta>
           </metadata>
         </mux>
         <mux input="clb.clk[0] clb.clk[1] clb.clk[2] clb.clk[3]" name="clks_fle[7].clk" output="fle[7].clk">
+          <delay_constant in_port="clb.clk[0]" max="2.124e-9" min="2.056e-9" out_port="fle[7].clk"/>
+          <delay_constant in_port="clb.clk[1]" max="2.124e-9" min="2.056e-9" out_port="fle[7].clk"/>
+          <delay_constant in_port="clb.clk[2]" max="2.124e-9" min="2.056e-9" out_port="fle[7].clk"/>
+          <delay_constant in_port="clb.clk[3]" max="2.124e-9" min="2.056e-9" out_port="fle[7].clk"/>
           <metadata>
             <meta name="fasm_mux">
 clb.clk[0] : NULL
