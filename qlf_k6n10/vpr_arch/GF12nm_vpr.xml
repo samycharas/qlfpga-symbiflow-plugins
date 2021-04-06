@@ -3,6 +3,7 @@
   - The chip layout is organized with a 128x128 array of Configurable Logic Blocks (CLBs)
     surrounded by a ring of I/Os.
   - CLB / Memory block ratio is 30. The BRAMs are interspaced with CLB columns.
+  - Columns of DSP48E1 are interspaced with CLB columns, with one DSP column per BRAM column.
   - Delay numbers are extracted from a 12 nm technology
     Process corner: TT 0.8V
   
@@ -80,16 +81,6 @@
         <port name="Q" clock="C"/>
       </output_ports>
     </model>
-    <model name="dffe">
-      <input_ports>
-        <port name="D" clock="C"/>
-        <port name="C" is_clock="1"/>
-        <port name="E" clock="C"/>
-      </input_ports>
-      <output_ports>
-        <port name="Q" clock="C"/>
-      </output_ports>
-    </model>
     <model name="dffre">
       <input_ports>
         <port name="D" clock="C"/>
@@ -148,6 +139,27 @@
       </output_ports>
     </model>
     <!-- Dual port ram model definition ends -->
+    <!-- DSP48E1 model definition starts     -->
+    <model name="DSP48E1">
+      <input_ports>
+        <port name="A" combinational_sink_ports="P"/>
+        <port name="B" combinational_sink_ports="P"/>
+        <port name="C" combinational_sink_ports="P"/>
+        <port name="D" combinational_sink_ports="P"/>
+        <port name="ALUMODE" combinational_sink_ports="P"/>
+        <port name="ACIN" combinational_sink_ports="P"/>
+        <port name="BCIN" combinational_sink_ports="P"/>
+        <port name="CARRYIN" combinational_sink_ports="P"/>
+        <port name="CARRYINSEL" combinational_sink_ports="P"/>
+        <port name="INMODE" combinational_sink_ports="P"/>
+        <port name="OPMODE" combinational_sink_ports="P"/>
+        <port name="PCIN" combinational_sink_ports="P"/>
+      </input_ports>
+      <output_ports>
+        <port name="P"/>
+      </output_ports>
+    </model>
+    <!-- DSP48E1 model definition ends -->
   </models>
   <tiles>
     <!-- Each I/O tile includes a GPIO --> 
@@ -236,6 +248,33 @@
         <loc side="top">memory.rclk memory.wclk</loc>
         <loc side="right">memory.waddr memory.d_in[15:0] memory.wen memory.d_out[15:0] memory.wenb[15:0]</loc>
         <loc side="bottom">memory.raddr memory.d_in[31:16] memory.ren memory.d_out[31:16] memory.wenb[31:16]</loc>
+      </pinlocations>
+    </tile>
+    <tile name="DSP48E1" height="4" area="396000">
+      <equivalent_sites>
+        <site pb_type="DSP48E1" pin_mapping="direct"/>
+      </equivalent_sites>
+      <input name="a" num_pins="30"/>
+      <input name="b" num_pins="18"/>
+      <input name="c" num_pins="48"/>
+      <input name="d" num_pins="25"/>
+      <input name="alumode" num_pins="4"/>
+      <input name="acin" num_pins="30"/>
+      <input name="bcin" num_pins="18"/>
+      <input name="carryin" num_pins="1"/>
+      <input name="carryinsel" num_pins="3"/>
+      <input name="inmode" num_pins="5"/>
+      <input name="opmode" num_pins="7"/>
+      <input name="pcin" num_pins="48"/>
+      <output name="p" num_pins="48"/>
+      <fc in_type="frac" in_val="0.15" out_type="frac" out_val="0.10"/>
+      <!--  Highly recommand to customize pin location when direct connection is used!!! -->
+      <!-- pinlocations are designed to spread pin on 4 sides evenly -->
+      <pinlocations pattern="custom">
+        <loc side="left">DSP48E1.a[29:0] DSP48E1.b[17:0]  DSP48E1.d[24:0] DSP48E1.alumode[3:0] DSP48E1.acin[29:0] DSP48E1.bcin[17:0] DSP48E1.pcin[47:0]</loc>
+        <loc side="top"></loc>
+        <loc side="right">DSP48E1.c[47:0]  DSP48E1.carryin DSP48E1.carryinsel[2:0] DSP48E1.inmode[4:0] DSP48E1.opmode[6:0] DSP48E1.p[47:0]</loc>
+        <loc side="bottom"></loc>
       </pinlocations>
     </tile>
   </tiles>
@@ -518,18 +557,18 @@
                   <input  name="R"  num_pins="1"/>
                   <clock  name="G"  num_pins="1"/>
                   <output name="Q"  num_pins="1"/>
-                  <T_setup      value="21e-12" port="LATCHRE.D" clock="G" />
-                  <T_clock_to_Q   max="47e-12" port="LATCHRE.D" clock="G" />
-                  <delay_constant max="26e-12" in_port="LATCHRE.G" out_port="LATCHRE.Q"/>
-                  <delay_constant max="26e-12" in_port="LATCHRE.E" out_port="LATCHRE.Q"/>
-                  <delay_constant max="26e-12" in_port="LATCHRE.R" out_port="LATCHRE.Q"/>
+                  <T_setup      value="36e-12" port="LATCHRE.D" clock="G" />
+                  <T_clock_to_Q   max="31e-12" port="LATCHRE.D" clock="G" />
+                  <delay_constant max="25e-12" in_port="LATCHRE.G" out_port="LATCHRE.Q"/>
+                  <delay_constant max="28e-12" in_port="LATCHRE.E" out_port="LATCHRE.Q"/>
+                  <delay_constant max="36e-12" in_port="LATCHRE.R" out_port="LATCHRE.Q"/>
                 </pb_type>
                 <interconnect>
                   <direct name="D"  input="ff.D"       output="LATCHRE.D"/>
                   <direct name="E"  input="ff.E"       output="LATCHRE.E"/>
                   <direct name="R"  input="ff.R"       output="LATCHRE.R"/>
                   <direct name="C"  input="ff.clk"     output="LATCHRE.G"/>
-                  <direct name="Q"  input="LATCHRE.Q"  output="ff.Q"   />
+                  <direct name="Q"  input="LATCHRE.Q"  output="ff.Q"/>
                 </interconnect>
               </mode>
               <mode name="DFF">
@@ -537,8 +576,9 @@
                   <input  name="D" num_pins="1"/>
                   <output name="Q" num_pins="1"/>
                   <clock  name="C" num_pins="1"/>
-                  <T_setup    value="21e-12" port="DFF.D" clock="C"/>
-                  <T_clock_to_Q max="46e-12" port="DFF.Q" clock="C"/>
+                  <T_setup    value="11e-12" port="DFF.D" clock="C"/>
+                  <T_hold     value="7e-12"  port="DFF.D" clock="C"/>
+                  <T_clock_to_Q max="48e-12" port="DFF.Q" clock="C"/>
                 </pb_type>
                 <interconnect>
                   <direct name="Q" input="DFF.Q"  output="ff.Q"/>
@@ -552,9 +592,11 @@
                   <input name="R" num_pins="1"/>
                   <output name="Q" num_pins="1"/>
                   <clock name="C" num_pins="1"/>
-                  <T_setup    value="21e-12" port="DFFR.D" clock="C"/>
-                  <T_setup    value="26e-12" port="DFFR.R" clock="C"/>
-                  <T_clock_to_Q max="46e-12" port="DFFR.Q" clock="C"/>
+                  <T_setup    value="13e-12" port="DFFR.D" clock="C"/>
+                  <T_setup    value="2e-12"  port="DFFR.R" clock="C"/>
+                  <T_hold     value="7e-12"  port="DFFR.D" clock="C"/>
+                  <T_hold     value="9e-12"  port="DFFR.R" clock="C"/>
+                  <T_clock_to_Q max="52e-12" port="DFFR.Q" clock="C"/>
                 </pb_type>
                 <interconnect>
                   <direct name="D" input="ff.D"    output="DFFR.D"/>
@@ -563,24 +605,8 @@
                   <direct name="Q" input="DFFR.Q"  output="ff.Q"/>
                 </interconnect>
               </mode>
-              <mode name="DFFE">
-                <pb_type name="DFFE" blif_model=".subckt dffe" num_pb="1">
-                  <input name="D" num_pins="1"/>
-                  <input name="E" num_pins="1"/>
-                  <output name="Q" num_pins="1"/>
-                  <clock name="C" num_pins="1"/>
-                  <T_setup value="21e-12" port="DFFE.D" clock="C"/>
-                  <T_setup value="26e-12" port="DFFE.E" clock="C"/>
-                  <T_clock_to_Q max="46e-12" port="DFFE.Q" clock="C"/>
-                </pb_type>
-                <interconnect>
-                  <direct input="DFFE.Q" name="FF-Q" output="ff.Q"/>
-                  <direct input="ff.D" name="DFFE-D" output="DFFE.D">
-                  </direct>
-                  <direct input="ff.clk" name="DFFE-clk" output="DFFE.C"/>
-                  <direct input="ff.R" name="DFFE-enable" output="DFFE.E"/>
-                </interconnect>
-              </mode>
+              <!-- Enable pin will be handled by gating the clock -->
+              <!-- Hence enable pin timings are extracted from an andgate -->
               <mode name="DFFRE">
                 <pb_type name="DFFRE" blif_model=".subckt dffre" num_pb="1">
                   <input name="D" num_pins="1"/>
@@ -588,10 +614,12 @@
                   <input name="E" num_pins="1"/>
                   <output name="Q" num_pins="1"/>
                   <clock name="C" num_pins="1"/>
-                  <T_setup    value="21e-12" port="DFFRE.D" clock="C"/>
-                  <T_setup    value="26e-12" port="DFFRE.R" clock="C"/>
-                  <T_setup    value="26e-12" port="DFFRE.E" clock="C"/>
-                  <T_clock_to_Q max="46e-12" port="DFFRE.Q" clock="C"/>
+                  <T_setup    value="13e-12" port="DFFRE.D" clock="C"/>
+                  <T_setup    value="2e-12"  port="DFFRE.R" clock="C"/>
+                  <T_setup    value="16e-12" port="DFFRE.E" clock="C"/>
+                  <T_hold     value="7e-12"  port="DFFRE.D" clock="C"/>
+                  <T_hold     value="9e-12"  port="DFFRE.R" clock="C"/>
+                  <T_clock_to_Q max="52e-12" port="DFFRE.Q" clock="C"/>
                 </pb_type>
                 <interconnect>
                   <direct name="D" input="ff.D"     output="DFFRE.D"/>
@@ -757,11 +785,11 @@
                   <input  name="R"  num_pins="1"/>
                   <clock  name="G"  num_pins="1"/>
                   <output name="Q"  num_pins="1"/>
-                  <T_setup      value="21e-12" port="LATCHRE.D" clock="G" />
-                  <T_clock_to_Q   max="47e-12" port="LATCHRE.D" clock="G" />
-                  <delay_constant max="26e-12" in_port="LATCHRE.G" out_port="LATCHRE.Q"/>
-                  <delay_constant max="26e-12" in_port="LATCHRE.E" out_port="LATCHRE.Q"/>
-                  <delay_constant max="26e-12" in_port="LATCHRE.R" out_port="LATCHRE.Q"/>
+                  <T_setup      value="36e-12" port="LATCHRE.D" clock="G" />
+                  <T_clock_to_Q   max="31e-12" port="LATCHRE.D" clock="G" />
+                  <delay_constant max="25e-12" in_port="LATCHRE.G" out_port="LATCHRE.Q"/>
+                  <delay_constant max="28e-12" in_port="LATCHRE.E" out_port="LATCHRE.Q"/>
+                  <delay_constant max="36e-12" in_port="LATCHRE.R" out_port="LATCHRE.Q"/>
                 </pb_type>
                 <interconnect>
                   <direct name="D"  input="ff.D"       output="LATCHRE.D"/>
@@ -776,8 +804,9 @@
                   <input  name="D" num_pins="1"/>
                   <output name="Q" num_pins="1"/>
                   <clock  name="C" num_pins="1"/>
-                  <T_setup    value="21e-12" port="DFF.D" clock="C"/>
-                  <T_clock_to_Q max="46e-12" port="DFF.Q" clock="C"/>
+                  <T_setup    value="11e-12" port="DFF.D" clock="C"/>
+                  <T_hold     value="7e-12"  port="DFF.D" clock="C"/>
+                  <T_clock_to_Q max="48e-12" port="DFF.Q" clock="C"/>
                 </pb_type>
                 <interconnect>
                   <direct name="Q" input="DFF.Q"  output="ff.Q"/>
@@ -791,33 +820,17 @@
                   <input name="R" num_pins="1"/>
                   <output name="Q" num_pins="1"/>
                   <clock name="C" num_pins="1"/>
-                  <T_setup    value="21e-12" port="DFFR.D" clock="C"/>
-                  <T_setup    value="26e-12" port="DFFR.R" clock="C"/>
-                  <T_clock_to_Q max="46e-12" port="DFFR.Q" clock="C"/>
+                  <T_setup    value="13e-12" port="DFFR.D" clock="C"/>
+                  <T_setup    value="2e-12"  port="DFFR.R" clock="C"/>
+                  <T_hold     value="7e-12"  port="DFFR.D" clock="C"/>
+                  <T_hold     value="9e-12"  port="DFFR.R" clock="C"/>
+                  <T_clock_to_Q max="52e-12" port="DFFR.Q" clock="C"/>
                 </pb_type>
                 <interconnect>
                   <direct name="D" input="ff.D"    output="DFFR.D"/>
                   <direct name="C" input="ff.clk"  output="DFFR.C"/>
                   <direct name="R" input="ff.R"    output="DFFR.R"/>
                   <direct name="Q" input="DFFR.Q"  output="ff.Q"/>
-                </interconnect>
-              </mode>
-              <mode name="DFFE">
-                <pb_type name="DFFE" blif_model=".subckt dffe" num_pb="1">
-                  <input name="D" num_pins="1"/>
-                  <input name="E" num_pins="1"/>
-                  <output name="Q" num_pins="1"/>
-                  <clock name="C" num_pins="1"/>
-                  <T_setup value="21e-12" port="DFFE.D" clock="C"/>
-                  <T_setup value="26e-12" port="DFFE.E" clock="C"/>
-                  <T_clock_to_Q max="46e-12" port="DFFE.Q" clock="C"/>
-                </pb_type>
-                <interconnect>
-                  <direct input="DFFE.Q" name="FF-Q" output="ff.Q"/>
-                  <direct input="ff.D" name="DFFE-D" output="DFFE.D">
-                  </direct>
-                  <direct input="ff.clk" name="DFFE-clk" output="DFFE.C"/>
-                  <direct input="ff.R" name="DFFE-enable" output="DFFE.E"/>
                 </interconnect>
               </mode>
               <mode name="DFFRE">
@@ -827,10 +840,12 @@
                   <input name="E" num_pins="1"/>
                   <output name="Q" num_pins="1"/>
                   <clock name="C" num_pins="1"/>
-                  <T_setup    value="21e-12" port="DFFRE.D" clock="C"/>
-                  <T_setup    value="26e-12" port="DFFRE.R" clock="C"/>
-                  <T_setup    value="26e-12" port="DFFRE.E" clock="C"/>
-                  <T_clock_to_Q max="46e-12" port="DFFRE.Q" clock="C"/>
+                  <T_setup    value="13e-12" port="DFFRE.D" clock="C"/>
+                  <T_setup    value="2e-12"  port="DFFRE.R" clock="C"/>
+                  <T_setup    value="16e-12" port="DFFRE.E" clock="C"/>
+                  <T_hold     value="7e-12"  port="DFFRE.D" clock="C"/>
+                  <T_hold     value="9e-12"  port="DFFRE.R" clock="C"/>
+                  <T_clock_to_Q max="52e-12" port="DFFRE.Q" clock="C"/>
                 </pb_type>
                 <interconnect>
                   <direct name="D" input="ff.D"     output="DFFRE.D"/>
@@ -987,8 +1002,8 @@
       <mode name="mem_16K_dp">
 <!-- There is an issue with the port_class="data_in" blocking us from mapping anything into the bram with signal wider than 1 bit data -->
 
- <!--        <pb_type name="mem_16K_dp" blif_model=".subckt dual_port_ram" class="memory" num_pb="1">
-         <input name="waddr" num_pins="9" port_class="address"/>
+ <!--   <pb_type name="mem_16K_dp" blif_model=".subckt dual_port_ram" class="memory" num_pb="1">
+          <input name="waddr" num_pins="9" port_class="address"/>
           <input name="raddr" num_pins="9" port_class="address"/>
           <input name="d_in" num_pins="32" port_class="data_in"/>
           <input name="wen" num_pins="1" port_class="write_en"/>
@@ -1008,7 +1023,7 @@
           <clock  name="rclk"  num_pins="1"/>
           <clock  name="wclk"  num_pins="1"/>
 
-            <!-- Delay extracted from standard cell lib file -->
+            <!-- Delay extracted from standard cell librarie -->
           <T_setup value="93e-12"     port="mem_16K_dp.waddr" clock="wclk"/>
           <T_setup value="108e-12"    port="mem_16K_dp.raddr" clock="rclk"/>
           <T_setup value="38e-12"     port="mem_16K_dp.d_in"  clock="wclk"/>
@@ -1044,15 +1059,101 @@
           <direct name="dataout" input="mem_16K_dp.d_out" output="memory.d_out">
             <delay_constant max="40e-12" in_port="mem_16K_dp.d_out" out_port="memory.d_out"/>
           </direct>
-          <direct name="rclk" input="memory.rclk" output="mem_16K_dp.rclk">
-          </direct>
-          <direct name="wclk" input="memory.wclk" output="mem_16K_dp.wclk">
-          </direct>
+          <direct name="rclk" input="memory.rclk" output="mem_16K_dp.rclk"/>
+          <direct name="wclk" input="memory.wclk" output="mem_16K_dp.wclk"/>
         </interconnect>
       </mode>
     </pb_type>
-    <!-- Define single-mode dual-port memory ends -->
-
+    <!-- Define multi-mode dual-port memory end -->
+    <!-- Define DSP48E1 begin -->
+    <pb_type name="DSP48E1">
+      <input name="a" num_pins="30"/>
+      <input name="b" num_pins="18"/>
+      <input name="c" num_pins="48"/>
+      <input name="d" num_pins="25"/>
+      <input name="alumode" num_pins="4"/>
+      <input name="acin" num_pins="30"/>
+      <input name="bcin" num_pins="18"/>
+      <input name="carryin" num_pins="1"/>
+      <input name="carryinsel" num_pins="3"/>
+      <input name="inmode" num_pins="5"/>
+      <input name="opmode" num_pins="7"/>
+      <input name="pcin" num_pins="48"/>
+      <output name="p" num_pins="48"/>
+      <mode name="DSP48E1_slice">
+        <pb_type name="DSP48E1_slice" blif_model=".subckt DSP48E1" num_pb="1">
+	      <input  name="A"          num_pins="30"/>
+	      <input  name="B"          num_pins="18"/>
+	      <input  name="C"          num_pins="48"/>
+	      <input  name="D"          num_pins="25"/>
+	      <input  name="ALUMODE"    num_pins="4"/>
+	      <input  name="ACIN"       num_pins="30"/>
+	      <input  name="BCIN"       num_pins="18"/>
+	      <input  name="CARRYIN"    num_pins="1"/>
+	      <input  name="CARRYINSEL" num_pins="3"/>
+	      <input  name="INMODE"     num_pins="5"/>
+	      <input  name="OPMODE"     num_pins="7"/>
+	      <input  name="PCIN"       num_pins="48"/>
+	      <output name="P"          num_pins="48"/>
+              <!-- DSP48E1 synthesized from 12nm cells -->
+              <!-- Combinatorial delay was extracted from the mapped design -->
+              <delay_constant max="2.4e-9"  in_port="DSP48E1_slice.A" 		out_port="DSP48E1_slice.P"/>
+              <delay_constant max="2.4e-9"  in_port="DSP48E1_slice.B" 		out_port="DSP48E1_slice.P"/>
+              <delay_constant max="2.4e-9"  in_port="DSP48E1_slice.C"		out_port="DSP48E1_slice.P"/>
+              <delay_constant max="2.4e-9"  in_port="DSP48E1_slice.D"		out_port="DSP48E1_slice.P"/>
+              <delay_constant max="2.4e-9"  in_port="DSP48E1_slice.ALUMODE"	out_port="DSP48E1_slice.P"/>
+              <delay_constant max="2.4e-9"  in_port="DSP48E1_slice.ACIN"	out_port="DSP48E1_slice.P"/>
+              <delay_constant max="2.4e-9"  in_port="DSP48E1_slice.BCIN"	out_port="DSP48E1_slice.P"/>
+              <delay_constant max="2.4e-9"  in_port="DSP48E1_slice.CARRYIN" 	out_port="DSP48E1_slice.P"/>
+              <delay_constant max="2.4e-9"  in_port="DSP48E1_slice.CARRYINSEL"	out_port="DSP48E1_slice.P"/>
+              <delay_constant max="2.4e-9"  in_port="DSP48E1_slice.INMODE"	out_port="DSP48E1_slice.P"/>
+              <delay_constant max="2.4e-9"  in_port="DSP48E1_slice.OPMODE"	out_port="DSP48E1_slice.P"/>
+              <delay_constant max="2.4e-9"  in_port="DSP48E1_slice.PCIN"	out_port="DSP48E1_slice.P"/>
+        </pb_type>
+        <interconnect>
+            <direct name="a2a" input="DSP48E1.a" output="DSP48E1_slice.A">
+              <delay_constant max="249e-12" in_port="DSP48E1.a" out_port="DSP48E1_slice.A"/>
+            </direct>
+            <direct name="b2b" input="DSP48E1.b" output="DSP48E1_slice.B">
+              <delay_constant max="249e-12" in_port="DSP48E1.b" out_port="DSP48E1_slice.B"/>
+            </direct>
+            <direct name="c2c" input="DSP48E1.c" output="DSP48E1_slice.C">
+              <delay_constant max="249e-12" in_port="DSP48E1.c" out_port="DSP48E1_slice.C"/>
+            </direct>
+            <direct name="d2d" input="DSP48E1.d" output="DSP48E1_slice.D">
+              <delay_constant max="249e-12" in_port="DSP48E1.d" out_port="DSP48E1_slice.D"/>
+            </direct>
+            <direct name="direct_alumode" input="DSP48E1.alumode" output="DSP48E1_slice.ALUMODE">
+              <delay_constant max="249e-12" in_port="DSP48E1.alumode" out_port="DSP48E1_slice.ALUMODE"/>
+            </direct>
+            <direct name="direct_acin" input="DSP48E1.acin" output="DSP48E1_slice.ACIN">
+              <delay_constant max="249e-12" in_port="DSP48E1.acin" out_port="DSP48E1_slice.ACIN"/>
+            </direct>
+            <direct name="direct_bcin" input="DSP48E1.bcin" output="DSP48E1_slice.BCIN">
+              <delay_constant max="249e-12" in_port="DSP48E1.bcin" out_port="DSP48E1_slice.BCIN"/>
+            </direct>
+            <direct name="direct_carryin" input="DSP48E1.carryin" output="DSP48E1_slice.CARRYIN">
+              <delay_constant max="249e-12" in_port="DSP48E1.carryin" out_port="DSP48E1_slice.CARRYIN"/>
+            </direct>
+            <direct name="direct_carryinsel" input="DSP48E1.carryinsel" output="DSP48E1_slice.CARRYINSEL">
+              <delay_constant max="249e-12" in_port="DSP48E1.carryinsel" out_port="DSP48E1_slice.CARRYINSEL"/>
+            </direct>
+            <direct name="direct_inmode" input="DSP48E1.inmode" output="DSP48E1_slice.INMODE">
+              <delay_constant max="249e-12" in_port="DSP48E1.inmode" out_port="DSP48E1_slice.INMODE"/>
+            </direct>
+            <direct name="direct_opmode" input="DSP48E1.opmode" output="DSP48E1_slice.OPMODE">
+              <delay_constant max="249e-12" in_port="DSP48E1.opmode" out_port="DSP48E1_slice.OPMODE"/>
+            </direct>
+            <direct name="direct_pcin" input="DSP48E1.pcin" output="DSP48E1_slice.PCIN">
+              <delay_constant max="249e-12" in_port="DSP48E1.pcin" out_port="DSP48E1_slice.PCIN"/>
+            </direct>
+            <direct name="p2p" input="DSP48E1_slice.P" output="DSP48E1.p">
+              <delay_constant max="249e-12" in_port="DSP48E1_slice.P" out_port="DSP48E1.p"/>
+            </direct>
+        </interconnect>
+      </mode>
+    </pb_type>
+    <!-- Define DSP48E1 end -->
   </complexblocklist>
 <layout>
     <auto_layout aspect_ratio="1.0">
@@ -1072,6 +1173,9 @@
       <!--CLB / Memory block ratio is 30. -->
       <col type="memory"  startx="2"  starty="1" repeatx="14" priority="20"/>
       <col type="EMPTY"   startx="2"  starty="1" repeatx="14" priority="19"/>
+      <!--Column of 'DSP' with 'EMPTY' blocks wherever a 'DSP' does not fit. Vertical offset by 1 for perimeter.-->
+      <col type="DSP48E1" startx="8"  starty="1" repeatx="14" priority="20"/>
+      <col type="EMPTY"   startx="8"  starty="1" repeatx="14" priority="19"/>
     </fixed_layout>
   </layout>
 </architecture>
