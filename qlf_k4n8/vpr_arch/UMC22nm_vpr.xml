@@ -205,7 +205,7 @@
         <equivalent_sites>
           <site pb_type="clb"/>
         </equivalent_sites>
-        <input name="I" num_pins="24" equivalent="full"/>
+        <input name="I" num_pins="24" equivalent="none"/>
         <input name="reg_in" num_pins="1"/>
         <input name="sc_in" num_pins="1"/>
         <input name="cin" num_pins="1"/>
@@ -493,7 +493,7 @@
                 <direct input="inpad.inpad" name="inpad_blif_to_inpad_pad" output="pad.inpad"/>
               </interconnect>
               <metadata>
-                <meta name="fasm_feature">IO_QL_CCFF_mem.mem_out[0]</meta>
+                <meta name="fasm_features">IO_QL_CCFF_mem.mem_out[0]</meta>
               </metadata>
             </mode>
             <mode name="outpad">
@@ -549,7 +549,7 @@ ff[1].Q : NULL</meta>
       </mode>
     </pb_type>
     <pb_type name="clb">
-      <input name="I" num_pins="24" equivalent="full"/>
+      <input name="I" num_pins="24" equivalent="none"/>
       <input name="reg_in" num_pins="1"/>
       <input name="sc_in" num_pins="1"/>
       <input name="cin" num_pins="1"/>
