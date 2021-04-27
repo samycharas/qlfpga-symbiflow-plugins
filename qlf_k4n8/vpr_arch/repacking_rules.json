@@ -2,7 +2,7 @@
   "repacking_rules": [
     {
       "src_pbtype": "io[io_input].io_input.inpad",
-      "dst_pbtype": "io[physical].iopad.pad",
+      "dst_pbtype": "io[physical].iopad.pad[inpad].inpad",
       "index_map": [
         1,
         0
@@ -12,7 +12,7 @@
     },
     {
       "src_pbtype": "io[io_output].io_output.outpad",
-      "dst_pbtype": "io[physical].iopad.pad",
+      "dst_pbtype": "io[physical].iopad.pad[outpad].outpad",
       "index_map": [
         1,
         0
