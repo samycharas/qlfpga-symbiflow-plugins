@@ -539,12 +539,20 @@ ff[1].Q : NULL</meta>
           </metadata>
         </pb_type>
         <interconnect>
-          <complete name="clks" input="io.clk" output="iopad.clk"/>
           <direct name="direct3" input="io.f2a_i" output="iopad.f2a_i"/>
           <direct name="direct4" input="iopad.a2f_o" output="io.a2f_o"/>
           <direct name="direct6" input="io.sc_in" output="iopad.sc_in"/>
           <direct name="direct7" input="iopad.sc_out" output="io.sc_out"/>
           <direct name="direct8" input="io.reset" output="iopad.reset"/>
+          <mux input="io.clk[0] io.clk[1] io.clk[2] io.clk[3]" name="clks_iopad.clk" output="iopad.clk">
+            <metadata>
+              <meta name="fasm_mux">
+io.clk[0] : mem_iopad_0_clk_0.mem_out[0],mem_iopad_0_clk_0.mem_out[1],mem_iopad_0_clk_0.mem_out[2]
+io.clk[1] : mem_iopad_0_clk_0.mem_out[1],mem_iopad_0_clk_0.mem_out[2]
+io.clk[2] : mem_iopad_0_clk_0.mem_out[2]
+io.clk[3] : mem_iopad_0_clk_0.mem_out[1]</meta>
+            </metadata>
+          </mux>
         </interconnect>
       </mode>
     </pb_type>
