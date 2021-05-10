@@ -1,0 +1,20 @@
+{
+  "repacking_rules": [
+    {
+      "src_pbtype": "clb.fle[n2_lut5].lut5inter.ble5[arithmetic].arithmetic.adder",
+      "dst_pbtype": "clb.fle[n2_lut5].lut5inter.ble5[arithmetic].arithmetic.adder",
+      "index_map": [
+        1,
+        0
+      ],
+      "mode_bits": "1",
+      "port_map": {
+        "a": "a",
+        "b": "b",
+        "cin": "cin",
+        "cout": "cout",
+        "sumout": "sumout"
+      }
+    }
+  ]
+}
