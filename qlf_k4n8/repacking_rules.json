@@ -188,6 +188,34 @@
       }
     },
     {
+      "src_pbtype": "clb.fle[n1_lut4].ble4.ff[DFFSR].DFFSR",
+      "dst_pbtype": "clb.fle[physical].fabric.ff",
+      "index_map": [
+        1,
+        0
+      ],
+      "mode_bits": "1",
+      "port_map": {
+        "C": "clk",
+        "S": "preset",
+        "R": "reset"
+      }
+    },
+    {
+      "src_pbtype": "clb.fle[n1_lut4].ble4.ff[DFFNSR].DFFNSR",
+      "dst_pbtype": "clb.fle[physical].fabric.ff",
+      "index_map": [
+        1,
+        0
+      ],
+      "mode_bits": "0",
+      "port_map": {
+        "C": "clk",
+        "S": "preset",
+        "R": "reset"
+      }
+    },
+    {
       "src_pbtype": "clb.fle[shift_register].shift_reg.ff[DFF].DFF",
       "dst_pbtype": "clb.fle[physical].fabric.ff",
       "index_map": [
