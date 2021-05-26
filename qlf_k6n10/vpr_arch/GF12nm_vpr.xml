@@ -172,7 +172,7 @@
          Each output of the tile can drive 10% of routing tracks
       -->
     <tile name="io" area="0">
-      <sub_tile name="io" capacity="1">
+      <sub_tile name="io" capacity="2">
         <equivalent_sites>
           <site pb_type="io"/>
         </equivalent_sites>
