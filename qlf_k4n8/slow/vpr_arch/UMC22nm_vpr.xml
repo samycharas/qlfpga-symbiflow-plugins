@@ -227,7 +227,7 @@
         <equivalent_sites>
           <site pb_type="clb"/>
         </equivalent_sites>
-        <input name="I" num_pins="24" equivalent="none"/>
+        <input name="I" num_pins="24" equivalent="full"/>
         <input name="reg_in" num_pins="1"/>
         <input name="sc_in" num_pins="1"/>
         <input name="cin" num_pins="1"/>
@@ -579,7 +579,7 @@ io.clk[3] : mem_iopad_0_clk_0.mem_out[1]</meta>
       </mode>
     </pb_type>
     <pb_type name="clb">
-      <input name="I" num_pins="24" equivalent="none"/>
+      <input name="I" num_pins="24" equivalent="full"/>
       <input name="reg_in" num_pins="1"/>
       <input name="sc_in" num_pins="1"/>
       <input name="cin" num_pins="1"/>
